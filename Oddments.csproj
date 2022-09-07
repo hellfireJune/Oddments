@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D6D7A494-722E-4763-959B-C2D6B6A42B01}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Oddments</RootNamespace>
+    <AssemblyName>Oddments</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="BindingAPI\BindingBuilder.cs" />
+    <Compile Include="BindingAPI\BindingHooks.cs" />
+    <Compile Include="BindingAPI\BindingLoader.cs" />
+    <Compile Include="BindingAPI\ExampleBinding.cs" />
+    <Compile Include="Scripts\Goops and Ailments\GenericStatusEffects.cs" />
+    <Compile Include="Scripts\Goops and Ailments\EasyGoopDefinitions.cs" />
+    <Compile Include="Scripts\Helpers\ChestHelpers.cs" />
+    <Compile Include="Scripts\Helpers\EnemyHelpers.cs" />
+    <Compile Include="Scripts\Helpers\ItemHelpers.cs" />
+    <Compile Include="Scripts\Helpers\RoomTools.cs" />
+    <Compile Include="Scripts\Items\BrokenStopwatch.cs" />
+    <Compile Include="Scripts\Items\DoubleHealingItem.cs" />
+    <Compile Include="Scripts\Items\DaisukesGift.cs" />
+    <Compile Include="Scripts\Items\HellfireRounds.cs" />
+    <Compile Include="Scripts\Items\JamIdol.cs" />
+    <Compile Include="Scripts\Items\MimicBait.cs" />
+    <Compile Include="Scripts\Items\MimicWhistle.cs" />
+    <Compile Include="Scripts\Items\PickupGenerator.cs" />
+    <Compile Include="Scripts\Items\SacredOrbCrownOfGunsCrownOfLove.cs" />
+    <Compile Include="Scripts\Items\SafetyScissors.cs" />
+    <Compile Include="Scripts\Items\SiphonGem.cs" />
+    <Compile Include="Scripts\Items\SynergracesBlessingAndLotsaChests.cs" />
+    <Compile Include="Scripts\Items\TwoDollarCoin.cs" />
+    <Compile Include="Scripts\Helpers\ItemTemplate.cs" />
+    <Compile Include="Scripts\Items\WebImmunityItemWeaversCharmSpiderBoots.cs" />
+    <Compile Include="Scripts\Misc\CommandsBox.cs" />
+    <Compile Include="Scripts\Misc\IAmGoingToBreakKeepFloorGen.cs" />
+    <Compile Include="Scripts\Misc\UIUnlocksTest.cs" />
+    <Compile Include="Scripts\Misc\VoidFieldsTest.cs" />
+    <Compile Include="Scripts\Module.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scripts\Shrines\BunnyShrineFactory\HitboxMonitor.cs" />
+    <Compile Include="Scripts\Shrines\BunnyShrineFactory\NPCBuilder.cs" />
+    <Compile Include="Scripts\Shrines\BunnyShrineFactory\NPCInteractable.cs" />
+    <Compile Include="Scripts\Shrines\BunnyShrineFactory\ShrineFactory.cs" />
+    <Compile Include="Scripts\Shrines\BunnyShrineFactory\ShrineFakePrefab.cs" />
+    <Compile Include="Scripts\Shrines\BunnyShrineFactory\ShrineFakePrefabHooks.cs" />
+    <Compile Include="Scripts\Shrines\BunnyShrineFactory\SimpleInteractable.cs" />
+    <Compile Include="Scripts\Shrines\BunnyShrineFactory\SimpleShrine.cs" />
+    <Compile Include="Scripts\Shrines\DerringerShrine.cs" />
+    <Compile Include="Scripts\Shrines\ExampleShrineSomeBunny.cs" />
+    <Compile Include="Scripts\Shrines\ShrapnelGiant\ShrapnelAbilityBase.cs" />
+    <Compile Include="Scripts\Shrines\ShrapnelGiant\ShrapnelTestItem.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\example_item_sprite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Rooms\FireplaceTestRoom.room" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\mimicbait.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony, Version=2.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="Alexandria">
+      <HintPath>..\..\..\AppData\Roaming\Thunderstore Mod Manager\DataFolder\ETG\profiles\Default\BepInEx\plugins\Alexandria-Alexandria\Alexandria.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx, Version=5.4.19.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\BepInEx.dll</HintPath>
+    </Reference>
+    <Reference Include="ModTheGungeonAPI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\AppData\Roaming\Thunderstore Mod Manager\DataFolder\ETG\profiles\Default\BepInEx\plugins\MtG_API-Mod_the_Gungeon_API\MtGAPI\ModTheGungeonAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil, Version=0.10.4.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoMod.RuntimeDetour, Version=22.1.29.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\MonoMod.RuntimeDetour.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoMod.Utils, Version=22.1.29.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\MonoMod.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\UnityEngine.JSONSerializeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\UnityEngine.ParticleSystemModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\hellfirerounds.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\you.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\bookofsin.png" />
+    <EmbeddedResource Include="Resources\Sprites\brokenstopwatch.png" />
+    <EmbeddedResource Include="Resources\Sprites\crownoflove.png" />
+    <EmbeddedResource Include="Resources\Sprites\crownofquality.png" />
+    <EmbeddedResource Include="Resources\Sprites\crownofsynergy.png" />
+    <EmbeddedResource Include="Resources\Sprites\crownofwar.png" />
+    <EmbeddedResource Include="Resources\Sprites\daisukesshard.png" />
+    <EmbeddedResource Include="Resources\Sprites\derringerssack.png" />
+    <EmbeddedResource Include="Resources\Sprites\jammedidol.png" />
+    <EmbeddedResource Include="Resources\Sprites\rejuvenatingrack.png" />
+    <EmbeddedResource Include="Resources\Sprites\safetyscissors.png" />
+    <EmbeddedResource Include="Resources\Sprites\silkboots.png" />
+    <EmbeddedResource Include="Resources\Sprites\synergracesblessing.png" />
+    <EmbeddedResource Include="Resources\Sprites\twodollarcoin.png" />
+    <EmbeddedResource Include="Resources\Sprites\weaverscharm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\Shrines\placeholdershrineguy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\mimicwhistle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\siphonitem.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
