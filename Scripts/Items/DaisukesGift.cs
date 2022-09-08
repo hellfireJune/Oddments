@@ -49,7 +49,7 @@ namespace Oddments
             base.Pickup(player);
         }
 
-        protected override void DisableEffect(PlayerController disablingPlayer)
+        public override void DisableEffect(PlayerController disablingPlayer)
         {
             base.DisableEffect(disablingPlayer);
 

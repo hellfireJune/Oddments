@@ -22,7 +22,7 @@ namespace Oddments
             player.healthHaver.ModifyHealing += ModifyHealing;
         }
 
-        protected override void DisableEffect(PlayerController player)
+        public override void DisableEffect(PlayerController player)
         {
             base.DisableEffect(player);
             player.healthHaver.ModifyHealing -= ModifyHealing;

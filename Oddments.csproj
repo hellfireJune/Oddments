@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -37,9 +38,11 @@
     <Compile Include="BindingAPI\ExampleBinding.cs" />
     <Compile Include="Scripts\Goops and Ailments\GenericStatusEffects.cs" />
     <Compile Include="Scripts\Goops and Ailments\EasyGoopDefinitions.cs" />
+    <Compile Include="Scripts\Helpers\ChallengeHelper.cs" />
     <Compile Include="Scripts\Helpers\ChestHelpers.cs" />
     <Compile Include="Scripts\Helpers\EnemyHelpers.cs" />
     <Compile Include="Scripts\Helpers\ItemHelpers.cs" />
+    <Compile Include="Scripts\Helpers\RegHelpers.cs" />
     <Compile Include="Scripts\Helpers\RoomTools.cs" />
     <Compile Include="Scripts\Items\BrokenStopwatch.cs" />
     <Compile Include="Scripts\Items\DoubleHealingItem.cs" />
@@ -58,6 +61,7 @@
     <Compile Include="Scripts\Items\TwoDollarCoin.cs" />
     <Compile Include="Scripts\Helpers\ItemTemplate.cs" />
     <Compile Include="Scripts\Items\WebImmunityItemWeaversCharmSpiderBoots.cs" />
+    <Compile Include="Scripts\Items\WhollyGhost.cs" />
     <Compile Include="Scripts\Misc\CommandsBox.cs" />
     <Compile Include="Scripts\Misc\IAmGoingToBreakKeepFloorGen.cs" />
     <Compile Include="Scripts\Misc\UIUnlocksTest.cs" />
@@ -95,8 +99,10 @@
       <HintPath>..\..\..\AppData\Roaming\Thunderstore Mod Manager\DataFolder\ETG\profiles\Default\BepInEx\plugins\Alexandria-Alexandria\Alexandria.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Assembly-CSharp.dll</HintPath>
+      <HintPath>packages\EtG.GameLibs.2.1.9.1\lib\net35\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\EtG.GameLibs.2.1.9.1\lib\net35\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
     <Reference Include="BepInEx, Version=5.4.19.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -117,6 +123,9 @@
     <Reference Include="MonoMod.Utils, Version=22.1.29.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\MonoMod.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="PlayMaker, Version=1.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\EtG.GameLibs.2.1.9.1\lib\net35\PlayMaker.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -178,6 +187,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Sprites\siphonitem.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

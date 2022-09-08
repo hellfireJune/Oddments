@@ -27,7 +27,7 @@ namespace Oddments
             base.Pickup(player);
         }
 
-        protected override void DisableEffect(PlayerController player)
+        public override void DisableEffect(PlayerController player)
         {
             player.RemoveFlagsFromPlayer(GetType());
             base.DisableEffect(player);
@@ -102,7 +102,7 @@ namespace Oddments
 
         public static Chest ReplaceChestWithOtherChest(Chest toreplace, Chest replacer)
         {
-            bool isLocked = toreplace.IsLocked, preventFuse = ReflectionUtility.ReflectGetField<bool>(typeof(Chest), "m_hasBeenCheckedForFuses", toreplace);
+            bool isLocked = toreplace.IsLocked, preventFuse = toreplace.PreventFuse;
 
             IntVector2 ivector2 = ((Vector2)toreplace.transform.position).ToIntVector2();
             RoomHandler room = GameManager.Instance.Dungeon.data.GetRoomFromPosition(ivector2);
@@ -119,7 +119,7 @@ namespace Oddments
                 {
                     LootEngine.DoDefaultItemPoof(ivector2.ToCenterVector2());
                 }
-                ReflectionUtility.ReflectSetField<bool>(typeof(Chest), "m_hasBeenCheckedForFuses", true, newchest);
+                newchest.m_hasBeenCheckedForFuses = true;
             }
             if (!isLocked)
             {
@@ -279,7 +279,7 @@ namespace Oddments
             base.Pickup(player);
         }
 
-        protected override void DisableEffect(PlayerController player)
+        public override void DisableEffect(PlayerController player)
         {
             player.RemoveFlagsFromPlayer(GetType());
             base.DisableEffect(player);

@@ -79,7 +79,7 @@ namespace Oddments
             base.Pickup(player);
         }
 
-        protected override void DisableEffect(PlayerController player)
+        public override void DisableEffect(PlayerController player)
         {
             player.RemoveFlagsFromPlayer(GetType());
             base.DisableEffect(player);

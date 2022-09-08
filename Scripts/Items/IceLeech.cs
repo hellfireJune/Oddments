@@ -20,14 +20,14 @@ namespace Oddments
             base.Pickup(player);
         }
 
-        protected override void DisableEffect(PlayerController player)
+        public override void DisableEffect(PlayerController player)
         {
             player.RemoveFlagsFromPlayer(GetType());
             player.healthHaver.ModifyHealing += ModifyHealing;
             base.DisableEffect(player);
         }
 
-        protected float dmgChargePerHeal = 100;
+        protected float dmgChargePerHeal = 150;
         protected int roomChargePerHeal = 2;
         private void ModifyHealing(HealthHaver arg1, HealthHaver.ModifyHealingEventArgs arg2)
         {
@@ -35,7 +35,8 @@ namespace Oddments
             {
                 return;
             }
-            float chargeToAdd = arg2.ModifiedHealing * arg2.InitialHealing;
+            float chargeToAdd = arg2.ModifiedHealing * 2;
+            ETGModConsole.Log(chargeToAdd);
 
             PlayerController playerController = arg1.GetComponent<PlayerController>();
             if (playerController != null && playerController.activeItems.Count > 0
@@ -46,7 +47,7 @@ namespace Oddments
                     item.CurrentDamageCooldown = Math.Max(item.CurrentDamageCooldown - (dmgChargePerHeal * chargeToAdd), 0);
                     item.CurrentRoomCooldown = (int)Math.Max(item.CurrentRoomCooldown - (roomChargePerHeal * chargeToAdd), 0);
                 }
-                arg2.ModifiedHealing = 0;
+                arg2.ModifiedHealing *= 0;
             }
         }
 
@@ -85,13 +86,25 @@ namespace Oddments
         [HarmonyPrefix]
         public static bool CantSlurp(HealthPickup __instance, PlayerController interactor)
         {
-            if (!__instance || ReflectionUtility.ReflectGetField<bool>(typeof(HealthPickup), "m_pickedUp", __instance)
+            if (!__instance
                 || !IsFlagSetForCharacter(interactor, typeof(IceLeech))
                 || !AnyItemsNeedHealing(interactor)) 
             {
-                return false;
+                return true;
             }
-            return true;
+            return false;
+        }
+
+        [HarmonyPatch(typeof(HealthPickup), nameof(HealthPickup.Interact))]
+        [HarmonyPrefix]
+        public static bool CantGlurp(PlayerController interactor)
+        {
+            if (!IsFlagSetForCharacter(interactor, typeof(IceLeech))
+                ||!AnyItemsNeedHealing(interactor))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

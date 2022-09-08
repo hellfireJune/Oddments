@@ -39,6 +39,7 @@ namespace Oddments
 
                 GenericStatusEffects.InitCustomEffects();
                 EasyGoopDefinitions.DefineDefaultGoops();
+                ChallengeHelper.Init();
                 //ShrapnelAbilityBase.InitSetupStuffYaddaYadda();
                 ItemTemplateManager.Init();
                 SynergyChanceModificationItem.InitBase();
@@ -113,7 +114,7 @@ namespace Oddments
 
         /*
          * Curr Changelog:
-         * - Added Frost Leech
+         * - Added Frost Leech, Lightweight Armor
          * - All chest modification items now affect chests that have already been spawned on the floor
          * */
 
@@ -172,7 +173,6 @@ namespace Oddments
          * Obol (Sewer Token)
          * Crazy Diamond
          * Stopwatch
-         * Lightweight armour (double the forces that push around players)
          * (Item that doubles hegemoney credit payout)
          * Book of synergies Vol. 1 & Vol. 2 (Adds synergies to more common items like master rounds and starter weapons)
          * Bifurcated Bullets
@@ -219,7 +219,6 @@ namespace Oddments
          * Titan's Fists
          * Training Dummy
          * Scarecrow's Head - !
-         * hp -> charge always
          * status effect item that makes enemies drop money on hit
          * Ad Thing Active
          * Random Prices Things

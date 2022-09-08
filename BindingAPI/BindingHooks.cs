@@ -16,7 +16,7 @@ namespace BindingAPI
 		public static void Init()
 		{
 			new Hook(typeof(GungeonActions).GetMethod("GetActionFromType", BindingFlags.Instance | BindingFlags.Public), typeof(BindingHooks).GetMethod("GetActionFromType", BindingFlags.Static | BindingFlags.Public));
-			new Hook(typeof(FullOptionsMenuController).GetMethod("InitializeKeyboardBindingsPanel", BindingFlags.Instance | BindingFlags.NonPublic), typeof(BindingHooks).GetMethod("InitializeKeyboardBindingsPanel", BindingFlags.Static | BindingFlags.Public));
+			new Hook(typeof(FullOptionsMenuController).GetMethod("InitializeKeyboardBindingsPanel", BindingFlags.Instance | BindingFlags.Public), typeof(BindingHooks).GetMethod("InitializeKeyboardBindingsPanel", BindingFlags.Static | BindingFlags.Public));
 		}
 
 		public static void InitializeKeyboardBindingsPanel(Action<FullOptionsMenuController> orig, FullOptionsMenuController self)

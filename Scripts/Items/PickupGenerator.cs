@@ -27,7 +27,7 @@ namespace Oddments
             }
         };
 
-        protected override void DoEffect(PlayerController user)
+        public override void DoEffect(PlayerController user)
         {
             base.DoEffect(user);
             FloorRewardData data = GameManager.Instance.RewardManager.CurrentRewardData;
@@ -63,7 +63,7 @@ namespace Oddments
             }
         };
 
-        protected override void DoEffect(PlayerController user)
+        public override void DoEffect(PlayerController user)
         {
             base.DoEffect(user);
             FloorRewardData data = GameManager.Instance.RewardManager.CurrentRewardData;

@@ -44,7 +44,7 @@ namespace Oddments
 
         private List<int> succedActives = new List<int>();
 
-        protected override void DoEffect(PlayerController user)
+        public override void DoEffect(PlayerController user)
         {
             base.DoEffect(user);
 

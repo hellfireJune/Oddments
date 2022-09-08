@@ -25,7 +25,7 @@ namespace Oddments
             base.Pickup(player);
         }
 
-        protected override void DisableEffect(PlayerController player)
+        public override void DisableEffect(PlayerController player)
         {
             player.RemoveFlagsFromPlayer(typeof(WebImmunityItem));
             base.DisableEffect(player);
@@ -53,7 +53,7 @@ namespace Oddments
             ETGMod.AIActor.OnPreStart += OnPreStart;
         }
 
-        protected override void DisableEffect(PlayerController player)
+        public override void DisableEffect(PlayerController player)
         {
             base.DisableEffect(player);
             ETGMod.AIActor.OnPreStart -= OnPreStart;
@@ -79,7 +79,7 @@ namespace Oddments
             Quality = ItemQuality.C,
         };
 
-        protected override void Update()
+        public override void Update()
         {
             base.Update();
             if (Owner && Owner.specRigidbody)
