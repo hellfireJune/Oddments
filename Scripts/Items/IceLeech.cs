@@ -36,7 +36,6 @@ namespace Oddments
                 return;
             }
             float chargeToAdd = arg2.ModifiedHealing * 2;
-            ETGModConsole.Log(chargeToAdd);
 
             PlayerController playerController = arg1.GetComponent<PlayerController>();
             if (playerController != null && playerController.activeItems.Count > 0

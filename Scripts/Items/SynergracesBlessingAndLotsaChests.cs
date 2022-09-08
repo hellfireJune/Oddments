@@ -1,5 +1,6 @@
 ﻿using Alexandria.Misc;
 using Dungeonator;
+using HarmonyLib;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,6 +34,7 @@ namespace Oddments
             base.DisableEffect(player);
         }
     }
+
 
     public class SynergyChanceModificationItem : ChestModifyItem
     {
@@ -71,7 +73,7 @@ namespace Oddments
                 if (num < bonusChance)
                 {
                     Chest synergyChest = manager?.Synergy_Chest;
-                    GameManager.Instance.RewardManager.GlobalSynerchestChance = 10f;
+                    //GameManager.Instance.RewardManager.GlobalSynerchestChance = 10f;
                     chest = ReplaceChestWithOtherChest(chest, synergyChest);
                 }
                 else if (IsFlagSetAtAll(typeof(SafetyScissors)))
@@ -88,15 +90,12 @@ namespace Oddments
                 }));*/
             }
 
-            if (IsFlagSetAtAll(typeof(CrownOfGuns)))
+            if ((IsFlagSetAtAll(typeof(CrownOfGuns)) && chest.ChestType != Chest.GeneralChestType.WEAPON) 
+                || (!IsFlagSetAtAll(typeof(CrownOfGuns)) && IsFlagSetAtAll(typeof(CrownOfLove)) && chest.ChestType != Chest.GeneralChestType.ITEM))
             {
-                chest.ChestType = Chest.GeneralChestType.WEAPON;
-                chest.lootTable.lootTable = manager.GunsLootTable;
-            }
-            else if (IsFlagSetAtAll(typeof(CrownOfLove)))
-            {
-                chest.ChestType = Chest.GeneralChestType.ITEM;
-                chest.lootTable.lootTable = manager.ItemsLootTable;
+                Chest newchest = manager.GetTargetChestPrefab(manager.GetQualityFromChest(chest));
+                newchest.ChestType = IsFlagSetAtAll(typeof(CrownOfGuns)) ? Chest.GeneralChestType.WEAPON : Chest.GeneralChestType.ITEM;
+                chest = ReplaceChestWithOtherChest(chest, newchest);
             }
         }
 
@@ -110,7 +109,7 @@ namespace Oddments
             toreplace.DeregisterChestOnMinimap();
             Destroy(toreplace.gameObject);
 
-            Chest newchest = GameManager.Instance.RewardManager.SpawnGenerationChestAt(replacer.gameObject, room, ivector2 - room.area.basePosition); //GameManager.Instance.RewardManager.GenerationSpawnRewardChestAt(new IntVector2(10, 10), room); /*Chest.Spawn(replacer, ivector2, room);*/
+            Chest newchest = GameManager.Instance.RewardManager.SpawnGenerationChestAt(replacer.gameObject, room, ivector2 - room.area.basePosition, 0, replacer.ChestType); //GameManager.Instance.RewardManager.GenerationSpawnRewardChestAt(new IntVector2(10, 10), room); /*Chest.Spawn(replacer, ivector2, room);*/
             /*newchest.RegisterChestOnMinimap(room);
             room.RegisterInteractable(newchest);*/
             if (preventFuse || (room == GameManager.Instance.PrimaryPlayer.CurrentRoom))

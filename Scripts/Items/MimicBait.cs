@@ -110,13 +110,13 @@ namespace Oddments
                     actor.healthHaver.NextShotKills = true;
                 }
 
-                ETGModConsole.Log(string.Concat(new object[]
+                /*ETGModConsole.Log(string.Concat(new object[]
                 {
                 "gnarly ",
                 chance,
                 " | ",
                 synergyJamChance
-                }));
+                }));*/
             }
         }
 

@@ -9,18 +9,21 @@ namespace Oddments
 {
     public static class ChestHelpers
     {
-        public static Chest SpawnGenerationChestAt(this RewardManager manager, GameObject chestPrefab, RoomHandler targetRoom, IntVector2 positionInRoom, float overrideMimicChance = 0f)
+        public static Chest SpawnGenerationChestAt(this RewardManager manager, GameObject chestPrefab, RoomHandler targetRoom, IntVector2 positionInRoom, float overrideMimicChance = 0f, Chest.GeneralChestType generalChestType = Chest.GeneralChestType.UNSPECIFIED)
 		{
 			System.Random random = (!GameManager.Instance.IsSeeded) ? null : BraveRandom.GeneratorRandom;
 			FloorRewardData rewardDataForFloor = manager.CurrentRewardData;
-			Chest.GeneralChestType generalChestType = (BraveRandom.GenerationRandomValue() >= rewardDataForFloor.GunVersusItemPercentChance) ? Chest.GeneralChestType.ITEM : Chest.GeneralChestType.WEAPON;
-			if (StaticReferenceManager.ItemChestsSpawnedOnFloor > 0 && StaticReferenceManager.WeaponChestsSpawnedOnFloor == 0)
-			{
-				generalChestType = Chest.GeneralChestType.WEAPON;
-			}
-			else if (StaticReferenceManager.WeaponChestsSpawnedOnFloor > 0 && StaticReferenceManager.ItemChestsSpawnedOnFloor == 0)
-			{
-				generalChestType = Chest.GeneralChestType.ITEM;
+			if (generalChestType == Chest.GeneralChestType.UNSPECIFIED)
+            {
+				generalChestType = (BraveRandom.GenerationRandomValue() >= rewardDataForFloor.GunVersusItemPercentChance) ? Chest.GeneralChestType.ITEM : Chest.GeneralChestType.WEAPON;
+				if (StaticReferenceManager.ItemChestsSpawnedOnFloor > 0 && StaticReferenceManager.WeaponChestsSpawnedOnFloor == 0)
+				{
+					generalChestType = Chest.GeneralChestType.WEAPON;
+				}
+				else if (StaticReferenceManager.WeaponChestsSpawnedOnFloor > 0 && StaticReferenceManager.ItemChestsSpawnedOnFloor == 0)
+				{
+					generalChestType = Chest.GeneralChestType.ITEM;
+				}
 			}
 			GenericLootTable genericLootTable = (generalChestType != Chest.GeneralChestType.WEAPON) ? manager.ItemsLootTable : manager.GunsLootTable;
 			GameObject gameObject = DungeonPlaceableUtility.InstantiateDungeonPlaceable(chestPrefab, targetRoom, positionInRoom, true);
@@ -30,6 +33,8 @@ namespace Oddments
 			{
 				component.overrideMimicChance = overrideMimicChance;
 			}
+			component.ChestType = generalChestType;
+			component.lootTable.lootTable = genericLootTable;
 			Component[] componentsInChildren = gameObject.GetComponentsInChildren(typeof(IPlaceConfigurable));
 			for (int i = 0; i < componentsInChildren.Length; i++)
 			{
@@ -55,8 +60,6 @@ namespace Oddments
 			{
 				component.specRigidbody.Reinitialize();
 			}
-			component.ChestType = generalChestType;
-			component.lootTable.lootTable = genericLootTable;
 			if (component.lootTable.canDropMultipleItems && component.lootTable.overrideItemLootTables != null && component.lootTable.overrideItemLootTables.Count > 0)
 			{
 				component.lootTable.overrideItemLootTables[0] = genericLootTable;

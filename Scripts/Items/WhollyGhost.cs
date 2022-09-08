@@ -12,11 +12,11 @@ namespace Oddments
         {
             Name = "The Wholly Ghost",
             Description = "Woo!",
-            Quality = ItemQuality.C,
+            Quality = ItemQuality.B,
             PostInitAction = item =>
             {
-                ChallengeManager manager = Instantiate(ChallengeHelper.ChallengeManagerPrefab).GetComponent<ChallengeManager>();
-                HauntedChallengeModifier challengeMod = (HauntedChallengeModifier)manager.PossibleChallenges.Where(c => c.challenge.GetType() == typeof(HauntedChallengeModifier)).ToList()[0].challenge;
+                ChallengeManager manager = Instantiate(ChallengeHelper.ChallengeManagerPrefab.gameObject).GetComponent<ChallengeManager>();
+                HauntedChallengeModifier challengeMod = (HauntedChallengeModifier)manager.PossibleChallenges.Find(c => c.challenge is HauntedChallengeModifier).challenge;
                 
                 Destroy(manager);
                 haunt = challengeMod;

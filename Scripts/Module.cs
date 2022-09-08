@@ -114,8 +114,9 @@ namespace Oddments
 
         /*
          * Curr Changelog:
-         * - Added Frost Leech, Lightweight Armor
+         * - Added Frost Leech, Lightweight Armor and The Wholly Ghost
          * - All chest modification items now affect chests that have already been spawned on the floor
+         * - The "COFFEE BECOMES GNARLY" no longer throws stuff in the console
          * */
 
         /*

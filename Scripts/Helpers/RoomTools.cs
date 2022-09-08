@@ -60,7 +60,6 @@ namespace Oddments
                 MonoBehaviour testing = (playerInteractable as MonoBehaviour);
                 if (testing && testing.gameObject)
                 {
-                    ETGModConsole.Log(testing.name);
                     if (playerInteractable != null && playerInteractable.GetDistanceToPoint(position) < distance)
                     {
                         list.Add(playerInteractable);

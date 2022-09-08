@@ -8,10 +8,10 @@ namespace Oddments
 {
     public static class  ChallengeHelper
     {
-        public static GameObject ChallengeManagerPrefab;
+        public static ChallengeManager ChallengeManagerPrefab;
         public static void Init()
         {
-            ChallengeManagerPrefab = ((GameObject)BraveResources.Load("Global Prefabs/_ChallengeManager", ".prefab"));
+            ChallengeManagerPrefab = ((GameObject)BraveResources.Load("Global Prefabs/_ChallengeManager", ".prefab")).GetComponent<ChallengeManager>();
         }
     }
 }
