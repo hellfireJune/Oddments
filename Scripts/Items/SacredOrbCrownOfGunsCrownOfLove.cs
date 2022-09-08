@@ -6,7 +6,21 @@ using System.Text;
 
 namespace Oddments
 {
-    public class SacredOrb : PassiveItem
+    public class ChestModifyItem : PassiveItem
+    {
+        public Action<Chest> modifyChestAction = SynergyChanceModificationItem.OnSpawnChest;
+
+        public override void Pickup(PlayerController player)
+        {
+            base.Pickup(player);
+            if (!this.m_pickedUpThisRun)
+            {
+                ItemHelpers.ForEveryChest(modifyChestAction);
+            }
+        }
+    }
+
+    public class SacredOrb : ChestModifyItem
     {
         public static ItemTemplate template = new ItemTemplate(typeof(SacredOrb))
         {
@@ -29,7 +43,7 @@ namespace Oddments
             base.DisableEffect(player);
         }
     }
-    public class CrownOfGuns : PassiveItem
+    public class CrownOfGuns : ChestModifyItem
     {
         public static ItemTemplate template = new ItemTemplate(typeof(CrownOfGuns))
         {
@@ -56,7 +70,7 @@ namespace Oddments
             base.DisableEffect(player);
         }
     }
-    public class CrownOfLove : PassiveItem
+    public class CrownOfLove : ChestModifyItem
     {
         public static ItemTemplate template = new ItemTemplate(typeof(CrownOfLove))
         {

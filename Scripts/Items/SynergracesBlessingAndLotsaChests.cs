@@ -34,7 +34,7 @@ namespace Oddments
         }
     }
 
-    public class SynergyChanceModificationItem : PassiveItem
+    public class SynergyChanceModificationItem : ChestModifyItem
     {
         public static Dictionary<Type, float> AdditionalSynergyChestChanceDictionary = new Dictionary<Type, float>();
 

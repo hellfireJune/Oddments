@@ -45,7 +45,9 @@
     <Compile Include="Scripts\Items\DoubleHealingItem.cs" />
     <Compile Include="Scripts\Items\DaisukesGift.cs" />
     <Compile Include="Scripts\Items\HellfireRounds.cs" />
+    <Compile Include="Scripts\Items\IceLeech.cs" />
     <Compile Include="Scripts\Items\JamIdol.cs" />
+    <Compile Include="Scripts\Items\LightweightArmor.cs" />
     <Compile Include="Scripts\Items\MimicBait.cs" />
     <Compile Include="Scripts\Items\MimicWhistle.cs" />
     <Compile Include="Scripts\Items\PickupGenerator.cs" />

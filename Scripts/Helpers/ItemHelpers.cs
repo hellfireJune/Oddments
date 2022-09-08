@@ -63,5 +63,17 @@ namespace Oddments
             }
             return false;
         }
+
+        public static void ForEveryChest(Action<Chest> action)
+        {
+            for (int i = 0; i < StaticReferenceManager.AllChests.Count; i++)
+            {
+                Chest chest = StaticReferenceManager.AllChests[i];
+                if (chest && !chest.IsOpen && !chest.IsBroken)
+                {
+                    action(chest);
+                }
+            }
+        }
     }
 }

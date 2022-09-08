@@ -7,6 +7,7 @@ using System.Text;
 using UnityEngine;
 using BepInEx;
 using GungeonAPI;
+using HarmonyLib;
 
 namespace Oddments
 {
@@ -31,6 +32,7 @@ namespace Oddments
         {
             try
             {
+                new Harmony(GUID).PatchAll();
 
                 ItemBuilder.Init();
                 //ShrineFactory.Init();
@@ -110,6 +112,12 @@ namespace Oddments
         };
 
         /*
+         * Curr Changelog:
+         * - Added Frost Leech
+         * - All chest modification items now affect chests that have already been spawned on the floor
+         * */
+
+        /*
          * "- !" means sprite done
          */
 
@@ -133,7 +141,6 @@ namespace Oddments
          * Pot Crown
          * Item which you use next to a chest and then it uses the chest but you can reuse the chest after like if you find a chest of a certain quality you can make an item of said quality
          * Item which turns every non chest item into that
-         * Heart doubler
          * Diplopia
          * Shield doubler
          * XL (Doubles floor sizes)
@@ -190,7 +197,6 @@ namespace Oddments
          * Sweetheart necklace (bees on fire on damage)
          * Shark Tooth Necklace (enemies take 15% more bonus damage)
          * Obsidian rose (weaker fire immunity, increases the radius of any fire goop spawned)
-         * Web Ring (autocharm weavers, web goop immunity)
          * Heart of the Powderkeg (balrog's heart)
          * Powderkeg's Head (balrog's head)
          * Dad's wallet
@@ -204,7 +210,7 @@ namespace Oddments
          * Lens of Alchemy (See all status effects on enemies, minor death mark effect)
          * Fairy (ring of pain)
          * Crossed Heart (ring of pain)
-         * Acrid rounds (^^ but goop instead of splodsion)
+         * Acrid rounds (hellfire rounds but goop instead of splodsion)
          * Pyre rounds (^^ but fire goops)
          * Blank Shells (^^ but blank)
          * Fuse crown (more fuses, but chests spawn goodies on splodsion)
