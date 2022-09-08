@@ -6,6 +6,7 @@ using HarmonyLib;
 
 namespace Oddments
 {
+    [HarmonyPatch]
     public class LightweightArmor : PassiveItem
     {
         public static ItemTemplate template = new ItemTemplate(typeof(LightweightArmor))
