@@ -11,6 +11,9 @@ namespace Oddments
         public static ItemTemplate template = new ItemTemplate(typeof(IceLeech))
         {
             Name = "Frost Leech",
+            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/frostleech.png",
+            Description = "Bloodsucker",
+            LongDescription = "If an item is on cooldown, healing will instead remove a bit of any items cooldown. Will bite off your finger if you give him the chance.",
             Quality = ItemQuality.D,
         };
         public override void Pickup(PlayerController player)

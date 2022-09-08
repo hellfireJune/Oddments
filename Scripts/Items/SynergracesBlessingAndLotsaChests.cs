@@ -76,10 +76,10 @@ namespace Oddments
                     //GameManager.Instance.RewardManager.GlobalSynerchestChance = 10f;
                     chest = ReplaceChestWithOtherChest(chest, synergyChest);
                 }
-                else if (IsFlagSetAtAll(typeof(SafetyScissors)))
+                /*else if (IsFlagSetAtAll(typeof(SafetyScissors)))
                 {
                     chest.PreventFuse = true;
-                }
+                }*/
 
                 /*ETGModConsole.Log(string.Concat(new object[]
                 {
@@ -93,7 +93,7 @@ namespace Oddments
             if ((IsFlagSetAtAll(typeof(CrownOfGuns)) && chest.ChestType != Chest.GeneralChestType.WEAPON) 
                 || (!IsFlagSetAtAll(typeof(CrownOfGuns)) && IsFlagSetAtAll(typeof(CrownOfLove)) && chest.ChestType != Chest.GeneralChestType.ITEM))
             {
-                Chest newchest = manager.GetTargetChestPrefab(manager.GetQualityFromChest(chest));
+                Chest newchest = chest;//manager.GetTargetChestPrefab(manager.GetQualityFromChest(chest));
                 newchest.ChestType = IsFlagSetAtAll(typeof(CrownOfGuns)) ? Chest.GeneralChestType.WEAPON : Chest.GeneralChestType.ITEM;
                 chest = ReplaceChestWithOtherChest(chest, newchest);
             }

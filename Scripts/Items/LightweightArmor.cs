@@ -13,7 +13,9 @@ namespace Oddments
         public static ItemTemplate template = new ItemTemplate(typeof(LightweightArmor))
         {
             Name = "Lightweight Armour",
+            Description = "Low weight loadout",
             LongDescription = "Good for nimble movement, but makes it much harder for a gungeoneer to keep their footing",
+            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/lightweightarmor.png",
             Quality = ItemQuality.C,
             PostInitAction = item =>
             {

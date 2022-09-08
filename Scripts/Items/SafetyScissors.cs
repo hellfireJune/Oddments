@@ -21,56 +21,19 @@ namespace Oddments
             Quality = ItemQuality.D,
             PostInitAction = item =>
             {
-                //Hook hook = new Hook(typeof(Chest).GetMethod("RoomEntered", BindingFlags.Instance | BindingFlags.NonPublic), typeof(SafetyScissors).GetMethod("PreventFuses"));
+                Hook hook = new Hook(typeof(Chest).GetMethod("RoomEntered", BindingFlags.Instance | BindingFlags.NonPublic), typeof(SafetyScissors).GetMethod("PreventFuses"));
                 item.AddPassiveStatModifier(PlayerStats.StatType.Curse, 1f);
             }
         };
 
         public static void PreventFuses(Action<Chest, PlayerController> orig, Chest self, PlayerController enterer)
         {
-            Type type = typeof(Chest);
-            FieldInfo _isCoopMode = type.GetField("m_IsCoopMode", BindingFlags.Static | BindingFlags.NonPublic);
-            FieldInfo _hasBeenCheckedForFuses = type.GetField("m_hasBeenCheckedForFuses", BindingFlags.Instance | BindingFlags.NonPublic);
-
-            MethodInfo _UnbecomeCoopChest = type.GetMethod("UnbecomeCoopChest", BindingFlags.Instance | BindingFlags.NonPublic);
-            MethodInfo _TriggerCountdownTimer = type.GetMethod("TriggerCountdownTimer", BindingFlags.Instance | BindingFlags.NonPublic);
-
-            bool coopMode = (bool)_isCoopMode.GetValue(null);
-            if (coopMode && GameManager.HasInstance && GameManager.Instance.CurrentGameType == GameManager.GameType.COOP_2_PLAYER && GameManager.Instance.PrimaryPlayer && GameManager.Instance.PrimaryPlayer.healthHaver.IsAlive && GameManager.Instance.SecondaryPlayer && GameManager.Instance.SecondaryPlayer.healthHaver.IsAlive)
+            if (IsFlagSetAtAll(typeof(SafetyScissors))
+                && (self.lootTable == null || !self.lootTable.CompletesSynergy))
             {
-                _UnbecomeCoopChest.Invoke(self, new object[] { });
+                self.PreventFuse = true;
             }
-            bool checkedforFuses = (bool)_hasBeenCheckedForFuses.GetValue(self);
-            if (!coopMode && !self.IsOpen && !self.IsBroken && !checkedforFuses && !self.PreventFuse && self.ChestIdentifier != Chest.SpecialChestIdentifier.RAT)
-            {
-                _hasBeenCheckedForFuses.SetValue(self, true);
-                float num = 0.02f + 1f;
-                num += PlayerStats.GetTotalCurse() * 0.05f;
-                num += PlayerStats.GetTotalCoolness() * -0.025f;
-                num = Mathf.Max(0.01f, num);
-                ETGModConsole.Log(self.lootTable.CompletesSynergy);
-                if (self.lootTable != null && self.lootTable.CompletesSynergy)
-                {
-                    num = 1f;
-                } else if (IsFlagSetAtAll(typeof(SafetyScissors)))
-                {
-                    num -= 1f;
-                }
-                float chance = UnityEngine.Random.value;
-                if (chance < num)
-                {
-                    _TriggerCountdownTimer.Invoke(self, new object[] { });
-                    AkSoundEngine.PostEvent("Play_OBJ_fuse_loop_01", self.gameObject);
-                }
-
-                ETGModConsole.Log(string.Concat(new object[]
-                {
-                "fuse ",
-                chance,
-                " | ",
-                num
-                }));
-            }
+            orig(self, enterer);
         }
 
         public override void Pickup(PlayerController player)

@@ -12,7 +12,9 @@ namespace Oddments
         {
             Name = "The Wholly Ghost",
             Description = "Woo!",
-            Quality = ItemQuality.B,
+            LongDescription = "Enemies have a chance to re-animate as hollowpoints. All hollowpoints pledge allegiance to you.\n\nscrunkly",
+            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/thewhollyghost.png",
+            Quality = ItemQuality.C,
             PostInitAction = item =>
             {
                 ChallengeManager manager = Instantiate(ChallengeHelper.ChallengeManagerPrefab.gameObject).GetComponent<ChallengeManager>();

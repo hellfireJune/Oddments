@@ -109,14 +109,14 @@ namespace Oddments
             "With yours truly, Radio Rahim",
             "The race is about to begin",
             "Still here, I stayed",
-            "...and forty feet remain!"
+            "...and forty feet remain!",
+            "Don't give me that good-do-good bulls#$&",
+            "Covered in security",
+            "The fire is gone"
         };
 
         /*
          * Curr Changelog:
-         * - Added Frost Leech, Lightweight Armor and The Wholly Ghost
-         * - All chest modification items now affect chests that have already been spawned on the floor
-         * - The "COFFEE BECOMES GNARLY" no longer throws stuff in the console
          * */
 
         /*

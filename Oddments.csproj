@@ -191,5 +191,10 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\frostleech.png" />
+    <EmbeddedResource Include="Resources\Sprites\lightweightarmor.png" />
+    <EmbeddedResource Include="Resources\Sprites\thewhollyghost.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
