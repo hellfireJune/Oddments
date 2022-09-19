@@ -44,6 +44,18 @@ namespace Oddments
 
         private List<int> succedActives = new List<int>();
 
+        public override void MidGameSerialize(List<object> data)
+        {
+            base.MidGameSerialize(data);
+            data.Add(succedActives);
+        }
+
+        public override void MidGameDeserialize(List<object> data)
+        {
+            base.MidGameDeserialize(data);
+            succedActives = (List<int>)data[0];
+        }
+
         public override void DoEffect(PlayerController user)
         {
             base.DoEffect(user);

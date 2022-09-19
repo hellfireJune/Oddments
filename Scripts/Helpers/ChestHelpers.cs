@@ -27,7 +27,7 @@ namespace Oddments
 			}
 			GenericLootTable genericLootTable = (generalChestType != Chest.GeneralChestType.WEAPON) ? manager.ItemsLootTable : manager.GunsLootTable;
 			GameObject gameObject = DungeonPlaceableUtility.InstantiateDungeonPlaceable(chestPrefab, targetRoom, positionInRoom, true);
-			gameObject.transform.position = gameObject.transform.position /*+ zero.ToVector3ZUp(0f)*/;
+			gameObject.transform.position = gameObject.transform.position;
 			Chest component = gameObject.GetComponent<Chest>();
 			if (overrideMimicChance >= 0f)
 			{

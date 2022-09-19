@@ -17,14 +17,17 @@ namespace Oddments
     public class Module : BaseUnityPlugin
     {
         public const string MOD_NAME = "Oddments";
-        public const string VERSION = "0.0.0";
-        public static readonly string TEXT_COLOR = "#00FF00";
+        public const string VERSION = "0.0.4";
+        public static readonly string TEXT_COLOR = "#ffa944";
         public static readonly string PREFIX = "odmnts";
         public static readonly string ASSEMBLY_NAME = "Oddments";
+        public static string FilePathFolder;
+        public static AssetBundle oddBundle;
         public const string GUID = "blazeykat.etg.oddments";
 
         public void Start()
         {
+            Debug.Log("Made you look");
             ETGModMainBehaviour.WaitForGameManagerStart(GMStart);
         }
 
@@ -33,6 +36,8 @@ namespace Oddments
             try
             {
                 new Harmony(GUID).PatchAll();
+                FilePathFolder = this.FolderPath();
+                oddBundle = AssetBundleLoader.LoadAssetBundleFromLiterallyAnywhere("oddments", true);
 
                 ItemBuilder.Init();
                 //ShrineFactory.Init();
@@ -112,12 +117,23 @@ namespace Oddments
             "...and forty feet remain!",
             "Don't give me that good-do-good bulls#$&",
             "Covered in security",
-            "The fire is gone"
+            "The fire is gone",
+            "Red as all hellfire"
         };
 
         /*
          * Curr Changelog:
-         * */
+         * Added Lead Heart, Coupon, Odd Rounds, Golden Magnet, Member Card
+         * Siphon item now saves any items siphoned across sessions (through save and quit)
+         * Fixed Weaver's Charm and Silk Boots breakin shit
+         * Fixed crown of love or crown of war not giving chests collision and also breaking their anims
+         * Fixed hellfire rounds apparently not ever resetting its effect upon drop
+         * Also fixed hellfire rounds apparently not playing nice with bosses. what a terrible time all around.
+         * Hellfire Rounds now has the "bullet_modifier" item tag set up
+         * Changed the colour of the console logging stuff, and fixed the version number just being wrong lol
+         * 1 new splash text
+         * Made you look
+         */
 
         /*
          * "- !" means sprite done

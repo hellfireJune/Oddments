@@ -60,7 +60,7 @@ namespace Oddments
             protected Type onDeathBehaviour;
             public OnDeathBehavior.DeathType deathType;
             protected OnDeathBehavior onDeath;
-            public Action<OnDeathBehavior> PostInitAction;
+            public Action<OnDeathBehavior> PostApplyAction;
             public GameActorOnDeathEffect(Type behaviour)
             {
                 onDeathBehaviour = behaviour;
@@ -70,13 +70,14 @@ namespace Oddments
             {
                 base.OnEffectApplied(actor, effectData, partialAmount);
                 onDeath = actor.gameObject.AddComponent(onDeathBehaviour) as OnDeathBehavior;
-                PostInitAction?.Invoke(onDeath);
+                PostApplyAction?.Invoke(onDeath);
                 onDeath.deathType = deathType;
             }
 
             public override void OnEffectRemoved(GameActor actor, RuntimeGameActorEffectData effectData)
             {
                 base.OnEffectRemoved(actor, effectData);
+                if (onDeath != null)
                 UnityEngine.Object.Destroy(onDeath);
             }
         }

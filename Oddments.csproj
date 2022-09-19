@@ -38,22 +38,30 @@
     <Compile Include="BindingAPI\ExampleBinding.cs" />
     <Compile Include="Scripts\Goops and Ailments\GenericStatusEffects.cs" />
     <Compile Include="Scripts\Goops and Ailments\EasyGoopDefinitions.cs" />
+    <Compile Include="Scripts\Helpers\AssetBundleLoader.cs" />
     <Compile Include="Scripts\Helpers\ChallengeHelper.cs" />
     <Compile Include="Scripts\Helpers\ChestHelpers.cs" />
     <Compile Include="Scripts\Helpers\EnemyHelpers.cs" />
+    <Compile Include="Scripts\Helpers\RealFakeItemHelper.cs" />
     <Compile Include="Scripts\Helpers\ItemHelpers.cs" />
     <Compile Include="Scripts\Helpers\RegHelpers.cs" />
     <Compile Include="Scripts\Helpers\RoomTools.cs" />
     <Compile Include="Scripts\Items\BrokenStopwatch.cs" />
+    <Compile Include="Scripts\Items\Coupon.cs" />
     <Compile Include="Scripts\Items\DoubleHealingItem.cs" />
     <Compile Include="Scripts\Items\DaisukesGift.cs" />
+    <Compile Include="Scripts\Items\AngryHeart.cs" />
+    <Compile Include="Scripts\Items\GoldenMagnet.cs" />
     <Compile Include="Scripts\Items\HellfireRounds.cs" />
     <Compile Include="Scripts\Items\IceLeech.cs" />
     <Compile Include="Scripts\Items\JamIdol.cs" />
+    <Compile Include="Scripts\Items\Lemegeton.cs" />
     <Compile Include="Scripts\Items\LightweightArmor.cs" />
     <Compile Include="Scripts\Items\MimicBait.cs" />
     <Compile Include="Scripts\Items\MimicWhistle.cs" />
+    <Compile Include="Scripts\Items\OddRounds.cs" />
     <Compile Include="Scripts\Items\PickupGenerator.cs" />
+    <Compile Include="Scripts\Items\PremiumShells.cs" />
     <Compile Include="Scripts\Items\SacredOrbCrownOfGunsCrownOfLove.cs" />
     <Compile Include="Scripts\Items\SafetyScissors.cs" />
     <Compile Include="Scripts\Items\SiphonGem.cs" />
@@ -195,6 +203,13 @@
     <EmbeddedResource Include="Resources\Sprites\frostleech.png" />
     <EmbeddedResource Include="Resources\Sprites\lightweightarmor.png" />
     <EmbeddedResource Include="Resources\Sprites\thewhollyghost.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\coupon.png" />
+    <EmbeddedResource Include="Resources\Sprites\goldenmagnet.png" />
+    <EmbeddedResource Include="Resources\Sprites\leadheart.png" />
+    <EmbeddedResource Include="Resources\Sprites\membercard.png" />
+    <EmbeddedResource Include="Resources\Sprites\oddshells.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

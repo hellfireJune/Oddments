@@ -30,7 +30,7 @@ namespace Oddments
         private List<PlayerStats.StatType> list = new List<PlayerStats.StatType>();
         public override void Pickup(PlayerController player)
         {
-            if (!m_pickedUpThisRun)
+            if (!m_pickedUpThisRun || list.Count == 0)
             {
                 this.passiveStatModifiers = new StatModifier[0];
                 list.Clear();

@@ -20,8 +20,9 @@ namespace Oddments
             {
                 item.AddPassiveStatModifier(PlayerStats.StatType.Curse, 1f);
                 item.AddToSubShop(ItemBuilder.ShopType.Cursula, 1);
+                item.SetTag("bullet_modifier");
 
-                onDeath = new GenericStatusEffects.GameActorOnDeathEffect(typeof(ExplodeOnDeath))
+                onDeath = new GenericStatusEffects.GameActorOnDeathEffect(typeof(HellfireExplodeOnDeath))
                 {
                     TintColor = Color.red,
                     AppliesTint = true,
@@ -29,14 +30,24 @@ namespace Oddments
                     effectIdentifier = "hellfire",
                     deathType = OnDeathBehavior.DeathType.PreDeath, 
 
-                    PostInitAction = onDeath =>
+                    PostApplyAction = onDeath =>
                     {
-                        ExplodeOnDeath deathExplode = (ExplodeOnDeath)onDeath;
+                        HellfireExplodeOnDeath deathExplode = (HellfireExplodeOnDeath)onDeath;
                         deathExplode.explosionData = GameManager.Instance.Dungeon.sharedSettingsPrefab.DefaultExplosionData;
                     }
                 };
             }
         };
+
+        public class HellfireExplodeOnDeath : OnDeathBehavior
+        {
+            public ExplosionData explosionData;
+
+            public override void OnTrigger(Vector2 dirVec)
+            {
+                Exploder.Explode(specRigidbody.UnitCenter, this.explosionData, Vector2.zero);
+            }
+        }
 
         public static GenericStatusEffects.GameActorOnDeathEffect onDeath;
 
@@ -53,6 +64,12 @@ namespace Oddments
                 arg1.statusEffectsToApply.Add(onDeath);
                 arg1.AdjustPlayerProjectileTint(Color.red, 3);
             }
+        }
+
+        public override void DisableEffect(PlayerController player)
+        {
+            player.PostProcessProjectile -= Player_PostProcessProjectile;
+            base.DisableEffect(player);
         }
 
         private float procChance = 0.085f;

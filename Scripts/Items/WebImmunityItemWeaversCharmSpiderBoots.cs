@@ -13,7 +13,7 @@ namespace Oddments
         public static DeadlyDeadlyGoopManager ReplaceWebGoop(Func<GoopDefinition, DeadlyDeadlyGoopManager> orig, GoopDefinition goop)
         {
             if (IsFlagSetAtAll(typeof(WebImmunityItem))
-                && goop.SpeedModifierEffect.effectIdentifier.StartsWith("phase web"))
+                && goop.SpeedModifierEffect != null && goop.SpeedModifierEffect.effectIdentifier.StartsWith("phase web"))
             {
                 return orig(EasyGoopDefinitions.PlayerFriendlyWebGoop);
             }
