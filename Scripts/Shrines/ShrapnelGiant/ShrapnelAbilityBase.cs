@@ -94,7 +94,7 @@ namespace Oddments
         }
 
 
-        public static void RunStart(PlayerController player)
+        public static void RunStart(PlayerController player, PlayerController _, GameManager.GameMode squidmode)
         {
             player.OnAnyEnemyReceivedDamage += OnAnyEnemyDamaged;
         }

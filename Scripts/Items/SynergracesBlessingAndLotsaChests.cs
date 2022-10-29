@@ -1,6 +1,8 @@
 ﻿using Alexandria.Misc;
 using Dungeonator;
 using HarmonyLib;
+using JuneLib.Chests;
+using JuneLib.Items;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -42,7 +44,7 @@ namespace Oddments
 
         public static void InitBase()
         {
-            CustomActions.OnChestPostSpawn += OnSpawnChest;
+            AddModifyChestAction(OnSpawnChest);
         }
 
         public static void OnSpawnChest(Chest chest)
@@ -53,7 +55,7 @@ namespace Oddments
             {
 
                 Chest cChest = manager?.C_Chest;
-                chest = ReplaceChestWithOtherChest(chest, cChest);
+                chest = ChestHelpers.ReplaceChestWithOtherChest(chest, cChest);
             }
 
             if (chest.lootTable == null || !chest.lootTable.CompletesSynergy)
@@ -74,7 +76,7 @@ namespace Oddments
                 {
                     Chest synergyChest = manager?.Synergy_Chest;
                     //GameManager.Instance.RewardManager.GlobalSynerchestChance = 10f;
-                    chest = ReplaceChestWithOtherChest(chest, synergyChest);
+                    chest = ChestHelpers.ReplaceChestWithOtherChest(chest, synergyChest);
                 }
                 else
                 if ((IsFlagSetAtAll(typeof(CrownOfGuns)) && chest.ChestType != Chest.GeneralChestType.WEAPON)
@@ -82,7 +84,7 @@ namespace Oddments
                 {
                     Chest newchest = manager.GetTargetChestPrefab(manager.GetQualityFromChest(chest));
                     newchest.ChestType = IsFlagSetAtAll(typeof(CrownOfGuns)) ? Chest.GeneralChestType.WEAPON : Chest.GeneralChestType.ITEM;
-                    chest = ReplaceChestWithOtherChest(chest, newchest);
+                    chest = ChestHelpers.ReplaceChestWithOtherChest(chest, newchest);
                 }
                 /*else if (IsFlagSetAtAll(typeof(SafetyScissors)))
                 {
@@ -97,35 +99,6 @@ namespace Oddments
                     bonusChance
                 }));*/
             }
-        }
-
-        public static Chest ReplaceChestWithOtherChest(Chest toreplace, Chest replacer)
-        {
-            bool isLocked = toreplace.IsLocked, preventFuse = toreplace.PreventFuse;
-
-            IntVector2 ivector2 = ((Vector2)toreplace.transform.position).ToIntVector2();
-            RoomHandler room = GameManager.Instance.Dungeon.data.GetRoomFromPosition(ivector2);
-            //toreplace.GetAbsoluteParentRoom().DeregisterInteractable(toreplace);
-            toreplace.DeregisterChestOnMinimap();
-            Destroy(toreplace.gameObject);
-
-            Chest newchest = GameManager.Instance.RewardManager.SpawnGenerationChestAt(replacer.gameObject, room, ivector2 - room.area.basePosition, 0, replacer.ChestType); //GameManager.Instance.RewardManager.GenerationSpawnRewardChestAt(new IntVector2(10, 10), room); /*Chest.Spawn(replacer, ivector2, room);*/
-            /*newchest.RegisterChestOnMinimap(room);
-            room.RegisterInteractable(newchest);*/
-            if (preventFuse || (room == GameManager.Instance.PrimaryPlayer.CurrentRoom))
-            {
-                if (room == GameManager.Instance.PrimaryPlayer.CurrentRoom)
-                {
-                    LootEngine.DoDefaultItemPoof(ivector2.ToCenterVector2());
-                }
-                newchest.m_hasBeenCheckedForFuses = true;
-            }
-            if (!isLocked)
-            {
-                newchest.ForceUnlock();
-            }
-            newchest.PreventFuse = preventFuse;
-            return newchest;
         }
 
         /*public static Chest ChangeChestOdds(RewardManager self, IntVector2 positionInRoom, RoomHandler targetRoom, PickupObject.ItemQuality? targetQuality, float overrideMimicChance)

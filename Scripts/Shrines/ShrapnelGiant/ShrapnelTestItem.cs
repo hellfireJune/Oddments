@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Alexandria.Misc;
+using JuneLib.Items;
 
 namespace Oddments
 {
@@ -12,12 +14,13 @@ namespace Oddments
         {
             Name = "SHRAPNEL TEST ITEM",
             Quality = ItemQuality.EXCLUDED,
-            /*PostInitAction = item =>
+            PostInitAction = item =>
             {
-                ShrapnelAbilityBase ability = (ShrapnelAbilityBase)item;
+                item.RemovePickupFromLootTables();
+                /*ShrapnelAbilityBase ability = (ShrapnelAbilityBase)item;
                 ability.maxCooldown = 15f;
-                ability.type = ShrapnelChargeType.TIMED;
-            }*/
+                ability.type = ShrapnelChargeType.TIMED;*/
+            }
         };
 
         /*public override void Effect()

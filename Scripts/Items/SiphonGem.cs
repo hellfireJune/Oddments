@@ -1,6 +1,7 @@
 ﻿using Dungeonator;
 using System.Collections.Generic;
 using System.Linq;
+using JuneLib.Items;
 
 namespace Oddments
 {

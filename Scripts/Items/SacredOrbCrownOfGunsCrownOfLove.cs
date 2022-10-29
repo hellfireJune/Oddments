@@ -1,4 +1,6 @@
 ﻿using Alexandria.ItemAPI;
+using JuneLib.Chests;
+using JuneLib.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,20 +8,6 @@ using System.Text;
 
 namespace Oddments
 {
-    public class ChestModifyItem : PassiveItem
-    {
-        public Action<Chest> modifyChestAction = SynergyChanceModificationItem.OnSpawnChest;
-
-        public override void Pickup(PlayerController player)
-        {
-            base.Pickup(player);
-            if (!this.m_pickedUpThisRun)
-            {
-                ItemHelpers.ForEveryChest(modifyChestAction);
-            }
-        }
-    }
-
     public class SacredOrb : ChestModifyItem
     {
         public static ItemTemplate template = new ItemTemplate(typeof(SacredOrb))

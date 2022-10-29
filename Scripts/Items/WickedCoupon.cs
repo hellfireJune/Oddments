@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using HarmonyLib;
+using JuneLib.Items;
 
 namespace Oddments
 {
     [HarmonyPatch]
-    public class Coupon : PassiveItem
+    public class WickedCoupon : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(Coupon))
+        public static ItemTemplate template = new ItemTemplate(typeof(WickedCoupon))
         {
-            Name = "Coupon",
+            Name = "Wicked Coupon",
             Description = "15% off!",
             LongDescription = "Worth approximately 15 casings, just holding this will mean you can never go below 15 casings of currency",
             SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/coupon.png",
@@ -36,7 +37,7 @@ namespace Oddments
         public static void ChangeCurrencyStuff(PlayerConsumables __instance)
         {
             int minCurrency = 0;
-            if (IsFlagSetAtAll(typeof(Coupon)))
+            if (IsFlagSetAtAll(typeof(WickedCoupon)))
             {
                 minCurrency += 15;
             }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using Alexandria.ItemAPI;
+using JuneLib.Items;
 
 namespace Oddments
 {

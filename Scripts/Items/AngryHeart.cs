@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using JuneLib.Items;
 
 namespace Oddments
 {
@@ -32,11 +33,11 @@ namespace Oddments
             if (obj && obj.healthHaver)
             {
                 HealthHaver haver = obj.healthHaver;
-                if (haver.maximumHealth - 2 <= haver.currentHealth)
+                if (haver.GetMaxHealth() - 1 >= haver.GetCurrentHealth())
                 {
-                    ETGModConsole.Log(haver.maximumHealth);
-                    ETGModConsole.Log(haver.currentHealth);
-                    haver.SetHealthMaximum(haver.currentHealth - 2);
+                    ETGModConsole.Log(haver.GetMaxHealth());
+                    ETGModConsole.Log(haver.GetCurrentHealth());
+                    haver.SetHealthMaximum(haver.GetCurrentHealth());
                     haver.Armor += 2;
                 }
             }

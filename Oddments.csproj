@@ -36,18 +36,18 @@
     <Compile Include="BindingAPI\BindingHooks.cs" />
     <Compile Include="BindingAPI\BindingLoader.cs" />
     <Compile Include="BindingAPI\ExampleBinding.cs" />
-    <Compile Include="Scripts\Goops and Ailments\GenericStatusEffects.cs" />
-    <Compile Include="Scripts\Goops and Ailments\EasyGoopDefinitions.cs" />
+    <Compile Include="Scripts\AchievementStuff\OddmentsSaveFlags.cs" />
+    <Compile Include="Scripts\AchievementStuff\UnlockCommands.cs" />
+    <Compile Include="Scripts\Ailments\AilmentsCore.cs" />
+    <Compile Include="Scripts\Ailments\CustomGoopEffectDoer.cs" />
     <Compile Include="Scripts\Helpers\AssetBundleLoader.cs" />
-    <Compile Include="Scripts\Helpers\ChallengeHelper.cs" />
-    <Compile Include="Scripts\Helpers\ChestHelpers.cs" />
-    <Compile Include="Scripts\Helpers\EnemyHelpers.cs" />
-    <Compile Include="Scripts\Helpers\RealFakeItemHelper.cs" />
-    <Compile Include="Scripts\Helpers\ItemHelpers.cs" />
-    <Compile Include="Scripts\Helpers\RegHelpers.cs" />
-    <Compile Include="Scripts\Helpers\RoomTools.cs" />
+    <Compile Include="Scripts\AchievementStuff\JuneSaveManagerCore.cs" />
     <Compile Include="Scripts\Items\BrokenStopwatch.cs" />
-    <Compile Include="Scripts\Items\Coupon.cs" />
+    <Compile Include="Scripts\Items\ChromeSplash.cs" />
+    <Compile Include="Scripts\Items\DevilsPedestals.cs" />
+    <Compile Include="Scripts\Items\Guns\SpidAR.cs" />
+    <Compile Include="Scripts\Items\WickedSoul.cs" />
+    <Compile Include="Scripts\Items\WickedCoupon.cs" />
     <Compile Include="Scripts\Items\DoubleHealingItem.cs" />
     <Compile Include="Scripts\Items\DaisukesGift.cs" />
     <Compile Include="Scripts\Items\AngryHeart.cs" />
@@ -67,7 +67,6 @@
     <Compile Include="Scripts\Items\SiphonGem.cs" />
     <Compile Include="Scripts\Items\SynergracesBlessingAndLotsaChests.cs" />
     <Compile Include="Scripts\Items\TwoDollarCoin.cs" />
-    <Compile Include="Scripts\Helpers\ItemTemplate.cs" />
     <Compile Include="Scripts\Items\WebImmunityItemWeaversCharmSpiderBoots.cs" />
     <Compile Include="Scripts\Items\WhollyGhost.cs" />
     <Compile Include="Scripts\Misc\CommandsBox.cs" />
@@ -115,6 +114,9 @@
     <Reference Include="BepInEx, Version=5.4.19.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\BepInEx.dll</HintPath>
+    </Reference>
+    <Reference Include="JuneLib">
+      <HintPath>..\JuneLib\bin\Debug\JuneLib.dll</HintPath>
     </Reference>
     <Reference Include="ModTheGungeonAPI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

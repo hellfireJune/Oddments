@@ -7,6 +7,7 @@ using System.Text;
 using UnityEngine;
 using Alexandria.ItemAPI;
 using Alexandria.Misc;
+using JuneLib.Items;
 
 namespace Oddments
 {

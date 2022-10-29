@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using JuneLib.Items;
+using JuneLib.Status;
+using JuneLib;
 
 namespace Oddments
 {
@@ -15,7 +18,13 @@ namespace Oddments
             if (IsFlagSetAtAll(typeof(WebImmunityItem))
                 && goop.SpeedModifierEffect != null && goop.SpeedModifierEffect.effectIdentifier.StartsWith("phase web"))
             {
-                return orig(EasyGoopDefinitions.PlayerFriendlyWebGoop);
+                DeadlyDeadlyGoopManager gooper = orig(AilmentsCore.GoopClone);
+                if (gooper.GetComponent<CustomGoopEffectDoer>() == null)
+                {
+                    CustomGoopEffectDoer splooger = gooper.gameObject.AddComponent<CustomGoopEffectDoer>();
+                    splooger.IsCloner = true;
+                }
+                return gooper;
             }
             return orig(goop);
         }
