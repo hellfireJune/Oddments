@@ -46,25 +46,44 @@ namespace Oddments
                 PrefixHandler.AddPrefixForAssembly(PREFIX);
                 JuneSaveManagerCore.Init();
                 ItemTemplateManager.Init();
+                GunMaker.InitGuns();
+                Synergies.Init();
                 AilmentsCore.Init();
                 //ShrineFactory.Init();
 
-                SpidAR.Init();
-
                 //ShrapnelAbilityBase.InitSetupStuffYaddaYadda();
                 SynergyChanceModificationItem.InitBase();
+                FortuneMagic.Init();
 
                 //DerringerShrine.Add();
 
                 //IAmGoingToBreakKeepFloorGen.Init();
                 //VoidFieldsTest.Init();
                 //CommandsBox.Init();
+                Log($"{MOD_NAME} v{VERSION} started susccessfully.", TEXT_COLOR);
+                Log($"- \"{BraveUtility.RandomElement(SPLASH_TEXT)}\"", TEXT_COLOR);
             }
-            catch (Exception e) { ETGModConsole.Log(e.ToString()); }
-            Log($"{MOD_NAME} v{VERSION} started susccessfully.", TEXT_COLOR);
-
-            Log($"- \"{BraveUtility.RandomElement(SPLASH_TEXT)}\"", TEXT_COLOR);
+            catch (Exception e) 
+            { 
+                ETGModConsole.Log(e.ToString());
+                Log($"{MOD_NAME} v{VERSION} failed to start", TEXT_COLOR);
+                Log("oops!");
+            }
         }
+        /* WEAVERS CHARM STILL MAKES CLONE GOOP! REMOVE THAT BEFORE PUSHING ANY UPDATE
+         * 
+         * Curr Changelog:
+         * JuneLib is now a required dependancy to run this mod <-- emphasise this somehow
+         * Added Wicked Soul, Chrome Splash, Sanguine Hook, the evil mastter rounds item, Cellophane, Gungeon Veins, Cubullets, Pulsating Bullets, Majestic Censer and Rightful Curtsy
+         * Added a new vanilla synergy "Sin Wave"
+         * Several new and old items now have unlock methods (Wicked Soul, )
+         * Added two new commands, "unlocks" and "unlockall"
+         * Coupon is now renamed to Wicked Coupon (due to Omitb Conflicts)
+         * Odd rounds is now properly marked as a bullet modifier by alexandria
+         * Fixed Daisuke's Gift not properly showing its description when it is originally initialised
+         * Golden Magnet now has the word "practically" in its long description
+         * Removed debuglog stuff
+         */
 
         public static void Log(string text, string color="#FFFFFF")
         {
@@ -126,10 +145,6 @@ namespace Oddments
             "Red as all hellfire"
         };
 
-        /*
-         * Curr Changelog:
-         * Added Wicked Soul, Chrome Splash
-         */
 
         /*
          * "- !" means sprite done

@@ -7,7 +7,7 @@ using JuneLib.Items;
 
 namespace Oddments
 {
-    public class ShrapnelTestItem : PassiveItem
+    public class ShrapnelTestItem : ShrapnelAbilityBase
     {
 
         public static ItemTemplate template = new ItemTemplate(typeof(ShrapnelTestItem))
@@ -17,16 +17,16 @@ namespace Oddments
             PostInitAction = item =>
             {
                 item.RemovePickupFromLootTables();
-                /*ShrapnelAbilityBase ability = (ShrapnelAbilityBase)item;
+                ShrapnelAbilityBase ability = (ShrapnelAbilityBase)item;
                 ability.maxCooldown = 15f;
-                ability.type = ShrapnelChargeType.TIMED;*/
+                ability.type = ShrapnelChargeType.TIMED;
             }
         };
 
-        /*public override void Effect()
+        public override void Effect()
         {
             ETGModConsole.Log("Did Effect");
-        }*/
+        }
     }
 }
    

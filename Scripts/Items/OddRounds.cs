@@ -16,6 +16,10 @@ namespace Oddments
             LongDescription = "Will mimic the effect of other bullet items while held",
             Quality = ItemQuality.B,
             SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/oddshells.png",
+            PostInitAction = item =>
+            {
+                item.SetTag("bullet_modifier");
+            }
         };
 
         protected float timer;
@@ -34,22 +38,12 @@ namespace Oddments
                         RealFakeItemHelper.RemoveFakeItem(Owner, bulletItem);
                     }
 
-                    List<int> list = AlexandriaTags.GetAllItemsIdsWithTag("bullet_modifier");
+                    List<int> list = AlexandriaTags.GetAllItemsIdsWithTag("bullet_modifier").Where(item => PickupObjectDatabase.GetById(item).CanBeDropped).ToList();
                     list.Remove(this.PickupObjectId);
                     int id = BraveUtility.RandomElement(list);
                     PassiveItem prefabItem = PickupObjectDatabase.GetById(id) as PassiveItem;
                     //EncounterTrackable.SuppressNextNotification = true;
                     bulletItem = RealFakeItemHelper.CreateFakeItem(prefabItem, Owner, transform);
-                    ETGModConsole.Log(Owner.passiveItems.Count);
-
-                    foreach (var item in Owner.passiveItems)
-                    {
-                        ETGModConsole.Log(item.PickupObjectId);
-                        if (item.GetComponent<FakeRealItemBehaviour>() != null)
-                        {
-                            ETGModConsole.Log("fake");
-                        }
-                    }
                 }
 
                 timer -= BraveTime.DeltaTime;

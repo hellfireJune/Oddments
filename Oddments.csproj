@@ -42,10 +42,20 @@
     <Compile Include="Scripts\Ailments\CustomGoopEffectDoer.cs" />
     <Compile Include="Scripts\Helpers\AssetBundleLoader.cs" />
     <Compile Include="Scripts\AchievementStuff\JuneSaveManagerCore.cs" />
+    <Compile Include="Scripts\Items\BlastCorePack.cs" />
     <Compile Include="Scripts\Items\BrokenStopwatch.cs" />
+    <Compile Include="Scripts\Items\Cellophane.cs" />
     <Compile Include="Scripts\Items\ChromeSplash.cs" />
+    <Compile Include="Scripts\Items\HookWormItem.cs" />
     <Compile Include="Scripts\Items\DevilsPedestals.cs" />
+    <Compile Include="Scripts\Items\GungeonVeins.cs" />
     <Compile Include="Scripts\Items\Guns\SpidAR.cs" />
+    <Compile Include="Scripts\Items\MajesticCenser.cs" />
+    <Compile Include="Scripts\Items\PulsingBulletsItem.cs" />
+    <Compile Include="Scripts\Items\RightfulCurtsy.cs" />
+    <Compile Include="Scripts\Items\RingOfOddFriendship.cs" />
+    <Compile Include="Scripts\Items\SanguineHook.cs" />
+    <Compile Include="Scripts\Items\WarpedBandolier.cs" />
     <Compile Include="Scripts\Items\WickedSoul.cs" />
     <Compile Include="Scripts\Items\WickedCoupon.cs" />
     <Compile Include="Scripts\Items\DoubleHealingItem.cs" />
@@ -70,6 +80,7 @@
     <Compile Include="Scripts\Items\WebImmunityItemWeaversCharmSpiderBoots.cs" />
     <Compile Include="Scripts\Items\WhollyGhost.cs" />
     <Compile Include="Scripts\Misc\CommandsBox.cs" />
+    <Compile Include="Scripts\Misc\FortuneMagic.cs" />
     <Compile Include="Scripts\Misc\IAmGoingToBreakKeepFloorGen.cs" />
     <Compile Include="Scripts\Misc\UIUnlocksTest.cs" />
     <Compile Include="Scripts\Misc\VoidFieldsTest.cs" />
@@ -87,6 +98,8 @@
     <Compile Include="Scripts\Shrines\ExampleShrineSomeBunny.cs" />
     <Compile Include="Scripts\Shrines\ShrapnelGiant\ShrapnelAbilityBase.cs" />
     <Compile Include="Scripts\Shrines\ShrapnelGiant\ShrapnelTestItem.cs" />
+    <Compile Include="Scripts\Synergies\Synergies.cs" />
+    <Compile Include="Scripts\Synergies\VanillaPassiveSynergies\HelixBulletsSinWave.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\example_item_sprite.png" />
@@ -212,6 +225,9 @@
     <EmbeddedResource Include="Resources\Sprites\leadheart.png" />
     <EmbeddedResource Include="Resources\Sprites\membercard.png" />
     <EmbeddedResource Include="Resources\Sprites\oddshells.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Misc\fortunes.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -14,7 +14,7 @@ namespace Oddments
         {
             Name = "Golden Magnet",
             Description = "More Money",
-            LongDescription = "Holding this alone makes any money worth 30% more.\n\nBarely functional as a magnet, but it makes up for it in looks",
+            LongDescription = "Holding this alone practically makes any money worth 30% more.\n\nBarely functional as a magnet, but it makes up for it in looks",
             SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/goldenmagnet.png",
             Quality = ItemQuality.B,
         };

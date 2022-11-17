@@ -139,7 +139,7 @@ namespace Oddments
             {
                 if (bindingAction.WasPressed)
                 {
-                    ETGModConsole.Log("pressed");
+                    //ETGModConsole.Log("pressed");
                     foreach (PassiveItem item in GameManager.Instance.PrimaryPlayer.passiveItems) //an3s ples
                     {
                         if (item is ShrapnelAbilityBase)
