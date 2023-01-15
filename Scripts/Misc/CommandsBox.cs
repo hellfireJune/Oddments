@@ -16,10 +16,10 @@ namespace Oddments
         private static RoomHandler testRoom;
         public static void Init()
         {
-            ConsoleCommandGroup group = ETGModConsole.Commands.AddGroup("oddments", args =>
+            /*ConsoleCommandGroup group = ETGModConsole.Commands.AddGroup("oddments", args =>
             {
                 Module.Log("Please specify a valid command.", Module.TEXT_COLOR);
-            });
+            });*/
             ETGModConsole.Commands.GetGroup("oddments").AddUnit("warptest", action: args =>
             {
                 if (args.Contains("reverse"))
@@ -50,12 +50,9 @@ namespace Oddments
                 }
             });
 
-            ETGModConsole.Commands.GetGroup("oddments").AddUnit("debug_flow", (args) =>
+            ETGModConsole.Commands.GetGroup("oddments").AddUnit("getroomtype", args =>
             {
-                DungeonHandler.debugFlow = !DungeonHandler.debugFlow;
-                string status = DungeonHandler.debugFlow ? "enabled" : "disabled";
-                string color = DungeonHandler.debugFlow ? "00FF00" : "FF0000";
-                ETGModConsole.Log($"Debug flow {status}", false);
+                ETGModConsole.Log(GameManager.Instance.PrimaryPlayer.CurrentRoom.RoomVisualSubtype);
             });
 
             UIUnlocksTest.Init();

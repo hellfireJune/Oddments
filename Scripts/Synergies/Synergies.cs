@@ -11,6 +11,8 @@ namespace Oddments
         public static void Init()
         {
             CustomSynergies.Add(HelixBulletsSinWave.SynergyName, HelixBulletsSinWave.IDs);
+            CustomSynergies.Add(MimicBait.GnarlySynergyName, MimicBait.GnarlyIDs);
+            CustomSynergies.Add(ToothyBullets.CavitySynergyName, ToothyBullets.CavityIDs);
         }
     }
 }

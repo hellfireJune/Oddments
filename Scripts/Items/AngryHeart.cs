@@ -35,10 +35,10 @@ namespace Oddments
                 HealthHaver haver = obj.healthHaver;
                 if (haver.GetMaxHealth() - 1 >= haver.GetCurrentHealth())
                 {
-                    ETGModConsole.Log(haver.GetMaxHealth());
-                    ETGModConsole.Log(haver.GetCurrentHealth());
-                    haver.SetHealthMaximum(haver.GetCurrentHealth());
-                    haver.Armor += 2;
+                    float mult = haver.GetMaxHealth() - haver.GetCurrentHealth();
+                    obj.ownerlessStatModifiers.Add(new StatModifier() { amount = -mult, statToBoost = PlayerStats.StatType.Health, modifyType = StatModifier.ModifyMethod.ADDITIVE });
+                    obj.stats.RecalculateStats(obj);
+                    haver.Armor += 2 * mult;
                 }
             }
         }

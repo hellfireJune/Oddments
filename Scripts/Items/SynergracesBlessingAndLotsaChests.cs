@@ -86,18 +86,6 @@ namespace Oddments
                     newchest.ChestType = IsFlagSetAtAll(typeof(CrownOfGuns)) ? Chest.GeneralChestType.WEAPON : Chest.GeneralChestType.ITEM;
                     chest = ChestHelpers.ReplaceChestWithOtherChest(chest, newchest);
                 }
-                /*else if (IsFlagSetAtAll(typeof(SafetyScissors)))
-                {
-                    chest.PreventFuse = true;
-                }*/
-
-                /*ETGModConsole.Log(string.Concat(new object[]
-                {
-                    "synergy ",
-                    num,
-                    " | ",
-                    bonusChance
-                }));*/
             }
         }
 

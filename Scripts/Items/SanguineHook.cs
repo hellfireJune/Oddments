@@ -1,4 +1,5 @@
-﻿using JuneLib.Items;
+﻿using Alexandria.Misc;
+using JuneLib.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,7 @@ namespace Oddments
                 ETGModConsole.Log(hookData == null);
                 hook.hookData = hookData;
                 ETGModConsole.Log(hook.PickupObjectId);*/
+                item.RemovePickupFromLootTables();
             }
         };
 
@@ -42,7 +44,6 @@ namespace Oddments
                 };
             }
             base.DoEffect(user);
-            ETGModConsole.Log(hookData == null);
             hookData.Trigger(user);
         }
 
@@ -53,7 +54,15 @@ namespace Oddments
                 return;
             }
 
-            
+            protected override void OnPreRigidBodyCollision(SpeculativeRigidbody myRigidbody, PixelCollider myCollider, SpeculativeRigidbody otherRigidbody, PixelCollider otherCollider)
+            {
+                base.OnPreRigidBodyCollision(myRigidbody, myCollider, otherRigidbody, otherCollider);
+            }
+
+            protected override void OnRigidBodyCollision(CollisionData rigidbodyCollision)
+            {
+                base.OnRigidBodyCollision(rigidbodyCollision);
+            }
         }
     }
 }

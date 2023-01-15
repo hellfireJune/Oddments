@@ -7,6 +7,7 @@ using HarmonyLib;
 using Dungeonator;
 using Alexandria.Misc;
 using JuneLib.Items;
+using SaveAPI;
 
 namespace Oddments
 { 
@@ -17,12 +18,16 @@ namespace Oddments
         {
             Name = "Wicked Soul",
             Description = "Something Wicked",
-            Quality = ItemQuality.B,
+            LongDescription = "Gives great strength, at the cost of increasing the potency of any curse related effects\n\nWill prevent any interference from the Lord of the Jammed while held",
+            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/wickedsou.png",
+            Quality = ItemQuality.A,
             PostInitAction = item =>
             {
                 item.AddPassiveStatModifier(PlayerStats.StatType.Curse, 0.5f);
+                item.AddPassiveStatModifier(PlayerStats.StatType.Health, 2f);
 
                 item.SetupUnlockOnMaximum(TrackedMaximums.HIGHEST_CURSE_LEVEL, 9, DungeonPrerequisite.PrerequisiteOperation.GREATER_THAN);
+                item.AddUnlockText("Get 9 or more curse in one run");
             }
         };
         public override void Pickup(PlayerController player)
@@ -51,10 +56,9 @@ namespace Oddments
         [HarmonyPrefix]
         public static bool NoCurseReaperPlease()
         {
-            if (IsFlagSetAtAll(typeof(WickedSoul))
-                && PlayerStats.GetTotalCurse() < 20)
+            if (IsFlagSetAtAll(typeof(WickedSoul)))
             {
-                //return false;
+                return false;
             }
             return true;
         }

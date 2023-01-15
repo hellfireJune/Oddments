@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using JuneLib;
+using Alexandria.Misc;
 
 namespace Oddments
 {
@@ -14,12 +15,13 @@ namespace Oddments
         public static ItemTemplate template = new ItemTemplate(typeof(Cellophane))
         {
             Name = "cellophane",
-            Quality = ItemQuality.C,
+            Quality = ItemQuality.EXCLUDED,
             PostInitAction = item =>
             {
                 GameObject cello = PrefabBuilder.BuildObject("CellophaneClone");
                 cello.gameObject.AddComponent<CellophaneCloneHandle>();
-                clonePrefab = cello; 
+                clonePrefab = cello;
+                item.RemovePickupFromLootTables();
             }
         };
 

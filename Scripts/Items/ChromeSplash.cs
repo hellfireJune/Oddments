@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using JuneLib;
+using Alexandria.Misc;
 
 namespace Oddments
 {
@@ -13,16 +14,16 @@ namespace Oddments
         public static ItemTemplate template = new ItemTemplate(typeof(ChromeSplash))
         {
             Name = "Chrome Splash",
-            Quality = ItemQuality.B,
+            Quality = ItemQuality.EXCLUDED,
             Cooldown = 600f,
             CooldownType = ItemBuilder.CooldownType.Damage,
-            PostInitAction = _ =>
+            PostInitAction = item =>
             {
                 ChargeDict.Add(ItemQuality.D, 150);
                 ChargeDict.Add(ItemQuality.C, 350);
                 ChargeDict.Add(ItemQuality.B, 750);
                 ChargeDict.Add(ItemQuality.A, 1250);
-                ChargeDict.Add(ItemQuality.S, 0);
+                item.RemovePickupFromLootTables();
             }
         };
 
@@ -62,8 +63,7 @@ namespace Oddments
             if (gun)
             {
                 bool worthChanging = ChargeDict.ContainsKey(gun.quality) && gun.CanBeDropped;
-                if (gun.quality == ItemQuality.S
-                    && worthChanging)
+                if (!worthChanging)
                 {
                     return false;
                 }

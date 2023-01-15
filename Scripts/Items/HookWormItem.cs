@@ -12,10 +12,14 @@ namespace Oddments
     {
         public static ItemTemplate template = new ItemTemplate(typeof(HookWormItem))
         {
-            Name = "cubullets",
+            Name = "Cubic Shells",
+            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/cubicshells.png",
+            Description = "Power of 3",
+            LongDescription = "Makes reloading easier, but bullets will take on a rectangular travel pattern",
             Quality = ItemQuality.C,
             PostInitAction = item =>
             {
+                item.AddPassiveStatModifier(PlayerStats.StatType.ReloadSpeed, 0.5f, StatModifier.ModifyMethod.MULTIPLICATIVE);
                 item.SetTag("bullet_modifier");
             }
         };
@@ -24,6 +28,12 @@ namespace Oddments
         {
             base.Pickup(player);
             player.PostProcessProjectile += Player_PostProcessProjectile;
+        }
+
+        public override void DisableEffect(PlayerController player)
+        {
+            base.DisableEffect(player);
+            player.PostProcessProjectile -= Player_PostProcessProjectile;
         }
 
         private void Player_PostProcessProjectile(Projectile obj, float arg2)
@@ -49,13 +59,8 @@ namespace Oddments
         private bool shouldInvert = false;
     }
 
-    public class HookWormMovementModifier : ProjectileAndBeamMotionModule
+    public class HookWormMovementModifier : HelixProjectileMotionModule
     {
-        public override Vector2 GetBoneOffset(BasicBeamController.BeamBone bone, BeamController sourceBeam, bool inverted)
-        {
-            throw new NotImplementedException();
-        }
-
         public override void Move(Projectile source, Transform projectileTransform, tk2dBaseSprite projectileSprite, SpeculativeRigidbody specRigidbody, ref float m_timeElapsed, ref Vector2 m_currentDirection, bool Inverted, bool shouldRotate)
         {
             ProjectileData baseData = source.baseData;
@@ -112,31 +117,13 @@ namespace Oddments
             specRigidbody.Velocity = vector3;
         }
 
-        public override void UpdateDataOnBounce(float angleDiff)
-        {
-            OnThing(angleDiff);
-        }
-
-        public void OnThing(float angleDiff)
-        {
-            if (!float.IsNaN(angleDiff))
-            {
-                this.m_initialUpVector = Quaternion.Euler(0f, 0f, angleDiff) * this.m_initialUpVector;
-                this.m_initialRightVector = Quaternion.Euler(0f, 0f, angleDiff) * this.m_initialRightVector;
-            }
-        }
         private float m_timeElapsedPure = 0f;
         public bool ShouldInvert;
         private bool m_wormInitialised = false;
-        private Vector2 m_initialRightVector;
-        private Vector2 m_initialUpVector;
-        private float m_displacement;
         public float HookAmplitude = 0.5f;
         public float WaveLength = 6f;
         public float CrissCrossDuration = 1f;
-        private float m_yDisplacement;
         private float m_lastWigglePos;
-        private Vector2 m_privateLastPosition;
         private bool m_mustWiggle;
     }
 }

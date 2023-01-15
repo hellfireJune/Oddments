@@ -4,19 +4,20 @@ using System.Linq;
 using System.Text;
 using HarmonyLib;
 using JuneLib.Items;
+using SaveAPI;
 
 namespace Oddments
 {
     [HarmonyPatch]
-    public class WickedCoupon : PassiveItem
+    public class MinCasingIncreaserItem : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(WickedCoupon))
+        public static ItemTemplate template = new ItemTemplate(typeof(MinCasingIncreaserItem))
         {
-            Name = "Wicked Coupon",
+            Name = "Flimsy Coupon",
             Description = "15% off!",
             LongDescription = "Worth approximately 15 casings, just holding this will mean you can never go below 15 casings of currency",
             SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/coupon.png",
-            Quality = ItemQuality.C,
+            Quality = ItemQuality.D,
         };
 
         public override void Pickup(PlayerController player)
@@ -37,7 +38,7 @@ namespace Oddments
         public static void ChangeCurrencyStuff(PlayerConsumables __instance)
         {
             int minCurrency = 0;
-            if (IsFlagSetAtAll(typeof(WickedCoupon)))
+            if (IsFlagSetAtAll(typeof(MinCasingIncreaserItem)))
             {
                 minCurrency += 15;
             }
@@ -55,6 +56,7 @@ namespace Oddments
                 }
             }
             __instance.m_currency = Math.Max(__instance.m_currency, minCurrency);
+            SaveAPIManager.UpdateMaximum(CustomTrackedMaximums.MOST_MONEY, __instance.m_currency);
             if (GameUIRoot.HasInstance)
             {
                 GameUIRoot.Instance.UpdatePlayerConsumables(__instance);
@@ -69,6 +71,11 @@ namespace Oddments
                 Description = "Bello's Special Customer",
                 LongDescription = "Purchases at the shop will add 7.5% of what you spent into a minimum cap your casings can never fall below",
                 Quality = ItemQuality.A,
+                PostInitAction = item =>
+                {
+                    item.SetupUnlockOnCustomMaximum(CustomTrackedMaximums.MOST_MONEY, 275.9f, DungeonPrerequisite.PrerequisiteOperation.GREATER_THAN);
+                    item.AddUnlockText("Get 276 casings or more in one run");
+                }
             };
 
             public int amount;

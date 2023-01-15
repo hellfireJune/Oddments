@@ -12,15 +12,23 @@ namespace Oddments
 {
     public class DevilsPedestals : PassiveItem
     {
+
+        public static List<int> sprites;
         public static ItemTemplate template = new ItemTemplate(typeof(DevilsPedestals))
         {
-            Name = "evil mastter rounds",
-            Quality = ItemQuality.C,
+            Name = "The Master's Pact",
+            Description = "To sign away eternity",
+            LongDescription = "All master rounds are replaced with cursed \"Dammed Rounds\", which give an additional damage up.",
+            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/devilscontract.png",
+            Quality = ItemQuality.B,
         };
 
-        public static ItemTemplate template2 = new ItemTemplate(typeof(BasicStatPickup))
+        public static ItemTemplate template2 = new ItemTemplate(typeof(EvilMasteryItem))
         {
-            Name = "Placeholder Evil Master Round",
+            Name = "Damned Round",
+            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/DammedRound/dammedround_006.png",
+            Description = "Hellfire",
+            LongDescription = "A token of floor mastery, corrupted and twisted by the infernal depths of bullet hell",
             Quality = ItemQuality.SPECIAL,
             PostInitAction = item =>
             {
@@ -29,10 +37,16 @@ namespace Oddments
                 EMRid = statPickup.PickupObjectId;
 
                 item.AddPassiveStatModifier(PlayerStats.StatType.Health, 1f);
-                item.AddPassiveStatModifier(PlayerStats.StatType.Damage, 0.5f);
+                item.AddPassiveStatModifier(PlayerStats.StatType.Damage, 0.1f);
                 item.AddPassiveStatModifier(PlayerStats.StatType.Curse, 1f);
 
                 statPickup.RemovePickupFromLootTables();
+
+                sprites = new List<int>();
+                for (int i = 1; i < 6; i++)
+                {
+                    sprites.Add(SpriteBuilder.AddSpriteToCollection($"{Module.ASSEMBLY_NAME}/Resources/Sprites/DammedRound/dammedround_00{i}.png", item.sprite.Collection));
+                }
             }
         };
 
@@ -45,11 +59,17 @@ namespace Oddments
             base.Pickup(player);
         }
 
+        public override void DisableEffect(PlayerController player)
+        {
+            CustomActions.OnRewardPedestalDetermineContents -= NewAction2;
+            CustomActions.OnRewardPedestalSpawned -= NewAction;
+            base.DisableEffect(player);
+        }
+
         public void NewAction2(RewardPedestal pedestal, PlayerController player, CustomActions.ValidPedestalContents contents)
         {
             if (pedestal.ContainsMasteryTokenForCurrentLevel())
             {
-
                 pedestal.gameObject.AddComponent<RewardPedestalEvilFlag>();
             }
         }
@@ -58,15 +78,52 @@ namespace Oddments
         {
             if (pedestal.GetComponent<RewardPedestalEvilFlag>() != null)
             {
-                PickupObject item = PickupObjectDatabase.GetById(EMRid);
+                EvilMasteryItem item = PickupObjectDatabase.GetById(EMRid) as EvilMasteryItem;
                 pedestal.contents = item;
 
                 pedestal.m_itemDisplaySprite.collection = item.sprite.collection;
-                pedestal.m_itemDisplaySprite.spriteId = item.sprite.spriteId;
+                int newSpriteId = item. GetSprite();
+                pedestal.m_itemDisplaySprite.spriteId = newSpriteId != -1 ? newSpriteId : item.sprite.spriteId;
             }
         }
 
-
         public class RewardPedestalEvilFlag : MonoBehaviour { }
+
+        public class EvilMasteryItem : BasicStatPickup
+        {
+            public override void Pickup(PlayerController player)
+            {
+                if (!m_pickedUpThisRun)
+                {
+                    int newSpriteId = GetSprite();
+                    if (newSpriteId != -1)
+                    {
+                        sprite.SetSprite(newSpriteId);
+                    }
+                }
+                base.Pickup(player);
+            }
+
+            public int GetSprite()
+            {
+                GlobalDungeonData.ValidTilesets? tileset = GameManager.Instance.Dungeon?.tileIndices.tilesetId;
+                if (tileset != null)
+                {
+                    switch (tileset) {
+                        case GlobalDungeonData.ValidTilesets.CASTLEGEON:
+                            return sprites[0];
+                        case GlobalDungeonData.ValidTilesets.GUNGEON:
+                            return sprites[1];
+                        case GlobalDungeonData.ValidTilesets.MINEGEON:
+                            return sprites[2];
+                        case GlobalDungeonData.ValidTilesets.CATACOMBGEON:
+                            return sprites[3];
+                        case GlobalDungeonData.ValidTilesets.FORGEGEON:
+                            return sprites[4];
+                    }
+                }
+                return -1;
+            }
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Alexandria.ItemAPI;
+using Alexandria.Misc;
 using JuneLib.Items;
 using System;
 using System.Collections.Generic;
@@ -12,11 +13,12 @@ namespace Oddments
         public static ItemTemplate template = new ItemTemplate(typeof(RightfulCurtsy))
         {
             Name = "rightful curtsy",
-            Quality = ItemQuality.C,
+            Quality = ItemQuality.EXCLUDED,
             PostInitAction = item =>
             {
                 item.AddPassiveStatModifier(PlayerStats.StatType.AmmoCapacityMultiplier, 0.1f);
                 item.SetTag("lemegeton_non_summonable");
+                item.RemovePickupFromLootTables();
             }
         };
 

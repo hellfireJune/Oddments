@@ -18,12 +18,12 @@ namespace Oddments
             if (IsFlagSetAtAll(typeof(WebImmunityItem))
                 && goop.SpeedModifierEffect != null && goop.SpeedModifierEffect.effectIdentifier.StartsWith("phase web"))
             {
-                DeadlyDeadlyGoopManager gooper = orig(AilmentsCore.GoopClone);
-                if (gooper.GetComponent<CustomGoopEffectDoer>() == null)
+                DeadlyDeadlyGoopManager gooper = orig(EasyGoopDefinitions.PlayerFriendlyWebGoop);
+                /*if (gooper.GetComponent<CustomGoopEffectDoer>() == null)
                 {
                     CustomGoopEffectDoer splooger = gooper.gameObject.AddComponent<CustomGoopEffectDoer>();
                     splooger.IsCloner = true;
-                }
+                }*/
                 return gooper;
             }
             return orig(goop);
@@ -48,7 +48,7 @@ namespace Oddments
             Name = "Weaver's Charm",
             Quality = ItemQuality.D,
             Description = "Web",
-            LongDescription = "A token of the phaser spider's friendship. Web will no longer affect you",
+            LongDescription = "A token of the phaser spider's friendship. Phaser Spider's are allied with you, and web will now affect the gundead instead",
             SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/weaverscharm.png",
             PostInitAction = item =>
             {
@@ -75,6 +75,8 @@ namespace Oddments
                 actor.AddPermanentCharm();
             }
         }
+
+
     }
 
     public class SpiderBoots : WebImmunityItem

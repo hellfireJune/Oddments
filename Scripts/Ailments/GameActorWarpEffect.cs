@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Oddments
 {
-    public class WarpedBandolier : PassiveItem
+    public class GameActorWarpEffect : GameActorHealthEffect
     {
     }
 }

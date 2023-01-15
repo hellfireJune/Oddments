@@ -2,6 +2,7 @@
 using HarmonyLib;
 using Alexandria.Misc;
 using JuneLib.Items;
+using JuneLib;
 
 namespace Oddments
 {

@@ -1,16 +1,20 @@
 ﻿using Dungeonator;
-using Alexandria.ItemAPI;
+using JuneLib.Items;
 using MonoMod.RuntimeDetour;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using UnityEngine;
-using JuneLib.Items;
 
 namespace Oddments
 {
     public class MimicBait : PassiveItem
     {
+        public static readonly List<string> GnarlyIDs = new List<string>
+                {
+                    $"{Module.PREFIX}:mimic_bait",
+                    "mimic_tooth_necklace"
+            };
+        public const string GnarlySynergyName = "COFFEE IS TURNING GNARLY";
         public static ItemTemplate template = new ItemTemplate(typeof(MimicBait))
         {
             Name = "Mimic Bait",
@@ -21,13 +25,6 @@ namespace Oddments
             PostInitAction = item =>
             {
                 Hook hook = new Hook(typeof(SharedDungeonSettings).GetMethod("RandomShouldBecomeMimic", BindingFlags.Instance | BindingFlags.Public), typeof(MimicBait).GetMethod("ChangeMimicChance"));
-
-                List<string> leafOrb = new List<string>
-                {
-                    $"{Module.PREFIX}:mimic_bait",
-                    "mimic_tooth_necklace"
-                };
-                CustomSynergies.Add("COFFEE IS TURNING GNARLY", leafOrb);
             }
         };
 
@@ -103,10 +100,10 @@ namespace Oddments
             if (actor == null)
                 return;
 
-            if (actor.IsMimicEnemy && ItemHelpers.SynergyActiveAtAll("COFFEE IS TURNING GNARLY")) 
+            if (actor.IsMimicEnemy && ItemHelpers.SynergyActiveAtAll("COFFEE IS TURNING GNARLY"))
             {
                 float chance = UnityEngine.Random.value;
-                if (chance < synergyJamChance) 
+                if (chance < synergyJamChance)
                 {
                     actor.healthHaver.NextShotKills = true;
                 }

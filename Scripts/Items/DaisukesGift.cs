@@ -15,7 +15,7 @@ namespace Oddments
         public static ItemTemplate template = new ItemTemplate(typeof(DaisukesGift))
         {
             Name = "Daisuke's Gift",
-            Description = "It's a game of dice",
+            Description = "Random up!",
             SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/daisukesshard.png",
             LongDescription = longDescStart + longDescEnd,
             Quality = ItemQuality.B,

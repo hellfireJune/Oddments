@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SaveAPI;
 
 namespace Oddments
 {
@@ -59,10 +60,10 @@ namespace Oddments
             });
             ETGModConsole.Commands.GetGroup("oddments").AddUnit("unlockall", args =>
             {
-                GameStatsManager.Instance.SetFlag((GungeonFlags)OddmentsSaveFlags.GetFlag(OddFlags.FLAG_ODDMENTS_UNLOCK_ALL), 
-                    GameStatsManager.Instance.GetFlag((GungeonFlags)OddmentsSaveFlags.GetFlag(OddFlags.FLAG_ODDMENTS_UNLOCK_ALL)) ^ true);
+                SaveAPIManager.SetFlag(CustomDungeonFlags.FLAG_ODDMENTS_UNLOCK_ALL, 
+                    SaveAPIManager.GetFlag(CustomDungeonFlags.FLAG_ODDMENTS_UNLOCK_ALL) ^ true);
 
-                Module.Log($"Unlock All is now { GameStatsManager.Instance.GetFlag((GungeonFlags)OddmentsSaveFlags.GetFlag(OddFlags.FLAG_ODDMENTS_UNLOCK_ALL))}", Module.TEXT_COLOR);
+                Module.Log($"Unlock All is now { SaveAPIManager.GetFlag(CustomDungeonFlags.FLAG_ODDMENTS_UNLOCK_ALL)}", Module.TEXT_COLOR);
                 Module.Log("Please note you will have to restart the game for this to take effect");
             });
         }

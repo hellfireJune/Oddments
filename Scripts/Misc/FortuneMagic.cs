@@ -33,23 +33,35 @@ namespace Oddments
             tiledSprite.SetSprite(ETGMod.Databases.Items.ProjectileCollection, spriteID);
             tk2dSpriteDefinition def = tiledSprite.GetCurrentSpriteDef();
             def.ConstructOffsetsFromAnchor(tk2dBaseSprite.Anchor.MiddleCenter);
+
+            ETGModConsole.Commands.GetGroup("oddments").AddUnit("showfortune", args =>
+            {
+                Vector3 pos = GameManager.Instance.PrimaryPlayer.specRigidbody.UnitCenter;
+                MakeFortune(pos);
+            });
         }
 
         public static void MakeFortune(Vector3 position)
         {
-            string fortune = BraveUtility.RandomElement(Fortunes);
-            if (m_inactiveFortuneContainers.Count > 0)
+            string fortune = BraveUtility.RandomElement(Fortunes).ToUpper();
+            if (m_inactiveFortuneContainers.Count <= 0)
             {
                 GameObject containerObj = UnityEngine.Object.Instantiate(m_fortuneContainerPrefab, GameUIRoot.Instance.transform);
                 UnityEngine.Object.Instantiate(BraveResources.Load("DamagePopupLabel", ".prefab"), containerObj.transform);
+                tk2dTiledSprite sprite = containerObj.GetComponent<tk2dTiledSprite>();
+                //sprite.AttachRenderer(GameUIRoot.Instance.spri);
                 m_inactiveFortuneContainers.Add(containerObj);
             }
 
             GameObject container = m_inactiveFortuneContainers[0];
+            container.transform.localPosition = new Vector3(0, 0.5f, 0);
             dfLabel text = container.GetComponentInChildren<dfLabel>();
+            text.text = fortune;
+            text.Anchor = dfAnchorStyle.CenterHorizontal;
+            text.transform.localPosition = new Vector3(0, 0, 0);
             container.SetActive(true);
             
         }
-        private static List<GameObject> m_inactiveFortuneContainers;
+        private static List<GameObject> m_inactiveFortuneContainers = new List<GameObject>();
     }
 }

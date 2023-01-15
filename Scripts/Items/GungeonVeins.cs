@@ -6,6 +6,7 @@ using System.Text;
 using Dungeonator;
 using Alexandria.ItemAPI;
 using System.Collections;
+using Alexandria.Misc;
 
 namespace Oddments
 {
@@ -15,9 +16,10 @@ namespace Oddments
         {
             Name = "Gungeon Veins",
             Description = "Interconnected rooms",
-            Quality = ItemQuality.S,
+            Quality = ItemQuality.EXCLUDED,
             PostInitAction = item =>
             {
+                item.RemovePickupFromLootTables();
                 item.AddPassiveStatModifier(PlayerStats.StatType.Curse, 3);
             }
         };

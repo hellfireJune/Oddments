@@ -885,6 +885,8 @@ namespace SaveAPI
         /// <returns><paramref name="prereq"/></returns>
         public static DungeonPrerequisite AddPrerequisite(this EncounterTrackable self, DungeonPrerequisite prereq)
         {
+            if (SaveAPIManager.GetFlag(CustomDungeonFlags.FLAG_ODDMENTS_UNLOCK_ALL))
+                return null;
             if (!string.IsNullOrEmpty(self.ProxyEncounterGuid))
             {
                 self.ProxyEncounterGuid = "";

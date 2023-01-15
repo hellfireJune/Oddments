@@ -10,6 +10,8 @@ using GungeonAPI;
 using HarmonyLib;
 using JuneLib.Items;
 using JuneLib;
+using SaveAPI;
+using System.Reflection;
 
 namespace Oddments
 {
@@ -20,7 +22,7 @@ namespace Oddments
     public class Module : BaseUnityPlugin
     {
         public const string MOD_NAME = "Oddments";
-        public const string VERSION = "0.0.4";
+        public const string VERSION = "0.0.9";
         public static readonly string TEXT_COLOR = "#ffa944";
         public static readonly string PREFIX = "odmnts";
         public static readonly string ASSEMBLY_NAME = "Oddments";
@@ -41,25 +43,31 @@ namespace Oddments
                 new Harmony(GUID).PatchAll();
                 FilePathFolder = this.FolderPath();
                 oddBundle = AssetBundleLoader.LoadAssetBundleFromLiterallyAnywhere("oddments", true);
+                ETGMod.Assets.SetupSpritesFromAssembly(Assembly.GetExecutingAssembly(), $"{ASSEMBLY_NAME}/Resources/Sprites/MTGSprites");
 
                 ItemBuilder.Init();
+                SaveAPIManager.Setup("oddments");
                 PrefixHandler.AddPrefixForAssembly(PREFIX);
                 JuneSaveManagerCore.Init();
+
                 ItemTemplateManager.Init();
                 GunMaker.InitGuns();
                 Synergies.Init();
-                AilmentsCore.Init();
-                //ShrineFactory.Init();
 
+                OddSparksDoer.InitPrefabs();
+                AilmentsCore.Init();
+
+                //ShrineFactory.Init();
                 //ShrapnelAbilityBase.InitSetupStuffYaddaYadda();
                 SynergyChanceModificationItem.InitBase();
-                FortuneMagic.Init();
 
                 //DerringerShrine.Add();
+                //DungeonHandler.debugFlow = true;
 
-                //IAmGoingToBreakKeepFloorGen.Init();
+                //FloorGenFunnyTests.Init();
                 //VoidFieldsTest.Init();
-                //CommandsBox.Init();
+                //FortuneMagic.Init();
+                CommandsBox.Init();
                 Log($"{MOD_NAME} v{VERSION} started susccessfully.", TEXT_COLOR);
                 Log($"- \"{BraveUtility.RandomElement(SPLASH_TEXT)}\"", TEXT_COLOR);
             }
@@ -70,19 +78,12 @@ namespace Oddments
                 Log("oops!");
             }
         }
-        /* WEAVERS CHARM STILL MAKES CLONE GOOP! REMOVE THAT BEFORE PUSHING ANY UPDATE
+        /* Curr Changelog:
          * 
-         * Curr Changelog:
-         * JuneLib is now a required dependancy to run this mod <-- emphasise this somehow
-         * Added Wicked Soul, Chrome Splash, Sanguine Hook, the evil mastter rounds item, Cellophane, Gungeon Veins, Cubullets, Pulsating Bullets, Majestic Censer and Rightful Curtsy
-         * Added a new vanilla synergy "Sin Wave"
-         * Several new and old items now have unlock methods (Wicked Soul, )
-         * Added two new commands, "unlocks" and "unlockall"
-         * Coupon is now renamed to Wicked Coupon (due to Omitb Conflicts)
-         * Odd rounds is now properly marked as a bullet modifier by alexandria
-         * Fixed Daisuke's Gift not properly showing its description when it is originally initialised
-         * Golden Magnet now has the word "practically" in its long description
-         * Removed debuglog stuff
+         * Non-included:
+         * [RightfulCurtsy], Majestic Censer, Chrome Splash, [RoomClearOnlyHeals], [BulletPowerDrainItem], [BenthicBloomItem], [BlendedHeartPickup], Eternal Idol, Cellophane, Gungeon Veins, Tractor Beam, Black Cat, [Lemegeton], [FuckyBarrelItem], Sanguine Hook
+         * guns: Spid-AR and King Worm
+         * Added 1 new shrine
          */
 
         public static void Log(string text, string color="#FFFFFF")
@@ -142,7 +143,9 @@ namespace Oddments
             "Don't give me that good-do-good bulls#$&",
             "Covered in security",
             "The fire is gone",
-            "Red as all hellfire"
+            "Red as all hellfire",
+            "From now on I will be like this, all of the time",
+            "With good thumbnail art now!"
         };
 
 
@@ -151,12 +154,10 @@ namespace Oddments
          */
 
         /*To-Do List:
+         * Shield Blanks, Singularity Band,
+         * Lil' Bombshee
          * Knockback-er thingy
          * Gills
-         * Big moon
-         * Blind Chests
-         * Dipollets (bullets stick to eachother)
-         * Repulsion field
          * Glass crown (all items turn to glass)
          * Contract from below
          * Boss Dice
@@ -165,14 +166,9 @@ namespace Oddments
          * Item Dice
          * Room Dice(?)
          * Portable slot machine
-         * Pocket chest
          * Giga-Drill
          * Pot Crown
-         * Item which you use next to a chest and then it uses the chest but you can reuse the chest after like if you find a chest of a certain quality you can make an item of said quality
-         * Item which turns every non chest item into that
-         * Diplopia
          * Shield doubler
-         * XL (Doubles floor sizes)
          * Oddments
          * Dice Dice
          * Bottle of NullReferenceException 
@@ -180,18 +176,11 @@ namespace Oddments
          * TMTRAINER
          * Oddments
          * Bulletlets (friendly bullet kins which act like bullets sorta)
-         * Lich Ticket
          * Chaos goops (all goops are randomised)
          * Rules Card
          * Golden Hat
-         * An Altered World (genesis)
-         * Danger $$$ (Get items for free with curse)
-         * Stock Market
          * Carrion Crawler
-         * Pact of Contrition (Red heart damage has a 50% chance to make you not lose mastery rounds)
          * Table Tech Hell
-         * Gelatinous Tables
-         * Prismatic Tables
          * Scrap Box
          * Keeper's Box
          * Twisted Bullets (Enemies have a chance to teleport and take damage on bullet hit)
@@ -199,14 +188,10 @@ namespace Oddments
          * Hell's Spoils (Bloody crown isaac)
          * Poker Chip (50% chance to double chest payout 50% chance to remove them)
          * Obol (Sewer Token)
-         * Crazy Diamond
-         * Stopwatch
          * (Item that doubles hegemoney credit payout)
          * Book of synergies Vol. 1 & Vol. 2 (Adds synergies to more common items like master rounds and starter weapons)
-         * Bifurcated Bullets
          * Curse (All jammed mode)
          * Mega Coin
-         * Chimerism
          * Ammo Slug (charge -> ammo)
          * Snow Slug (ammo -> charge)
          * Rapidfire (all semiauto, massive fire rate up)
@@ -214,8 +199,6 @@ namespace Oddments
          * Overloader (over reload)
          * Lunarbloom (increased healing, healing -> casings on new floor)
          * Turret Friend
-         * Trap Disabler
-         * Supermuzzle
          * Mood Missiles
          * Ring of Missiles
          * Sad Bullets (some sort of debuff)
@@ -228,7 +211,6 @@ namespace Oddments
          * Heart of the Powderkeg (balrog's heart)
          * Powderkeg's Head (balrog's head)
          * Dad's wallet
-         * Corruption (stats up, doubles any curse related effects)
          * Rogue Planet
          * Chaos Heart
          * Yum Heart

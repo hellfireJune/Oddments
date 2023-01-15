@@ -100,7 +100,13 @@ namespace GungeonAPI
 				{
 					onAccept(interactor, base.gameObject);
 				}
-				onAccept = null;
+
+				this.instanceRoom.DeregisterInteractable(this);
+				if (instanceMinimapIcon)
+                {
+					Minimap.Instance.DeregisterRoomIcon(instanceRoom, instanceMinimapIcon);
+					instanceMinimapIcon = null;
+				}
 			}
 			else
 			{
@@ -109,7 +115,7 @@ namespace GungeonAPI
 				{
 					onDecline(interactor, base.gameObject);
 				}
-				onDecline = null;
+
 			}
 			yield break;
 		}
@@ -122,7 +128,7 @@ namespace GungeonAPI
 
 		public void OnExitRange(PlayerController interactor)
 		{
-			SpriteOutlineManager.AddOutlineToSprite(base.sprite, Color.black, 1f, 0f, SpriteOutlineManager.OutlineType.NORMAL);
+			SpriteOutlineManager.RemoveOutlineFromSprite(base.sprite);
 		}
 
 		public string GetAnimationState(PlayerController interactor, out bool shouldBeFlipped)
@@ -133,19 +139,12 @@ namespace GungeonAPI
 
 		public float GetDistanceToPoint(Vector2 point)
 		{
-			bool flag = base.sprite == null;
-			bool flag2 = flag;
-			float result;
-			if (flag2)
+			if (base.sprite == null)
 			{
-				result = 100f;
+				return 100f;
 			}
-			else
-			{
-				Vector3 v = BraveMathCollege.ClosestPointOnRectangle(point, base.specRigidbody.UnitBottomLeft, base.specRigidbody.UnitDimensions);
-				result = Vector2.Distance(point, v) / 1.5f;
-			}
-			return result;
+			Vector3 v = BraveMathCollege.ClosestPointOnRectangle(point, base.specRigidbody.UnitBottomLeft, base.specRigidbody.UnitDimensions);
+			return Vector2.Distance(point, v) / 1.5f;
 		}
 
 		public float GetOverrideMaxDistance()

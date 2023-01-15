@@ -42,7 +42,7 @@ namespace Oddments
         {
             if (orbitalPrefab != null) return;
             GameObject prefab = SpriteBuilder.SpriteFromResource($"{Module.ASSEMBLY_NAME}/Resources/example_item_sprite");
-            prefab.name = "Brown Guon Orbital";
+            prefab.name = "Lemegeton Orbital";
             var body = prefab.GetComponent<tk2dSprite>().SetUpSpeculativeRigidbody(IntVector2.Zero, new IntVector2(7, 13));
             body.CollideWithTileMap = false;
             body.CollideWithOthers = true;

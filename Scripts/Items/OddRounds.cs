@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Alexandria.ItemAPI;
 using JuneLib.Items;
+using SaveAPI;
 
 namespace Oddments
 {
@@ -19,6 +20,8 @@ namespace Oddments
             PostInitAction = item =>
             {
                 item.SetTag("bullet_modifier");
+                item.SetupUnlockOnCustomFlag(CustomDungeonFlags.EVERY_VANILLA_BULLET_UNLOCKED, true);
+                item.AddUnlockText("Unlock every vanilla bullet modifier (except Chance Bullets and Chaos Bullets)");
             }
         };
 

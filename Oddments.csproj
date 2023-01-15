@@ -36,28 +36,63 @@
     <Compile Include="BindingAPI\BindingHooks.cs" />
     <Compile Include="BindingAPI\BindingLoader.cs" />
     <Compile Include="BindingAPI\ExampleBinding.cs" />
-    <Compile Include="Scripts\AchievementStuff\OddmentsSaveFlags.cs" />
+    <Compile Include="Scripts\AchievementStuff\SaveAPI\AdvancedGameStats.cs" />
+    <Compile Include="Scripts\AchievementStuff\SaveAPI\AdvancedGameStatsManager.cs" />
+    <Compile Include="Scripts\AchievementStuff\SaveAPI\AdvancedMidGameSaveData.cs" />
+    <Compile Include="Scripts\AchievementStuff\SaveAPI\BreachShopTool.cs" />
+    <Compile Include="Scripts\AchievementStuff\SaveAPI\CustomDungeonPrerequisite.cs" />
+    <Compile Include="Scripts\AchievementStuff\SaveAPI\CustomHuntQuest.cs" />
+    <Compile Include="Scripts\AchievementStuff\SaveAPI\CustomHuntQuests.cs" />
+    <Compile Include="Scripts\AchievementStuff\SaveAPI\Enums\Comparers\CustomDungeonFlagsComparer.cs" />
+    <Compile Include="Scripts\AchievementStuff\SaveAPI\Enums\Comparers\CustomTrackedMaximumsComparer.cs" />
+    <Compile Include="Scripts\AchievementStuff\SaveAPI\Enums\Comparers\CustomTrackedStatsComparer.cs" />
+    <Compile Include="Scripts\AchievementStuff\SaveAPI\Enums\CustomCharacterSpecificGungeonFlags.cs" />
+    <Compile Include="Scripts\AchievementStuff\SaveAPI\Enums\CustomDungeonFlags.cs" />
+    <Compile Include="Scripts\AchievementStuff\SaveAPI\Enums\CustomTrackedMaximums.cs" />
+    <Compile Include="Scripts\AchievementStuff\SaveAPI\Enums\CustomTrackedStats.cs" />
+    <Compile Include="Scripts\AchievementStuff\SaveAPI\JammedEnemyState.cs" />
+    <Compile Include="Scripts\AchievementStuff\SaveAPI\SaveAPIManager.cs" />
+    <Compile Include="Scripts\AchievementStuff\SaveAPI\SaveTools.cs" />
+    <Compile Include="Scripts\AchievementStuff\SaveAPI\SpecialAIActor.cs" />
+    <Compile Include="Scripts\AchievementStuff\SaveAPI\SpecialPickupObject.cs" />
+    <Compile Include="Scripts\AchievementStuff\OddUnlockMethods.cs" />
     <Compile Include="Scripts\AchievementStuff\UnlockCommands.cs" />
     <Compile Include="Scripts\Ailments\AilmentsCore.cs" />
     <Compile Include="Scripts\Ailments\CustomGoopEffectDoer.cs" />
+    <Compile Include="Scripts\Ailments\GameActorHemorragingEffect.cs" />
+    <Compile Include="Scripts\Ailments\GameActorWarpEffect.cs" />
     <Compile Include="Scripts\Helpers\AssetBundleLoader.cs" />
     <Compile Include="Scripts\AchievementStuff\JuneSaveManagerCore.cs" />
-    <Compile Include="Scripts\Items\BlastCorePack.cs" />
+    <Compile Include="Scripts\Items\BlackCatItem.cs" />
+    <Compile Include="Scripts\Items\Pickups\BlendedHeartPickup.cs" />
     <Compile Include="Scripts\Items\BrokenStopwatch.cs" />
+    <Compile Include="Scripts\Items\BulletPowerDrainItem.cs" />
     <Compile Include="Scripts\Items\Cellophane.cs" />
     <Compile Include="Scripts\Items\ChromeSplash.cs" />
+    <Compile Include="Scripts\Items\EternalIdol.cs" />
+    <Compile Include="Scripts\Items\FortuneCookieItem.cs" />
+    <Compile Include="Scripts\Items\Guns\KingWorm.cs" />
     <Compile Include="Scripts\Items\HookWormItem.cs" />
     <Compile Include="Scripts\Items\DevilsPedestals.cs" />
     <Compile Include="Scripts\Items\GungeonVeins.cs" />
     <Compile Include="Scripts\Items\Guns\SpidAR.cs" />
+    <Compile Include="Scripts\Items\InfiniteLockboxItem.cs" />
+    <Compile Include="Scripts\Items\BenthicBloomItem.cs" />
+    <Compile Include="Scripts\Items\KeyOfLoveItem.cs" />
     <Compile Include="Scripts\Items\MajesticCenser.cs" />
     <Compile Include="Scripts\Items\PulsingBulletsItem.cs" />
     <Compile Include="Scripts\Items\RightfulCurtsy.cs" />
     <Compile Include="Scripts\Items\RingOfOddFriendship.cs" />
+    <Compile Include="Scripts\Items\RoomClearOnlyHeals.cs" />
     <Compile Include="Scripts\Items\SanguineHook.cs" />
-    <Compile Include="Scripts\Items\WarpedBandolier.cs" />
+    <Compile Include="Scripts\Items\SonarBullets.cs" />
+    <Compile Include="Scripts\Items\SpaceParasiteItem.cs" />
+    <Compile Include="Scripts\Items\FuckyBarrelItem.cs" />
+    <Compile Include="Scripts\Items\ThrowingKnifeItem.cs" />
+    <Compile Include="Scripts\Items\ToothyBullets.cs" />
+    <Compile Include="Scripts\Items\TractorBeamItem.cs" />
     <Compile Include="Scripts\Items\WickedSoul.cs" />
-    <Compile Include="Scripts\Items\WickedCoupon.cs" />
+    <Compile Include="Scripts\Items\MinCasingIncreaserItem.cs" />
     <Compile Include="Scripts\Items\DoubleHealingItem.cs" />
     <Compile Include="Scripts\Items\DaisukesGift.cs" />
     <Compile Include="Scripts\Items\AngryHeart.cs" />
@@ -81,9 +116,11 @@
     <Compile Include="Scripts\Items\WhollyGhost.cs" />
     <Compile Include="Scripts\Misc\CommandsBox.cs" />
     <Compile Include="Scripts\Misc\FortuneMagic.cs" />
-    <Compile Include="Scripts\Misc\IAmGoingToBreakKeepFloorGen.cs" />
+    <Compile Include="Scripts\Misc\FloorGenFunnyTests.cs" />
+    <Compile Include="Scripts\Misc\OddSparksDoer.cs" />
     <Compile Include="Scripts\Misc\UIUnlocksTest.cs" />
     <Compile Include="Scripts\Misc\VoidFieldsTest.cs" />
+    <Compile Include="Scripts\Misc\VoidtouchedItems.cs" />
     <Compile Include="Scripts\Module.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scripts\Shrines\BunnyShrineFactory\HitboxMonitor.cs" />
@@ -227,7 +264,63 @@
     <EmbeddedResource Include="Resources\Sprites\oddshells.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Misc\fortunes.txt" />
+    <EmbeddedResource Include="Resources\Sprites\DammedRound\dammedround_001.png" />
+    <EmbeddedResource Include="Resources\Sprites\DammedRound\dammedround_002.png" />
+    <EmbeddedResource Include="Resources\Sprites\DammedRound\dammedround_003.png" />
+    <EmbeddedResource Include="Resources\Sprites\DammedRound\dammedround_004.png" />
+    <EmbeddedResource Include="Resources\Sprites\DammedRound\dammedround_005.png" />
+    <EmbeddedResource Include="Resources\Sprites\DammedRound\dammedround_006.png" />
+    <EmbeddedResource Include="Resources\Sprites\devilscontract.png" />
+    <EmbeddedResource Include="Resources\Sprites\ringofoddfriendship.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\Misc\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\howdoispritegungeon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\MTGSprites\ProjectileCollection\oddments_throwingknifeprojecctile_001.png" />
+    <EmbeddedResource Include="Resources\Sprites\MTGSprites\ProjectileCollection\oddments_throwingknifeprojecctile_002.png" />
+    <EmbeddedResource Include="Resources\Sprites\MTGSprites\ProjectileCollection\oddments_throwingknifeprojecctile_003.png" />
+    <EmbeddedResource Include="Resources\Sprites\MTGSprites\ProjectileCollection\oddments_throwingknifeprojecctile_004.png" />
+    <EmbeddedResource Include="Resources\Sprites\MTGSprites\ProjectileCollection\oddments_throwingknifeprojecctile_005.png" />
+    <EmbeddedResource Include="Resources\Sprites\MTGSprites\ProjectileCollection\oddments_throwingknifeprojecctile_006.png" />
+    <EmbeddedResource Include="Resources\Sprites\MTGSprites\ProjectileCollection\oddments_throwingknifeprojecctile_007.png" />
+    <EmbeddedResource Include="Resources\Sprites\MTGSprites\ProjectileCollection\oddments_throwingknifeprojecctile_008.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\VFX\blooddripoverhead_001.png" />
+    <EmbeddedResource Include="Resources\Sprites\VFX\blooddripoverhead_002.png" />
+    <EmbeddedResource Include="Resources\Sprites\VFX\blooddripoverhead_003.png" />
+    <EmbeddedResource Include="Resources\Sprites\VFX\blooddripoverhead_004.png" />
+    <EmbeddedResource Include="Resources\Sprites\VFX\blooddripoverhead_005.png" />
+    <EmbeddedResource Include="Resources\Sprites\VFX\blooddripoverhead_006.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\toothlets.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\sonarbullets.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\fortunecookie.png" />
+    <EmbeddedResource Include="Resources\Sprites\infinitelockbox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\facestabber.png" />
+    <EmbeddedResource Include="Resources\Sprites\wickedsou.png" />
+    <EmbeddedResource Include="Resources\Sprites\hideousbullets.png" />
+    <EmbeddedResource Include="Resources\Sprites\cubicshells.png" />
+    <EmbeddedResource Include="Resources\Sprites\VFX\greenblood_overhead_001.png" />
+    <EmbeddedResource Include="Resources\Sprites\VFX\greenblood_overhead_002.png" />
+    <EmbeddedResource Include="Resources\Sprites\VFX\greenblood_overhead_003.png" />
+    <EmbeddedResource Include="Resources\Sprites\VFX\greenblood_overhead_004.png" />
+    <EmbeddedResource Include="Resources\Sprites\VFX\greenblood_overhead_005.png" />
+    <EmbeddedResource Include="Resources\Sprites\VFX\greenblood_overhead_006.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\spaceslug.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
