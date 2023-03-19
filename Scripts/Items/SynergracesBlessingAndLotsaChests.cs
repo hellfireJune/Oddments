@@ -16,7 +16,7 @@ namespace Oddments
             Name = "Synergrace's Blessing",
             Description = "<3",
             LongDescription = "A blessing from the matchmaker synergrace. Synergy chests will be substantially more common",
-            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/synergracesblessing.png",
+            SpriteResource = $"{Module.SPRITE_PATH}/synergracesblessing.png",
             Quality = ItemQuality.C,
             PostInitAction = item =>
             {
@@ -225,7 +225,7 @@ namespace Oddments
             Name = "Crown of Synergies",
             Description = "Grand design",
             LongDescription = "All chests become synergy chests",
-            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/crownofsynergy.png",
+            SpriteResource = $"{Module.SPRITE_PATH}/crownofsynergy.png",
             Quality = ItemQuality.A,
             PostInitAction = item =>
             {

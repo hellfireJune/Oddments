@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Oddments.Scripts.Items
+namespace Oddments
 {
     public class BenthicBloomItem : PassiveItem
     {

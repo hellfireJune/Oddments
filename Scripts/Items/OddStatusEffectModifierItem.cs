@@ -3,10 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 namespace Oddments
 {
-    public class ToothyBullets : PassiveItem
+    public class OddStatusEffectModifierItem : PassiveItem
     {
         public const string CavitySynergyName = "Gum disease";
         public static readonly List<string> CavityIDs = new List<string>()
@@ -15,13 +16,19 @@ namespace Oddments
             "bug_boots",
         };
 
-        public static ItemTemplate template = new ItemTemplate(typeof(ToothyBullets))
+        public static StatusEffectItemTemplate toothy_template = new StatusEffectItemTemplate(typeof(OddStatusEffectModifierItem))
         {
             Name = "Toothy Bullets",
-            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/toothlets.png",
+            SpriteResource = $"{Module.SPRITE_PATH}/toothlets.png",
             Description = "Enter the Gumgeon",
             LongDescription = "Bullets have a chance to bleed enemies, causing them to leave damaging blood creep behind",
             Quality = ItemQuality.A,
+
+            ProcChance = 0.15f,
+            SynergyToCheck = CavitySynergyName,
+            SynergyEffect = AilmentsCore.PoisBleedEffect,
+            EffectToApply = AilmentsCore.HemorragingEffect,
+            ProjectileTint = new Color(1, 1f, 0.75f)
         };
 
         public override void Pickup(PlayerController player)
@@ -38,17 +45,25 @@ namespace Oddments
 
         private void Player_PostProcessProjectile(Projectile arg1, float arg2)
         {
-            if (UnityEngine.Random.value < 0.15f)
+            if (UnityEngine.Random.value < ProcChance)
             {
-                if (Owner && Owner.PlayerHasActiveSynergy(CavitySynergyName))
+                if (!string.IsNullOrEmpty(SynergyToCheck) && Owner && Owner.PlayerHasActiveSynergy(SynergyToCheck))
                 {
-                    arg1.statusEffectsToApply.Add(AilmentsCore.PoisBleedEffect);
-                } else
-                {
-                    arg1.statusEffectsToApply.Add(AilmentsCore.HemorragingEffect);
+                    arg1.statusEffectsToApply.Add(SynergyAffect);
                 }
-                arg1.AdjustPlayerProjectileTint(new UnityEngine.Color(1, 1f, 0.75f), 3);
+                else
+                {
+                    arg1.statusEffectsToApply.Add(EffectToApply);
+                }
+                arg1.AdjustPlayerProjectileTint(TintColor, 3);
             }
         }
+
+        public float ProcChance = 0;
+        public string SynergyToCheck;
+
+        public GameActorEffect EffectToApply;
+        public GameActorEffect SynergyAffect;
+        public Color TintColor;
     }
 }

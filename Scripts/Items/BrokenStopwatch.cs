@@ -15,7 +15,7 @@ namespace Oddments
             Name = "Broken Stopwatch",
             Description = "Slowly, slowly, slowly",
             LongDescription = "Increases damage, but the speed at time which the gungeon flows faster while held",
-            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/brokenstopwatch.png",
+            SpriteResource = $"{Module.SPRITE_PATH}/brokenstopwatch.png",
             Quality = ItemQuality.C,
             PostInitAction = item =>
             { item.AddPassiveStatModifier(PlayerStats.StatType.EnemyProjectileSpeedMultiplier, 1.15f, StatModifier.ModifyMethod.MULTIPLICATIVE);

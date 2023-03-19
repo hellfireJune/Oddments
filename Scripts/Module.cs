@@ -12,6 +12,7 @@ using JuneLib.Items;
 using JuneLib;
 using SaveAPI;
 using System.Reflection;
+using Alexandria.EnemyAPI;
 
 namespace Oddments
 {
@@ -26,6 +27,7 @@ namespace Oddments
         public static readonly string TEXT_COLOR = "#ffa944";
         public static readonly string PREFIX = "odmnts";
         public static readonly string ASSEMBLY_NAME = "Oddments";
+        public static readonly string SPRITE_PATH = $"{ASSEMBLY_NAME}/Resources/Sprites/Items";
         public static string FilePathFolder;
         public static AssetBundle oddBundle;
         public const string GUID = "blazeykat.etg.oddments";
@@ -53,9 +55,11 @@ namespace Oddments
                 ItemTemplateManager.Init();
                 GunMaker.InitGuns();
                 Synergies.Init();
+                //EnemiesCore.Init();
 
                 OddSparksDoer.InitPrefabs();
                 AilmentsCore.Init();
+                LightningModifier.Init();
 
                 //ShrineFactory.Init();
                 //ShrapnelAbilityBase.InitSetupStuffYaddaYadda();
@@ -68,6 +72,7 @@ namespace Oddments
                 //VoidFieldsTest.Init();
                 //FortuneMagic.Init();
                 CommandsBox.Init();
+                //EnemyTools.ManualAddOB(typeof(TestOverrideEnemyStuff.TestOverrideBehavior));
                 Log($"{MOD_NAME} v{VERSION} started susccessfully.", TEXT_COLOR);
                 Log($"- \"{BraveUtility.RandomElement(SPLASH_TEXT)}\"", TEXT_COLOR);
             }
@@ -79,9 +84,19 @@ namespace Oddments
             }
         }
         /* Curr Changelog:
+         * Added Cardinal Bullets, Shotgun Charm, Gungeon Veins, Empty Chamber, Lead Cross, Cadueleus
+         * Coupon now has 20 casings minimum
+         * Siphon Item is hopefully less volatile with the whole using consumed items thing
+         * Fixed Hellfire Rounds
+         * 
+         * Non-included 2/3:
+         * Yari Ammolet, Sawblade Ammolet, Rocket Ouroboros, [InfAmmoBlanksItem], [VenusianRoundsItem], [DecanterItem], [MassDevolveItem], [ClockhandItem], [QuickFreezeItem], {CaduceusBulletsItem], [BottledFairyItem],
+         * Jet, Potion of Haste-loading, [RandomBonusActiveUseItem], [PopPopItem], [GunUpgradeItem], [moneyh], Stacked Pickups, [DoubleRoomClearItem], [BiggerAmmoDropsItem], [DoubleAFairAmountOfItemDropsItem]
+         * [RandomPlayerItemItem]
+         * 
          * 
          * Non-included:
-         * [RightfulCurtsy], Majestic Censer, Chrome Splash, [RoomClearOnlyHeals], [BulletPowerDrainItem], [BenthicBloomItem], [BlendedHeartPickup], Eternal Idol, Cellophane, Gungeon Veins, Tractor Beam, Black Cat, [Lemegeton], [FuckyBarrelItem], Sanguine Hook
+         * [RightfulCurtsy], Majestic Censer, Chrome Splash, [RoomClearOnlyHeals], [BulletPowerDrainItem], [BenthicBloomItem], [BlendedHeartPickup], Eternal Idol, Cellophane, Tractor Beam, Black Cat, [Lemegeton], [FuckyBarrelItem], Sanguine Hook
          * guns: Spid-AR and King Worm
          * Added 1 new shrine
          */

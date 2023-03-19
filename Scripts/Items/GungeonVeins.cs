@@ -16,10 +16,11 @@ namespace Oddments
         {
             Name = "Gungeon Veins",
             Description = "Interconnected rooms",
-            Quality = ItemQuality.EXCLUDED,
+            LongDescription = "Clearing a room without taking damage has a chance to instantly clear an uncleared adjacent rooms",
+            Quality = ItemQuality.A,
+            SpriteResource = $"{Module.SPRITE_PATH}/gungeonveins.png",
             PostInitAction = item =>
             {
-                item.RemovePickupFromLootTables();
                 item.AddPassiveStatModifier(PlayerStats.StatType.Curse, 3);
             }
         };

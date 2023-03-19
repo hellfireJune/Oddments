@@ -7,7 +7,7 @@ namespace Oddments
 {
     public class BlendedHeartPickup : HealthPickup
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(BlendedHeartPickup))
+        public static PickupTemplate template = new PickupTemplate(typeof(BlendedHeartPickup))
         {
             Name = "Blended Heart",
             Quality = ItemQuality.EXCLUDED,
@@ -15,25 +15,7 @@ namespace Oddments
             {
                 HealthPickup pickup = (HealthPickup)item;
                 pickup.armorAmount = 1;
-
-                GameObject gameObject = pickup.gameObject;
-                SpeculativeRigidbody specRig = gameObject.AddComponent<SpeculativeRigidbody>();
-                PixelCollider collide = new PixelCollider
-                {
-                    IsTrigger = true,
-                    ManualWidth = 13,
-                    ManualHeight = 16,
-                    ColliderGenerationMode = PixelCollider.PixelColliderGeneration.Manual,
-                    CollisionLayer = CollisionLayer.PlayerBlocker,
-                    ManualOffsetX = 0,
-                    ManualOffsetY = 0
-                };
-                specRig.PixelColliders = new List<PixelCollider>
-                {
-                    collide
-                };
-
-                item.RemovePickupFromLootTables();
+                OddItemIDs.BlendedHeart = item.PickupObjectId;
             }
         };
 

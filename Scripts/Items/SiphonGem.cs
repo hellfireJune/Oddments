@@ -1,7 +1,7 @@
 ﻿using Dungeonator;
+using JuneLib.Items;
 using System.Collections.Generic;
 using System.Linq;
-using JuneLib.Items;
 
 namespace Oddments
 {
@@ -12,7 +12,7 @@ namespace Oddments
             Name = "Siphon Item",
             Description = "Item Absoprtion",
             LongDescription = "Destroys any items and takes their power. Any stats within the items will be permanently applied to the player. Any active effects in the item will be stored in the book",
-            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/siphonitem.png",
+            SpriteResource = $"{Module.SPRITE_PATH}/siphonitem.png",
             Quality = ItemQuality.D,
             Cooldown = 325
         };
@@ -65,18 +65,13 @@ namespace Oddments
             {
                 foreach (var succed in succedActives)
                 {
-                    PlayerItem active = Instantiate(PickupObjectDatabase.GetById(succed).gameObject).GetComponent<PlayerItem>();
-                    if (active)
+                    PlayerItem item = PickupObjectDatabase.GetById(succed) as PlayerItem;
+                    if (RealFakeItemHelper.UseFakeItem(user, item))
                     {
-                        if (active.CanBeUsed(user))
+                        if (item.consumable)
                         {
-                            active.Use(user, out _);
-                            if (active.consumable)
-                            {
-                                succedActives.Remove(succed);
-                            }
+                            succedActives.Remove(succed);
                         }
-                        Destroy(active);
                     }
                 }
             }
@@ -84,9 +79,8 @@ namespace Oddments
             if (items && (items is PlayerItem || items is PassiveItem))
             {
                 List<StatModifier> stats;
-                if (items is PlayerItem)
+                if (items is PlayerItem playerItem)
                 {
-                    PlayerItem playerItem = (PlayerItem)items;
                     stats = playerItem.passiveStatModifiers.ToList();
                     succedActives.Add(items.PickupObjectId);
                 }

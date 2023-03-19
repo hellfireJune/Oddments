@@ -20,7 +20,7 @@ namespace Oddments
             Name = "Mimic Bait",
             Description = "Strong Coffee!",
             LongDescription = "Increases the chance for mimics to appear as chests.\n\nAs hard workers, mimics cant resist a cup of Coffee.",
-            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/mimicbait.png",
+            SpriteResource = $"{Module.SPRITE_PATH}/mimicbait.png",
             Quality = ItemQuality.C,
             PostInitAction = item =>
             {

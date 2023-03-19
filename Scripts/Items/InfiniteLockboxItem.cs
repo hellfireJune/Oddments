@@ -13,7 +13,7 @@ namespace Oddments
             Description = "Down the chest-hole",
             LongDescription = "Uses all of your keys to spawn an up-to infinite amount of rewards\n\nOpening one reveals an equally as large box inside with just as many locks",
             Quality = ItemQuality.C,
-            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/infinitelockbox.png",
+            SpriteResource = $"{Module.SPRITE_PATH}/infinitelockbox.png",
             PostInitAction = item =>
             {
                 ((PlayerItem)item).consumable = true;

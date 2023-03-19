@@ -136,8 +136,10 @@ namespace Oddments
         public enum SparksType
         {
             SPARKS_ADDITIVE_DEFAULT,
-            VEGETABLE_BLOOD
+            VEGETABLE_BLOOD,
+            
         }
+
         public static void InitPrefabs()
         {
             greenBlood = FakePrefab.Clone((GameObject)UnityEngine.Object.Instantiate(ResourceCache.Acquire("Global VFX/BloodSystem"), Vector3.zero, Quaternion.identity));

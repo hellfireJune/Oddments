@@ -15,7 +15,7 @@ namespace Oddments
             Name = "Throwing Knife",
             Quality = ItemQuality.C,
             Description = "Facestabber",
-            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/facestabber.png",
+            SpriteResource = $"{Module.SPRITE_PATH}/facestabber.png",
             LongDescription = "Some tactical throwing knives. Causes enemies to bleed on strike",
             Cooldown = 250,
             CooldownType = ItemBuilder.CooldownType.Damage,

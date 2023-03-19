@@ -49,7 +49,7 @@ namespace Oddments
             Quality = ItemQuality.D,
             Description = "Web",
             LongDescription = "A token of the phaser spider's friendship. Phaser Spider's are allied with you, and web will now affect the gundead instead",
-            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/weaverscharm.png",
+            SpriteResource = $"{Module.SPRITE_PATH}/weaverscharm.png",
             PostInitAction = item =>
             {
                 Hook hook = new Hook(typeof(DeadlyDeadlyGoopManager).GetMethod("GetGoopManagerForGoopType", BindingFlags.Static | BindingFlags.Public), typeof(WebImmunityItem).GetMethod("ReplaceWebGoop"));
@@ -84,7 +84,7 @@ namespace Oddments
         public static ItemTemplate template = new ItemTemplate(typeof(SpiderBoots))
         {
             Name = "Spider Boots",
-            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/silkboots.png",
+            SpriteResource = $"{Module.SPRITE_PATH}/silkboots.png",
             Description = "Spin a web unseen",
             LongDescription = "Walking leaves a silk trail. Lets the user glide accross web unharmed, with gundead now being caught in it",
             Quality = ItemQuality.C,

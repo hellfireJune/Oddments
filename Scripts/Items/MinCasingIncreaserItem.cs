@@ -14,9 +14,9 @@ namespace Oddments
         public static ItemTemplate template = new ItemTemplate(typeof(MinCasingIncreaserItem))
         {
             Name = "Flimsy Coupon",
-            Description = "15% off!",
-            LongDescription = "Worth approximately 15 casings, just holding this will mean you can never go below 15 casings of currency",
-            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/coupon.png",
+            Description = "20% off!",
+            LongDescription = "Worth approximately 20 casings, just holding this will mean you can never go below 20 casings of currency",
+            SpriteResource = $"{Module.SPRITE_PATH}/coupon.png",
             Quality = ItemQuality.D,
         };
 
@@ -67,7 +67,7 @@ namespace Oddments
             public static ItemTemplate template = new ItemTemplate(typeof(MemberCard))
             {
                 Name = "Member Card",
-                SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/membercard.png",
+                SpriteResource = $"{Module.SPRITE_PATH}/membercard.png",
                 Description = "Bello's Special Customer",
                 LongDescription = "Purchases at the shop will add 7.5% of what you spent into a minimum cap your casings can never fall below",
                 Quality = ItemQuality.A,

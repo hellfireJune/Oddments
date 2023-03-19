@@ -13,7 +13,7 @@ namespace Oddments
             Name = "Lead Heart",
             Description = "My Iron Lung",
             LongDescription = "Empty hearts will turn into shields upon taking damage",
-            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/leadheart.png",
+            SpriteResource = $"{Module.SPRITE_PATH}/leadheart.png",
             Quality = ItemQuality.D,
         };
 

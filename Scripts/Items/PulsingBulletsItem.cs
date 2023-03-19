@@ -10,12 +10,12 @@ namespace Oddments
         {
             Name = "Hideous Bullets",
             Description = "Pulsating flesh",
-            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/hideousbullets.png",
+            SpriteResource = $"{Module.SPRITE_PATH}/hideousbullets.png",
             LongDescription = "Bullets will pulsate in damage and size, leading to on average larger bullets with higher damage.",
             Quality = ItemQuality.C,
             PostInitAction = item =>
             {
-                item.SetTag("bullet_modifier");
+                item.MakeBulletMod();
             }
         };
 

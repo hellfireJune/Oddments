@@ -17,7 +17,7 @@ namespace Oddments
             Quality = ItemQuality.B,
             Description = "Life => keys",
             LongDescription = "Turns hearts into keys, allowing you to use your life in place of keys, if you've ran out of keys.",
-            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/howdoispritegungeon.png",
+            SpriteResource = $"{Module.SPRITE_PATH}/howdoispritegungeon.png",
         };
         public override void Pickup(PlayerController player)
         {
@@ -36,16 +36,28 @@ namespace Oddments
         }
         public static bool ShouldSkipHook = false;
 
-        [HarmonyPatch(typeof(PlayerConsumables), nameof(PlayerConsumables.KeyBullets), MethodType.Getter)]
-        [HarmonyPostfix]
+        /*[HarmonyPatch(typeof(PlayerConsumables), nameof(PlayerConsumables.KeyBullets), MethodType.Getter)]
         public static void Getter(ref int __result)
         {
-            if (ShouldSkipHook) return;
+            if (LogIfSkip) { ETGModConsole.Log("will it skip?"); }
+            if (ShouldSkipHook) { return;  }
+            if (LogIfSkip) { ETGModConsole.Log("didnt skip"); }
             if (IsFlagSetAtAll(typeof(KeyOfLoveItem)))
             {
+                if (LogIfSkip) { ETGModConsole.Log((int)GetAllHP()); }
                 __result += (int)GetAllHP();
+                if (LogIfSkip) { ETGModConsole.Log(__result); }
             }
         }
+
+        public static int GetActualKeys(PlayerController player)
+        {
+            ShouldSkipHook = true;
+            int keys = player.carriedConsumables.KeyBullets;
+            ShouldSkipHook = false;
+            return keys;
+        }
+        public static bool LogIfSkip = false;
 
         public static float GetAllHP()
         {
@@ -54,11 +66,15 @@ namespace Oddments
         }
 
         [HarmonyPatch(typeof(PlayerConsumables), nameof(PlayerConsumables.KeyBullets), MethodType.Setter)]
-        [HarmonyPrefix]
         public static void TakeHeartsWhenKey(PlayerConsumables __instance, ref int value)
         {
             if (!IsFlagSetAtAll(typeof(KeyOfLoveItem)))
             { return; }
+            LogIfSkip = true;
+            Debug.Log(__instance.KeyBullets);
+            ETGModConsole.Log(value);
+            ETGModConsole.Log(ShouldSkipHook);
+            LogIfSkip = false;
             value -= (int)GetAllHP();
             if (value <= 0)
             {
@@ -79,7 +95,7 @@ namespace Oddments
                 value = 0;
 
                 if (p1 == null) { return; }
-                p1.ForceSetCurrentHealth(p1.GetCurrentHealth() - dmgValue/* - 0.5f*/);
+                p1.ForceSetCurrentHealth(p1.GetCurrentHealth() - dmgValue/* - 0.5f);
 
             }
         }
@@ -96,6 +112,6 @@ namespace Oddments
         public static void No()
         {
             ShouldSkipHook = false;
-        }
+        }*/
     }
 }

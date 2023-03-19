@@ -13,7 +13,7 @@ namespace Oddments
 {
     public class EternalIdol : PassiveItem
     {
-        private static readonly string chainSprite = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/mimicbait.png";
+        private static readonly string chainSprite = $"{Module.SPRITE_PATH}/mimicbait.png";
 
         public static ItemTemplate template = new ItemTemplate(typeof(EternalIdol))
         {

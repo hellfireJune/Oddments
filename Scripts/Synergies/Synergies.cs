@@ -12,7 +12,7 @@ namespace Oddments
         {
             CustomSynergies.Add(HelixBulletsSinWave.SynergyName, HelixBulletsSinWave.IDs);
             CustomSynergies.Add(MimicBait.GnarlySynergyName, MimicBait.GnarlyIDs);
-            CustomSynergies.Add(ToothyBullets.CavitySynergyName, ToothyBullets.CavityIDs);
+            CustomSynergies.Add(OddStatusEffectModifierItem.CavitySynergyName, OddStatusEffectModifierItem.CavityIDs);
         }
     }
 }

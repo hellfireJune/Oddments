@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using JuneLib;
 using Dungeonator;
-using Alexandria.Misc;
+using Alexandria;
 
 namespace Oddments
 {
@@ -13,26 +13,21 @@ namespace Oddments
     {
         public static ItemTemplate template = new ItemTemplate(typeof(RoomClearOnlyHeals))
         {
-
-            PostInitAction = item =>
-            {
-                item.RemovePickupFromLootTables();
-            }
         };
 
         public override void Pickup(PlayerController player)
         {
             base.Pickup(player);
-            JuneLibCore.OnRoomRewardDetermineContents += PreRoomClearReward;
+            RoomRewardAPI.OnRoomRewardDetermineContents += PreRoomClearReward;
         }
 
         public override void DisableEffect(PlayerController player)
         {
-            JuneLibCore.OnRoomRewardDetermineContents -= PreRoomClearReward;
+            RoomRewardAPI.OnRoomRewardDetermineContents -= PreRoomClearReward;
             base.DisableEffect(player);
         }
 
-        public void PreRoomClearReward(RoomHandler room, JuneLibRoomRewardAPI.ValidRoomRewardContents contents, float chance)
+        public void PreRoomClearReward(RoomHandler room, RoomRewardAPI.ValidRoomRewardContents contents, float chance)
         {
             foreach (var i in healthPickups)
             {

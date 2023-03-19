@@ -16,10 +16,10 @@ namespace Oddments
             Description = "Oddments",
             LongDescription = "Will mimic the effect of other bullet items while held",
             Quality = ItemQuality.B,
-            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/oddshells.png",
+            SpriteResource = $"{Module.SPRITE_PATH}/oddshells.png",
             PostInitAction = item =>
             {
-                item.SetTag("bullet_modifier");
+                item.MakeBulletMod();
                 item.SetupUnlockOnCustomFlag(CustomDungeonFlags.EVERY_VANILLA_BULLET_UNLOCKED, true);
                 item.AddUnlockText("Unlock every vanilla bullet modifier (except Chance Bullets and Chaos Bullets)");
             }

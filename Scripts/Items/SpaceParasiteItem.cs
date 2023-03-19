@@ -14,7 +14,7 @@ namespace Oddments
             Name = "Space Slug",
             Quality = ItemQuality.C,
             Description = "Symbiotic Friend",
-            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/spaceslug.png",
+            SpriteResource = $"{Module.SPRITE_PATH}/spaceslug.png",
             LongDescription = "Increases the power of any gun you kill a boss with\n\nA parasite whose diet consists solely of boss monsters and whose waste consists of damage ups"
         };
 

@@ -16,7 +16,7 @@ namespace Oddments
         {
             Name = "Daisuke's Gift",
             Description = "Random up!",
-            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/daisukesshard.png",
+            SpriteResource = $"{Module.SPRITE_PATH}/daisukesshard.png",
             LongDescription = longDescStart + longDescEnd,
             Quality = ItemQuality.B,
         };

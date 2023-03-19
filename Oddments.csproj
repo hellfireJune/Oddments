@@ -61,9 +61,37 @@
     <Compile Include="Scripts\Ailments\CustomGoopEffectDoer.cs" />
     <Compile Include="Scripts\Ailments\GameActorHemorragingEffect.cs" />
     <Compile Include="Scripts\Ailments\GameActorWarpEffect.cs" />
+    <Compile Include="Scripts\Enemies\Debug\TestOverrideEnemyStuff.cs" />
+    <Compile Include="Scripts\Enemies\EnemiesCore.cs" />
+    <Compile Include="Scripts\Enemies\WaveOne\PlagueShellKinBehaviour.cs" />
     <Compile Include="Scripts\Helpers\AssetBundleLoader.cs" />
     <Compile Include="Scripts\AchievementStuff\JuneSaveManagerCore.cs" />
+    <Compile Include="Scripts\Items\AmmoOverloaderItem.cs" />
+    <Compile Include="Scripts\Items\ArmorGeneratingOnRoomClearItem.cs" />
+    <Compile Include="Scripts\Items\BiggerAmmoDropsItem.cs" />
     <Compile Include="Scripts\Items\BlackCatItem.cs" />
+    <Compile Include="Scripts\Items\BottledFairyItem.cs" />
+    <Compile Include="Scripts\Items\CaduceusBulletsItem.cs" />
+    <Compile Include="Scripts\Items\CardinalBulletsItem.cs" />
+    <Compile Include="Scripts\Items\ClockHandItem.cs" />
+    <Compile Include="Scripts\Items\Core\LightningModifier.cs" />
+    <Compile Include="Scripts\Items\DoubleRoomClearItem.cs" />
+    <Compile Include="Scripts\Items\ElectricRoundsItem.cs" />
+    <Compile Include="Scripts\Items\Guns\PlasmaPistol.cs" />
+    <Compile Include="Scripts\Items\Guns\UnnamedTestGun.cs" />
+    <Compile Include="Scripts\Items\GunUpgradeItem.cs" />
+    <Compile Include="Scripts\Items\PickupReplacerItem.cs" />
+    <Compile Include="Scripts\Items\HellfireItem.cs" />
+    <Compile Include="Scripts\Items\InfAmmoBlanksItem.cs" />
+    <Compile Include="Scripts\Items\InfBlankAmmosItem.cs" />
+    <Compile Include="Scripts\Items\OddStatusEffectModifierItem.cs" />
+    <Compile Include="Scripts\Items\Pickups\GiantAmmoCratePickup.cs" />
+    <Compile Include="Scripts\Items\Pickups\StackedPickups.cs" />
+    <Compile Include="Scripts\Items\PopPopItem.cs" />
+    <Compile Include="Scripts\Items\RandomBonusActiveUseItem.cs" />
+    <Compile Include="Scripts\Items\SpawnFriendlyGrenadeItem.cs" />
+    <Compile Include="Scripts\Items\TempStatsPlayerItem.cs" />
+    <Compile Include="Scripts\Items\MassDevolveItem.cs" />
     <Compile Include="Scripts\Items\Pickups\BlendedHeartPickup.cs" />
     <Compile Include="Scripts\Items\BrokenStopwatch.cs" />
     <Compile Include="Scripts\Items\BulletPowerDrainItem.cs" />
@@ -81,23 +109,27 @@
     <Compile Include="Scripts\Items\KeyOfLoveItem.cs" />
     <Compile Include="Scripts\Items\MajesticCenser.cs" />
     <Compile Include="Scripts\Items\PulsingBulletsItem.cs" />
+    <Compile Include="Scripts\Items\QuickFreezeItem.cs" />
     <Compile Include="Scripts\Items\RightfulCurtsy.cs" />
     <Compile Include="Scripts\Items\RingOfOddFriendship.cs" />
     <Compile Include="Scripts\Items\RoomClearOnlyHeals.cs" />
-    <Compile Include="Scripts\Items\SanguineHook.cs" />
+    <Compile Include="Scripts\Items\SanguineHookItem.cs" />
+    <Compile Include="Scripts\Items\ShotgunCharmItem.cs" />
     <Compile Include="Scripts\Items\SonarBullets.cs" />
     <Compile Include="Scripts\Items\SpaceParasiteItem.cs" />
     <Compile Include="Scripts\Items\FuckyBarrelItem.cs" />
     <Compile Include="Scripts\Items\ThrowingKnifeItem.cs" />
-    <Compile Include="Scripts\Items\ToothyBullets.cs" />
     <Compile Include="Scripts\Items\TractorBeamItem.cs" />
+    <Compile Include="Scripts\Items\VenusianRoundsItem.cs" />
+    <Compile Include="Scripts\Items\VolleyOnBlankItem.cs" />
+    <Compile Include="Scripts\Items\VolleySpamPlayerItem.cs" />
     <Compile Include="Scripts\Items\WickedSoul.cs" />
     <Compile Include="Scripts\Items\MinCasingIncreaserItem.cs" />
     <Compile Include="Scripts\Items\DoubleHealingItem.cs" />
     <Compile Include="Scripts\Items\DaisukesGift.cs" />
     <Compile Include="Scripts\Items\AngryHeart.cs" />
     <Compile Include="Scripts\Items\GoldenMagnet.cs" />
-    <Compile Include="Scripts\Items\HellfireRounds.cs" />
+    <Compile Include="Scripts\Items\HellfireRoundsItem.cs" />
     <Compile Include="Scripts\Items\IceLeech.cs" />
     <Compile Include="Scripts\Items\JamIdol.cs" />
     <Compile Include="Scripts\Items\Lemegeton.cs" />
@@ -114,6 +146,7 @@
     <Compile Include="Scripts\Items\TwoDollarCoin.cs" />
     <Compile Include="Scripts\Items\WebImmunityItemWeaversCharmSpiderBoots.cs" />
     <Compile Include="Scripts\Items\WhollyGhost.cs" />
+    <Compile Include="Scripts\Items\Core\!_Core.cs" />
     <Compile Include="Scripts\Misc\CommandsBox.cs" />
     <Compile Include="Scripts\Misc\FortuneMagic.cs" />
     <Compile Include="Scripts\Misc\FloorGenFunnyTests.cs" />
@@ -145,7 +178,7 @@
     <EmbeddedResource Include="Resources\Rooms\FireplaceTestRoom.room" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Sprites\mimicbait.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\mimicbait.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="0Harmony, Version=2.9.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -217,67 +250,67 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Sprites\hellfirerounds.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\hellfirerounds.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\you.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Sprites\bookofsin.png" />
-    <EmbeddedResource Include="Resources\Sprites\brokenstopwatch.png" />
-    <EmbeddedResource Include="Resources\Sprites\crownoflove.png" />
-    <EmbeddedResource Include="Resources\Sprites\crownofquality.png" />
-    <EmbeddedResource Include="Resources\Sprites\crownofsynergy.png" />
-    <EmbeddedResource Include="Resources\Sprites\crownofwar.png" />
-    <EmbeddedResource Include="Resources\Sprites\daisukesshard.png" />
-    <EmbeddedResource Include="Resources\Sprites\derringerssack.png" />
-    <EmbeddedResource Include="Resources\Sprites\jammedidol.png" />
-    <EmbeddedResource Include="Resources\Sprites\rejuvenatingrack.png" />
-    <EmbeddedResource Include="Resources\Sprites\safetyscissors.png" />
-    <EmbeddedResource Include="Resources\Sprites\silkboots.png" />
-    <EmbeddedResource Include="Resources\Sprites\synergracesblessing.png" />
-    <EmbeddedResource Include="Resources\Sprites\twodollarcoin.png" />
-    <EmbeddedResource Include="Resources\Sprites\weaverscharm.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\bookofsin.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\brokenstopwatch.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\crownoflove.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\crownofquality.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\crownofsynergy.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\crownofwar.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\daisukesshard.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\derringerssack.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\jammedidol.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\rejuvenatingrack.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\safetyscissors.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\silkboots.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\synergracesblessing.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\twodollarcoin.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\weaverscharm.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Sprites\Shrines\placeholdershrineguy.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Sprites\mimicwhistle.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\mimicwhistle.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Sprites\siphonitem.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\siphonitem.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Sprites\frostleech.png" />
-    <EmbeddedResource Include="Resources\Sprites\lightweightarmor.png" />
-    <EmbeddedResource Include="Resources\Sprites\thewhollyghost.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\frostleech.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\lightweightarmor.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\thewhollyghost.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Sprites\coupon.png" />
-    <EmbeddedResource Include="Resources\Sprites\goldenmagnet.png" />
-    <EmbeddedResource Include="Resources\Sprites\leadheart.png" />
-    <EmbeddedResource Include="Resources\Sprites\membercard.png" />
-    <EmbeddedResource Include="Resources\Sprites\oddshells.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\coupon.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\goldenmagnet.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\leadheart.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\membercard.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\oddshells.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Sprites\DammedRound\dammedround_001.png" />
-    <EmbeddedResource Include="Resources\Sprites\DammedRound\dammedround_002.png" />
-    <EmbeddedResource Include="Resources\Sprites\DammedRound\dammedround_003.png" />
-    <EmbeddedResource Include="Resources\Sprites\DammedRound\dammedround_004.png" />
-    <EmbeddedResource Include="Resources\Sprites\DammedRound\dammedround_005.png" />
-    <EmbeddedResource Include="Resources\Sprites\DammedRound\dammedround_006.png" />
-    <EmbeddedResource Include="Resources\Sprites\devilscontract.png" />
-    <EmbeddedResource Include="Resources\Sprites\ringofoddfriendship.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\DammedRound\dammedround_001.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\DammedRound\dammedround_002.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\DammedRound\dammedround_003.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\DammedRound\dammedround_004.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\DammedRound\dammedround_005.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\DammedRound\dammedround_006.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\devilscontract.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\ringofoddfriendship.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Misc\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Sprites\howdoispritegungeon.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\howdoispritegungeon.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Sprites\MTGSprites\ProjectileCollection\oddments_throwingknifeprojecctile_001.png" />
@@ -298,20 +331,20 @@
     <EmbeddedResource Include="Resources\Sprites\VFX\blooddripoverhead_006.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Sprites\toothlets.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\toothlets.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Sprites\sonarbullets.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\sonarbullets.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Sprites\fortunecookie.png" />
-    <EmbeddedResource Include="Resources\Sprites\infinitelockbox.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\fortunecookie.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\infinitelockbox.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Sprites\facestabber.png" />
-    <EmbeddedResource Include="Resources\Sprites\wickedsou.png" />
-    <EmbeddedResource Include="Resources\Sprites\hideousbullets.png" />
-    <EmbeddedResource Include="Resources\Sprites\cubicshells.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\facestabber.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\wickedsou.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\hideousbullets.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\cubicshells.png" />
     <EmbeddedResource Include="Resources\Sprites\VFX\greenblood_overhead_001.png" />
     <EmbeddedResource Include="Resources\Sprites\VFX\greenblood_overhead_002.png" />
     <EmbeddedResource Include="Resources\Sprites\VFX\greenblood_overhead_003.png" />
@@ -320,7 +353,27 @@
     <EmbeddedResource Include="Resources\Sprites\VFX\greenblood_overhead_006.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Sprites\spaceslug.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\spaceslug.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\Items\cardinallets.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\shotguncharm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\Items\gungeonveins.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\Items\sanguinehook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\Enemies\Placeholder\iloveweezer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\Items\cadueleus.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\emptychamber.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\Items\leadcross.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

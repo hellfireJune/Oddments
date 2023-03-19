@@ -13,7 +13,7 @@ namespace Oddments
             Name = "Rejuvenation Rack",
             Description = "Breathe in the air",
             LongDescription = "All healing is doubled",
-            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/rejuvenatingrack.png",
+            SpriteResource = $"{Module.SPRITE_PATH}/rejuvenatingrack.png",
             Quality = ItemQuality.A,
         };
 

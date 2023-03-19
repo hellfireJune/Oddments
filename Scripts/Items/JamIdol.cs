@@ -14,11 +14,12 @@ namespace Oddments
             Name = "Jam Idol",
             Description = "Jammon",
             LongDescription = "Jammed enemies are more plentiful",
-            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/jammedidol.png",
+            SpriteResource = $"{Module.SPRITE_PATH}/jammedidol.png",
             Quality = ItemQuality.D,
             PostInitAction = item =>
             {
                 item.AddPassiveStatModifier(PlayerStats.StatType.Curse, 1);
+                item.AddToSubShop(ItemBuilder.ShopType.Cursula);
             }
         };
 

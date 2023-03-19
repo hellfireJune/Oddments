@@ -17,7 +17,7 @@ namespace Oddments
             Name = "Ring of Odd Friendship",
             Description = "Odd friends",
             LongDescription = "Gives you a random companion that changes whenever you descend to a new floor in the Gungeon.",
-            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/ringofoddfriendship.png",
+            SpriteResource = $"{Module.SPRITE_PATH}/ringofoddfriendship.png",
             Quality = ItemQuality.B,
             PostInitAction = item =>
             {

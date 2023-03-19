@@ -15,7 +15,7 @@ namespace Oddments
             Name = "Crown of Quality",
             Description = "Guarantee",
             LongDescription = "D-Tier chests can no longer spawn, and will be replaced by higher tier chests",
-            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/crownofquality.png",
+            SpriteResource = $"{Module.SPRITE_PATH}/crownofquality.png",
             Quality = ItemQuality.C,
         };
 
@@ -39,7 +39,7 @@ namespace Oddments
             Quality = ItemQuality.D,
             Description = "All is fair",
             LongDescription = "All chests will drop guns instead of items",
-            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/crownofwar.png",
+            SpriteResource = $"{Module.SPRITE_PATH}/crownofwar.png",
             PostInitAction = item =>
             {
                 item.AddPassiveStatModifier(PlayerStats.StatType.Curse, 1);
@@ -64,7 +64,7 @@ namespace Oddments
         {
             Name = "Crown of Love",
             Quality = ItemQuality.C,
-            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/crownoflove.png",
+            SpriteResource = $"{Module.SPRITE_PATH}/crownoflove.png",
             Description = "All is fair",
             LongDescription = "All chests will drop items instead of guns",
             PostInitAction = item =>

@@ -17,7 +17,7 @@ namespace Oddments
         {
             Name = "Safety Scissors",
             Description = "Shoot the Fuse!", //https://www.youtube.com/watch?v=4Emb7zasmRc
-            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/safetyscissors.png",
+            SpriteResource = $"{Module.SPRITE_PATH}/safetyscissors.png",
             LongDescription = "Chests will no longer spawn with fuses\n\nEven a blade as blunt as this incurrs the wrath of the jammed",
             Quality = ItemQuality.D,
             PostInitAction = item =>

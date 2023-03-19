@@ -15,7 +15,7 @@ namespace Oddments
             Name = "The Wholly Ghost",
             Description = "Woo!",
             LongDescription = "Enemies have a chance to re-animate as hollowpoints. All hollowpoints pledge allegiance to you.\n\nscrunkly",
-            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/thewhollyghost.png",
+            SpriteResource = $"{Module.SPRITE_PATH}/thewhollyghost.png",
             Quality = ItemQuality.C,
             PostInitAction = item =>
             {

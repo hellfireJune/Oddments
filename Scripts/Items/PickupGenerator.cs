@@ -15,7 +15,7 @@ namespace Oddments
         public static ItemTemplate template = new ItemTemplate(typeof(PickupGenerator))
         {
             Name = "The Book of Sin",
-            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/bookofsin.png",
+            SpriteResource = $"{Module.SPRITE_PATH}/bookofsin.png",
             Description = "Wrath of the Jam",
             LongDescription = "Spawns a random pickup on use. Cooldown is based on rooms cleared.",
             Quality = ItemQuality.B,
@@ -54,7 +54,7 @@ namespace Oddments
         public static ItemTemplate template = new ItemTemplate(typeof(BunchaChoicePickupsYknow))
         {
             Name = "Derringer's Sack",
-            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/derringerssack.png",
+            SpriteResource = $"{Module.SPRITE_PATH}/derringerssack.png",
             Description = "Bountiful Harvest",
             LongDescription = "An old tool of the god of harvest, Derringer. Contains anything you'd need",
             Quality = ItemQuality.C,

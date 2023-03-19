@@ -13,14 +13,14 @@ namespace Oddments
         public static ItemTemplate template = new ItemTemplate(typeof(HookWormItem))
         {
             Name = "Cubic Shells",
-            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/cubicshells.png",
+            SpriteResource = $"{Module.SPRITE_PATH}/cubicshells.png",
             Description = "Power of 3",
             LongDescription = "Makes reloading easier, but bullets will take on a rectangular travel pattern",
             Quality = ItemQuality.C,
             PostInitAction = item =>
             {
                 item.AddPassiveStatModifier(PlayerStats.StatType.ReloadSpeed, 0.5f, StatModifier.ModifyMethod.MULTIPLICATIVE);
-                item.SetTag("bullet_modifier");
+                item.MakeBulletMod();
             }
         };
 

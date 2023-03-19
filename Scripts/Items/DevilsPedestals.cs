@@ -19,14 +19,14 @@ namespace Oddments
             Name = "The Master's Pact",
             Description = "To sign away eternity",
             LongDescription = "All master rounds are replaced with cursed \"Dammed Rounds\", which give an additional damage up.",
-            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/devilscontract.png",
+            SpriteResource = $"{Module.SPRITE_PATH}/devilscontract.png",
             Quality = ItemQuality.B,
         };
 
         public static ItemTemplate template2 = new ItemTemplate(typeof(EvilMasteryItem))
         {
             Name = "Damned Round",
-            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/DammedRound/dammedround_006.png",
+            SpriteResource = $"{Module.SPRITE_PATH}/DammedRound/dammedround_006.png",
             Description = "Hellfire",
             LongDescription = "A token of floor mastery, corrupted and twisted by the infernal depths of bullet hell",
             Quality = ItemQuality.SPECIAL,
@@ -45,7 +45,7 @@ namespace Oddments
                 sprites = new List<int>();
                 for (int i = 1; i < 6; i++)
                 {
-                    sprites.Add(SpriteBuilder.AddSpriteToCollection($"{Module.ASSEMBLY_NAME}/Resources/Sprites/DammedRound/dammedround_00{i}.png", item.sprite.Collection));
+                    sprites.Add(SpriteBuilder.AddSpriteToCollection($"{Module.SPRITE_PATH}/DammedRound/dammedround_00{i}.png", item.sprite.Collection));
                 }
             }
         };

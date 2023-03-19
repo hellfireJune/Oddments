@@ -71,9 +71,9 @@ namespace Oddments
         public static ItemTemplate template = new ItemTemplate(typeof(FortuneCookieItem))
         {
             Name = "Fortune Cookie",
-            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/fortunecookie.png",
+            SpriteResource = $"{Module.SPRITE_PATH}/fortunecookie.png",
             Description = "Your fortune is:",
-            LongDescription = "Higher chance for rooms to drop rewards upon clearing them\n\nFilled with absolutely babbling nonsense no-one in their right mind would pay attention to.",
+            LongDescription = "While held, rooms have a higher chance to drop pickups upon defeat.\n\nFilled with absolutely babbling nonsense no-one in their right mind would pay attention to.",
             Cooldown = 3,
             CooldownType = ItemBuilder.CooldownType.PerRoom,
             Quality = ItemQuality.B,
@@ -88,7 +88,7 @@ namespace Oddments
 
         private void AddRoomClearChance(RoomHandler arg1, RoomRewardAPI.ValidRoomRewardContents arg2, float arg3)
         {
-            arg2.additionalRewardChance -= 0.2f;
+            arg2.additionalRewardChance -= /*0.*/2f;
         }
         public override void Pickup(PlayerController player)
         {

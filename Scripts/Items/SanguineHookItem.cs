@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Oddments
 {
-    public class SanguineHook : PlayerItem
+    public class SanguineHookItem : PlayerItem
     {
         public SanguineGrappleModule hookData;
 
@@ -16,10 +16,12 @@ namespace Oddments
 
         public const string PlaceholderSprite = "Oddments/Resources/example_item_sprite.png";
 
-        public static ItemTemplate template = new ItemTemplate(typeof(SanguineHook))
+        public static ItemTemplate template = new ItemTemplate(typeof(SanguineHookItem))
         {
             Name = "Sanguine Hook",
-            Quality = ItemQuality.EXCLUDED,
+            Description = "Crazy Battle",
+            SpriteResource = $"{Module.SPRITE_PATH}/sanguinehook.png",
+            Quality = ItemQuality.B,
             PostInitAction = item =>
             {
                 /*SanguineHook hook = item as SanguineHook;

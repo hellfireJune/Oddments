@@ -13,7 +13,7 @@ namespace Oddments
         {
             Name = "Mimic Whistle",
             Quality = ItemQuality.D,
-            SpriteResource = $"{Module.ASSEMBLY_NAME}/Resources/Sprites/mimicwhistle.png",
+            SpriteResource = $"{Module.SPRITE_PATH}/mimicwhistle.png",
             Description = "Tweet!",
             LongDescription = "Turns chests into lockless chests. How lucky!",
             Cooldown = 300f,

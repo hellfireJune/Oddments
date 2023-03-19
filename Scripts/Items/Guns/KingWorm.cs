@@ -10,7 +10,7 @@ namespace Oddments
 {
     public class KingWorm : GunBehaviour
     {
-        public static GunTemplate gunTemplate = new GunTemplate(typeof(SpidAR))
+        public static GunTemplate gunTemplate = new GunTemplate(typeof(KingWorm))
         {
             Name = "King Worm",
             PostInitAction = gun =>

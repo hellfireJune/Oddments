@@ -34,6 +34,7 @@ namespace Oddments
                 {
                     PickupObjectDatabase.GetById(item).SetTag(lemegetonNonSummonableTag);
                 }
+                PickupObjectDatabase.GetById(443).SetTag("valid_use_if_dettached");
 
                 BuildPrefab(); //OrbitalUtility.MakeOrbital("Lemegeton Orbital", 30, 10, 3, PlayerOrbital.OrbitalMotionStyle.ORBIT_PLAYER_ALWAYS, 1, $"{Module.ASSEMBLY_NAME}/Resources/example_item_sprite", new Vector2(14, 14), Vector2.zero);
             }
