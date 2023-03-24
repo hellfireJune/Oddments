@@ -84,15 +84,15 @@ namespace Oddments
             }
         }
         /* Curr Changelog:
-         * Added Cardinal Bullets, Shotgun Charm, Gungeon Veins, Empty Chamber, Lead Cross, Cadueleus
+         * Added Cardinal Bullets, Shotgun Charm, Gungeon Veins, Empty Chamber, Lead Cross, Cadueleus, Reloadium, Razor Chamber, Dodge Target
          * Coupon now has 20 casings minimum
          * Siphon Item is hopefully less volatile with the whole using consumed items thing
          * Fixed Hellfire Rounds
          * 
          * Non-included 2/3:
          * Yari Ammolet, Sawblade Ammolet, Rocket Ouroboros, [InfAmmoBlanksItem], [VenusianRoundsItem], [DecanterItem], [MassDevolveItem], [ClockhandItem], [QuickFreezeItem], {CaduceusBulletsItem], [BottledFairyItem],
-         * Jet, Potion of Haste-loading, [RandomBonusActiveUseItem], [PopPopItem], [GunUpgradeItem], [moneyh], Stacked Pickups, [DoubleRoomClearItem], [BiggerAmmoDropsItem], [DoubleAFairAmountOfItemDropsItem]
-         * [RandomPlayerItemItem]
+         * Jet, Potion of Haste-loading, [RandomBonusActiveUseItem], [PopPopItem], [GunUpgradeItem], [moneyh], Stacked Pickups, [DoubleRoomClearItem], [BiggerAmmoDropsItem], [DoubleAFairAmountOfItemDropsItem],
+         * [RandomPlayerItemItem], [SpawnFriendlyGrenadeItem], [ReBumbClipShotItem]
          * 
          * 
          * Non-included:
