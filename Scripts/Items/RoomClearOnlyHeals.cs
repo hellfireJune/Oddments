@@ -11,7 +11,7 @@ namespace Oddments
 {
     public class RoomClearOnlyHeals : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(RoomClearOnlyHeals))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(RoomClearOnlyHeals))
         {
         };
 

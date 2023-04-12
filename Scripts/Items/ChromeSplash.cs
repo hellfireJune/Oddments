@@ -11,7 +11,7 @@ namespace Oddments
 {
     public class ChromeSplash : PlayerItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(ChromeSplash))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(ChromeSplash))
         {
             Name = "Chrome Splash",
             Quality = ItemQuality.EXCLUDED,

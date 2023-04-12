@@ -1,4 +1,5 @@
-﻿using JuneLib.Items;
+﻿using Alexandria.ItemAPI;
+using JuneLib.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,18 @@ namespace Oddments
 {
     internal class ReBumpClipShotItem : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(ReBumpClipShotItem));
+        public static OddItemTemplate template = new OddItemTemplate(typeof(ReBumpClipShotItem))
+        {
+            Name = "Eternal Slugs",
+            Description = "Shell'tans Shells",
+            LongDescription = "Any projectiles that hit enemies will restore bullets to the clip it was fired from.\n\nto-do: write lore :3",
+            SpriteResource = $"{Module.SPRITE_PATH}/eternalrounds.png",
+            Quality = ItemQuality.S,
+            PostInitAction = item =>
+            {
+                item.AddPassiveStatModifier(PlayerStats.StatType.Curse, 2f);
+            }
+        };
         public override void Pickup(PlayerController player)
         {
             base.Pickup(player);

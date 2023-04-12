@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Alexandria.ItemAPI;
 using Dungeonator;
 using JuneLib.Items;
 using UnityEngine;
@@ -44,7 +45,29 @@ namespace Oddments
         }
     }
 
-    public class PickupTemplate : ItemTemplate
+    
+
+    public class OddItemTemplate : ItemTemplate
+    {
+        public OddItemTemplate(Type type) : base(type)
+        {
+        }
+
+        public override void SpecialClassBasedThing(PickupObject pickup)
+        {
+            base.SpecialClassBasedThing(pickup);
+            if (AllowForMetaPick && pickup is PassiveItem passive)
+            {
+                metaItems.Add(passive);
+            }
+        }
+
+        public bool AllowForMetaPick = true;
+
+        public static List<PassiveItem> metaItems = new List<PassiveItem>();
+    }
+
+    public class PickupTemplate : OddItemTemplate
     {
         public PickupTemplate(Type type) : base(type)
         {
@@ -72,6 +95,40 @@ namespace Oddments
             };
             pickup.UsesCustomCost = CustomCost >= 0;
             pickup.CustomCost = CustomCost;
+
+            if (AutoAddToPools)
+            {
+                if (ShopPoolWeight > 0)
+                {
+                    WeightedGameObject weightedObject = new WeightedGameObject();
+                    weightedObject.SetGameObject(gameObject);
+                    weightedObject.weight = ShopPoolWeight;
+                    weightedObject.rawGameObject = gameObject;
+                    weightedObject.pickupId = pickup.PickupObjectId;
+                    weightedObject.forceDuplicatesPossible = true;
+                    weightedObject.additionalPrerequisites = new DungeonPrerequisite[0];
+
+                    GenericLootTable shopPool = ItemBuilder.LoadShopTable("Shop_Gungeon_Cheap_Items_01");
+                    shopPool.defaultItemDrops.elements.Add(weightedObject);
+                }
+                if (RewardPoolWeight > 0)
+                {
+                    WeightedGameObject weightedObject = new WeightedGameObject();
+                    weightedObject.SetGameObject(gameObject);
+                    weightedObject.weight = RewardPoolWeight;
+                    weightedObject.rawGameObject = gameObject;
+                    weightedObject.pickupId = pickup.PickupObjectId;
+                    weightedObject.forceDuplicatesPossible = true;
+                    weightedObject.additionalPrerequisites = new DungeonPrerequisite[0];
+                    foreach (FloorRewardData rewardData in GameManager.Instance.RewardManager.FloorRewardData)
+                    {
+                        if (rewardData.SingleItemRewardTable.defaultItemDrops.elements != null && rewardData.SingleItemRewardTable.defaultItemDrops.elements.Count != 0 && !rewardData.SingleItemRewardTable.defaultItemDrops.elements.Contains(weightedObject))
+                        {
+                            rewardData.SingleItemRewardTable.defaultItemDrops.Add(weightedObject);
+                        }
+                    }
+                }
+            }
         }
 
         public bool AutoAddToPools = false;
@@ -83,7 +140,7 @@ namespace Oddments
         public int CustomCost = -1;
     }
 
-    public class ItemTemplatePlusVolley : ItemTemplate
+    public class ItemTemplatePlusVolley : OddItemTemplate
     {
         public ItemTemplatePlusVolley(Type type) : base(type)
         {
@@ -139,7 +196,7 @@ namespace Oddments
         public ProjectileVolleyData CachedVolleyData;
     }
 
-    public class StatusEffectItemTemplate : ItemTemplate
+    public class StatusEffectItemTemplate : OddItemTemplate
     {
         public StatusEffectItemTemplate(Type type) : base(type)
         {

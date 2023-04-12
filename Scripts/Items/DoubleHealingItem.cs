@@ -8,7 +8,7 @@ namespace Oddments
 {
     public class DoubleHealingItem : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(DoubleHealingItem))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(DoubleHealingItem))
         {
             Name = "Rejuvenation Rack",
             Description = "Breathe in the air",

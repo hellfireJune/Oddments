@@ -7,7 +7,7 @@ namespace Oddments
 {
     public class BiggerAmmoDropsItem : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(BiggerAmmoDropsItem));
+        public static OddItemTemplate template = new OddItemTemplate(typeof(BiggerAmmoDropsItem));
 
         public override void Pickup(PlayerController player)
         {

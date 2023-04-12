@@ -43,7 +43,7 @@ namespace Oddments
 
     public class WeaversCharm : WebImmunityItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(WeaversCharm))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(WeaversCharm))
         {
             Name = "Weaver's Charm",
             Quality = ItemQuality.D,
@@ -81,7 +81,7 @@ namespace Oddments
 
     public class SpiderBoots : WebImmunityItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(SpiderBoots))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(SpiderBoots))
         {
             Name = "Spider Boots",
             SpriteResource = $"{Module.SPRITE_PATH}/silkboots.png",

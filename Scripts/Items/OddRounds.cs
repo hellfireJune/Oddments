@@ -10,7 +10,7 @@ namespace Oddments
 {
     public class OddRounds : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(OddRounds))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(OddRounds))
         {
             Name = "Odd Shells",
             Description = "Oddments",

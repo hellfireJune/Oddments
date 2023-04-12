@@ -16,7 +16,7 @@ namespace Oddments
 
         public const string PlaceholderSprite = "Oddments/Resources/example_item_sprite.png";
 
-        public static ItemTemplate template = new ItemTemplate(typeof(SanguineHookItem))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(SanguineHookItem))
         {
             Name = "Sanguine Hook",
             Description = "Crazy Battle",

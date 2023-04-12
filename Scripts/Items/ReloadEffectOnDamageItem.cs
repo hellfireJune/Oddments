@@ -9,7 +9,7 @@ namespace Oddments
 {
     internal class ReloadEffectOnDamageItem : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(ReloadEffectOnDamageItem))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(ReloadEffectOnDamageItem))
         {
             Name = "Reloadium",
             Description = "Reload Effects On Damage",

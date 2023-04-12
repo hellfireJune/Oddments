@@ -13,7 +13,7 @@ namespace Oddments
 {
     public class MajesticCenser : PlayerItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(MajesticCenser))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(MajesticCenser))
         {
             Name = "Majestic Censer",
             Quality = ItemQuality.EXCLUDED,

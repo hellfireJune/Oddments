@@ -68,7 +68,7 @@ namespace Oddments
             //"You are gay",
         };
 
-        public static ItemTemplate template = new ItemTemplate(typeof(FortuneCookieItem))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(FortuneCookieItem))
         {
             Name = "Fortune Cookie",
             SpriteResource = $"{Module.SPRITE_PATH}/fortunecookie.png",

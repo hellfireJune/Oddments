@@ -12,7 +12,7 @@ namespace Oddments
 {
     public class PickupGenerator : PlayerItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(PickupGenerator))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(PickupGenerator))
         {
             Name = "The Book of Sin",
             SpriteResource = $"{Module.SPRITE_PATH}/bookofsin.png",
@@ -51,7 +51,7 @@ namespace Oddments
 
     public class BunchaChoicePickupsYknow : PlayerItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(BunchaChoicePickupsYknow))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(BunchaChoicePickupsYknow))
         {
             Name = "Derringer's Sack",
             SpriteResource = $"{Module.SPRITE_PATH}/derringerssack.png",

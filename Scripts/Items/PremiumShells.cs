@@ -10,7 +10,7 @@ namespace Oddments
 {
     public class PremiumShells : GoldMoverItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(PremiumShells))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(PremiumShells))
         {
             Name = "Premium Shells",
             Quality = ItemQuality.EXCLUDED,

@@ -1,18 +1,18 @@
-﻿using JuneLib.Items;
+﻿using Alexandria.Misc;
+using HarmonyLib;
+using JuneLib.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Alexandria.Misc;
 using UnityEngine;
-using HarmonyLib;
 
 namespace Oddments
 {
     [HarmonyPatch]
     public class AmmoOverloaderItem : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(AmmoOverloaderItem))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(AmmoOverloaderItem))
         {
             Name = "overloader",
             PostInitAction = item =>
@@ -23,7 +23,7 @@ namespace Oddments
                 aitem.SplitForOtherMult = 0f;
             }
         };
-        public static ItemTemplate template2 = new ItemTemplate(typeof(AmmoOverloaderItem))
+        public static OddItemTemplate template2 = new OddItemTemplate(typeof(AmmoOverloaderItem))
         {
             Name = "splitter",
         };
@@ -48,7 +48,10 @@ namespace Oddments
                 if (DoOverload)
                 {
                     AmmoExtenderComponent extender = gun.gameObject.GetOrAddComponent<AmmoExtenderComponent>();
+                    Skip = true;
                     extender.AmmoAdded += Mathf.FloorToInt(gun.AdjustedMaxAmmo * 0.5f);
+                    Skip = false;
+                    gun.GainAmmo((int)(gun.AdjustedMaxAmmo * 0.5));
                 }
             }
             float splitMult = SplitForOtherMult;
@@ -76,10 +79,21 @@ namespace Oddments
 
         public class AmmoExtenderComponent : BraveBehaviour
         {
-            public int AmmoAdded = 0;
+            private int ammoAdded;
+            public int AmmoAdded
+            {
+                get { return ammoAdded; }
+                set { 
+                    ammoAdded = Math.Max(0, value); 
+                    if (ammoAdded == 0)
+                    {
+                        Destroy(this);
+                    }
+                }
+            }
         }
 
-        [HarmonyPatch (typeof(Gun), nameof(Gun.AdjustedMaxAmmo), MethodType.Getter)]
+        [HarmonyPatch(typeof(Gun), nameof(Gun.AdjustedMaxAmmo), MethodType.Getter)]
         [HarmonyPostfix]
         public static void ChangeResults(Gun __instance, ref int __result)
         {
@@ -88,12 +102,32 @@ namespace Oddments
             if (extender != null) { __result += extender.AmmoAdded; }
         }
 
-        [HarmonyPatch (typeof(Gun), nameof(Gun.LoseAmmo))]
-        [HarmonyPostfix] 
+        [HarmonyPatch(typeof(Gun), nameof(Gun.LoseAmmo))]
+        [HarmonyPostfix]
         public static void Fucker(Gun __instance, int amt)
         {
             AmmoExtenderComponent extender = __instance.GetComponent<AmmoExtenderComponent>();
-            if (extender != null) { extender.AmmoAdded -= amt; }
+            if (extender != null) { extender.AmmoAdded -= amt; Debug.Log(__instance.AdjustedMaxAmmo); }
+        }
+
+        [HarmonyPatch(typeof(Gun), nameof(Gun.DecrementAmmoCost))]
+        [HarmonyPostfix]
+        public static void DP(Gun __instance, ProjectileModule module)
+        {
+            AmmoExtenderComponent extender = __instance.GetComponent<AmmoExtenderComponent>();
+            if (extender != null)
+            {
+                int decrement = module.ammoCost;
+                if (module.shootStyle == ProjectileModule.ShootStyle.Charged)
+                {
+                    ProjectileModule.ChargeProjectile chargeProjectile = module.GetChargeProjectile(__instance.m_moduleData[module].chargeTime);
+                    if (chargeProjectile.UsesAmmo)
+                    {
+                        decrement = chargeProjectile.AmmoCost;
+                    }
+                }
+                extender.AmmoAdded -= decrement; Debug.Log(__instance.AdjustedMaxAmmo);
+            }
         }
 
 

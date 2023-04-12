@@ -10,7 +10,7 @@ namespace Oddments
 {
     public class WhollyGhost : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(WhollyGhost))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(WhollyGhost))
         {
             Name = "The Wholly Ghost",
             Description = "Woo!",

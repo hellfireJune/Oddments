@@ -11,7 +11,7 @@ namespace Oddments
     {
         public static GameObject fireTrail;
              
-        public static ItemTemplate template = new ItemTemplate(typeof(VenusianRoundsItem))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(VenusianRoundsItem))
         {
             PostInitAction = item =>
             {

@@ -13,7 +13,7 @@ namespace Oddments
 {
     public class BulletPowerDrainItem : CustomChargeTypeItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(BulletPowerDrainItem))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(BulletPowerDrainItem))
         {
             PostInitAction = item =>
             {

@@ -11,7 +11,7 @@ namespace Oddments
 {
     public class HellfireItem : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(HellfireItem))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(HellfireItem))
         {
             Name = "Shellfire",
             Description = "Satan's Siren",

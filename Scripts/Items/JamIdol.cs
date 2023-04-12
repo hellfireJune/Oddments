@@ -9,7 +9,7 @@ namespace Oddments
 {
     public class JamIdol : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(JamIdol))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(JamIdol))
         {
             Name = "Jam Idol",
             Description = "Jammon",

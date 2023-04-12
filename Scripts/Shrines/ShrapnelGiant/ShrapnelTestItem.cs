@@ -10,7 +10,7 @@ namespace Oddments
     public class ShrapnelTestItem : ShrapnelAbilityBase
     {
 
-        public static ItemTemplate template = new ItemTemplate(typeof(ShrapnelTestItem))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(ShrapnelTestItem))
         {
             Name = "SHRAPNEL TEST ITEM",
             Quality = ItemQuality.EXCLUDED,

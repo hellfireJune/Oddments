@@ -10,7 +10,7 @@ namespace Oddments
 {
     public class HookWormItem : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(HookWormItem))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(HookWormItem))
         {
             Name = "Cubic Shells",
             SpriteResource = $"{Module.SPRITE_PATH}/cubicshells.png",

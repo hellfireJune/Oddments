@@ -78,9 +78,11 @@
     <Compile Include="Scripts\Items\DodgeTargetItem.cs" />
     <Compile Include="Scripts\Items\DoubleRoomClearItem.cs" />
     <Compile Include="Scripts\Items\ElectricRoundsItem.cs" />
+    <Compile Include="Scripts\Items\GrimoireItem.cs" />
     <Compile Include="Scripts\Items\Guns\PlasmaPistol.cs" />
     <Compile Include="Scripts\Items\Guns\UnnamedTestGun.cs" />
     <Compile Include="Scripts\Items\GunUpgradeItem.cs" />
+    <Compile Include="Scripts\Items\LeadReliquaryItem.cs" />
     <Compile Include="Scripts\Items\PickupReplacerItem.cs" />
     <Compile Include="Scripts\Items\HellfireItem.cs" />
     <Compile Include="Scripts\Items\InfAmmoBlanksItem.cs" />
@@ -93,6 +95,7 @@
     <Compile Include="Scripts\Items\RazorChamberItem.cs" />
     <Compile Include="Scripts\Items\ReBumpClipShotItem.cs" />
     <Compile Include="Scripts\Items\ReloadEffectOnDamageItem.cs" />
+    <Compile Include="Scripts\Items\ShotsFiredToDamageUpItem.cs" />
     <Compile Include="Scripts\Items\SpawnFriendlyGrenadeItem.cs" />
     <Compile Include="Scripts\Items\TempStatsPlayerItem.cs" />
     <Compile Include="Scripts\Items\MassDevolveItem.cs" />
@@ -384,6 +387,19 @@
     <EmbeddedResource Include="Resources\Sprites\Items\liquidnitrogen.png" />
     <EmbeddedResource Include="Resources\Sprites\Items\razorchamber.png" />
     <EmbeddedResource Include="Resources\Sprites\Items\reloadium.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\Items\blankammo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\Items\eternalrounds.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\Items\Pickups\blendedheart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\Items\anorounds.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\cathorounds.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

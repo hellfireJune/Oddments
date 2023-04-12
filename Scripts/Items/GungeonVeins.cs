@@ -12,7 +12,7 @@ namespace Oddments
 {
     public class GungeonVeins : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(GungeonVeins))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(GungeonVeins))
         {
             Name = "Gungeon Veins",
             Description = "Interconnected rooms",

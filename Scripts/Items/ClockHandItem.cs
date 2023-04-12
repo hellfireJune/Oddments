@@ -6,7 +6,7 @@ namespace Oddments
 {
     public class ClockHandItem : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(ClockHandItem));
+        public static OddItemTemplate template = new OddItemTemplate(typeof(ClockHandItem));
 
         public override void Pickup(PlayerController player)
         {

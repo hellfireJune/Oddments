@@ -11,7 +11,7 @@ namespace Oddments
 {
     public class SynergracesBlessing : SynergyChanceModificationItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(SynergracesBlessing))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(SynergracesBlessing))
         {
             Name = "Synergrace's Blessing",
             Description = "<3",
@@ -220,7 +220,7 @@ namespace Oddments
 
     public class LotsaSynergyChests : SynergyChanceModificationItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(LotsaSynergyChests))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(LotsaSynergyChests))
         {
             Name = "Crown of Synergies",
             Description = "Grand design",

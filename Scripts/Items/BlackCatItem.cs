@@ -10,7 +10,7 @@ namespace Oddments
 {
     public class BlackCatItem : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(BlackCatItem))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(BlackCatItem))
         {
             PostInitAction = item =>
             {

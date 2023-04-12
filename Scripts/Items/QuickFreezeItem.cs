@@ -12,7 +12,7 @@ namespace Oddments
     [HarmonyPatch]
     public class QuickFreezeItem : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(QuickFreezeItem));
+        public static OddItemTemplate template = new OddItemTemplate(typeof(QuickFreezeItem));
 
         [HarmonyPatch(typeof(GameActor), nameof(GameActor.ApplyEffect))]
         [HarmonyPrefix]

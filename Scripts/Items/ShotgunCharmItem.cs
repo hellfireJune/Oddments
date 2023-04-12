@@ -9,7 +9,7 @@ namespace Oddments
 {
     public class ShotgunCharmItem : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(ShotgunCharmItem))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(ShotgunCharmItem))
         {
             Name = "Shotgun Charm",
             Description = "More Shot for your Gun",

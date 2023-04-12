@@ -14,7 +14,7 @@ namespace Oddments
     {
 
         public static List<int> sprites;
-        public static ItemTemplate template = new ItemTemplate(typeof(DevilsPedestals))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(DevilsPedestals))
         {
             Name = "The Master's Pact",
             Description = "To sign away eternity",
@@ -23,7 +23,7 @@ namespace Oddments
             Quality = ItemQuality.B,
         };
 
-        public static ItemTemplate template2 = new ItemTemplate(typeof(EvilMasteryItem))
+        public static OddItemTemplate template2 = new OddItemTemplate(typeof(EvilMasteryItem))
         {
             Name = "Damned Round",
             SpriteResource = $"{Module.SPRITE_PATH}/DammedRound/dammedround_006.png",

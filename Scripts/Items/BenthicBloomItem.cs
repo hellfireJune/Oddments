@@ -10,7 +10,7 @@ namespace Oddments
 {
     public class BenthicBloomItem : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(BenthicBloomItem))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(BenthicBloomItem))
         {
             PostInitAction = item =>
             {

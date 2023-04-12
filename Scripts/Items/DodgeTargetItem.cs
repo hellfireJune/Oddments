@@ -10,13 +10,13 @@ namespace Oddments
 {
     public class DodgeTargetItem : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(DodgeTargetItem))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(DodgeTargetItem))
         {
             Name = "Dodge Target",
             Description = "The Best Defense",
             LongDescription = "Damaging an enemy has a chance to clear all bullets spawned by that enemy. Only works once per enemy.",
             SpriteResource = $"{Module.SPRITE_PATH}/dodgetarget.png",
-            Quality = ItemQuality.A,
+            Quality = ItemQuality.B,
         };
 
         public override void Pickup(PlayerController player)

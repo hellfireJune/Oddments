@@ -10,7 +10,7 @@ namespace Oddments
 {
     public class TractorBeamItem : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(TractorBeamItem))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(TractorBeamItem))
         {
             PostInitAction = item =>
             {

@@ -15,7 +15,7 @@ namespace Oddments
                     "mimic_tooth_necklace"
             };
         public const string GnarlySynergyName = "COFFEE IS TURNING GNARLY";
-        public static ItemTemplate template = new ItemTemplate(typeof(MimicBait))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(MimicBait))
         {
             Name = "Mimic Bait",
             Description = "Strong Coffee!",

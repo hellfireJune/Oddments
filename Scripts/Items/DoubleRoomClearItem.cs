@@ -11,7 +11,7 @@ namespace Oddments
 {
     public class DoubleRoomClearItem : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(DoubleRoomClearItem));
+        public static OddItemTemplate template = new OddItemTemplate(typeof(DoubleRoomClearItem));
 
         public override void Pickup(PlayerController player)
         {

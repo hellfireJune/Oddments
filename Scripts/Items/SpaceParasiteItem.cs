@@ -9,7 +9,7 @@ namespace Oddments
 {
     public class SpaceParasiteItem : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(SpaceParasiteItem))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(SpaceParasiteItem))
         {
             Name = "Space Slug",
             Quality = ItemQuality.C,

@@ -9,7 +9,7 @@ namespace Oddments
 {
     public class TwoDollarCoin : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(TwoDollarCoin))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(TwoDollarCoin))
         {
             Name = "Two Dollar Coin",
             Description = "Gold piece",

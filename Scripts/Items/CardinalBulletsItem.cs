@@ -7,7 +7,7 @@ namespace Oddments
 {
     public class CardinalBulletsItem : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(CardinalBulletsItem))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(CardinalBulletsItem))
         {
             Name = "Cardinallets",
             Description = "Sign of the Cross",

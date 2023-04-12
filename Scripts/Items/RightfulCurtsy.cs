@@ -10,7 +10,7 @@ namespace Oddments
 {
     public class RightfulCurtsy : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(RightfulCurtsy))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(RightfulCurtsy))
         {
             Name = "rightful curtsy",
             Quality = ItemQuality.EXCLUDED,

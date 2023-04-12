@@ -8,7 +8,7 @@ namespace Oddments
 {
     internal class ArmorGeneratingOnRoomClearItem : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(ArmorGeneratingOnRoomClearItem));
+        public static OddItemTemplate template = new OddItemTemplate(typeof(ArmorGeneratingOnRoomClearItem));
         public int roomsCleared=0;
         public int timesPayedOut=0;
 

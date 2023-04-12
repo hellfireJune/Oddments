@@ -11,7 +11,7 @@ namespace Oddments
     [HarmonyPatch]
     public class CaduceusBulletsItem : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(CaduceusBulletsItem))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(CaduceusBulletsItem))
         {
             Name = "Caduceus Rounds",
             Description = "Do No Harm",

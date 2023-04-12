@@ -15,7 +15,7 @@ namespace Oddments
     {
         private static readonly string chainSprite = $"{Module.SPRITE_PATH}/mimicbait.png";
 
-        public static ItemTemplate template = new ItemTemplate(typeof(EternalIdol))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(EternalIdol))
         {
             Name = "Eternal Idol",
             Description = "The Great Chain",

@@ -12,7 +12,7 @@ namespace Oddments
 {
     public class Cellophane : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(Cellophane))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(Cellophane))
         {
             Name = "cellophane",
             Quality = ItemQuality.EXCLUDED,

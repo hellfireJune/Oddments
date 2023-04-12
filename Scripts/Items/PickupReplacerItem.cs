@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using SaveAPI;
 
 namespace Oddments
 {
     public class PickupReplacerItem : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(PickupReplacerItem))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(PickupReplacerItem))
         {
             Name = "Cadueleus",
             Description = "Equalised Healing",
@@ -20,10 +21,13 @@ namespace Oddments
             {
                 PickupReplacerItem pickup = (PickupReplacerItem)item;
                 pickup.swapFlavor = SwapType.PICKUP_CADUCEUS;
+
+                item.SetupUnlockOnCustomFlag(CustomDungeonFlags.CADUELCEUS_FLAG, true);
+                item.AddUnlockText("Find a blended heart, or beat the Abbey boss without taking damage");
             },
             Quality = ItemQuality.A,
         };
-        public static ItemTemplate template2 = new ItemTemplate(typeof(PickupReplacerItem))
+        public static OddItemTemplate template2 = new OddItemTemplate(typeof(PickupReplacerItem))
         {
             Name = "humbling bundle",
             PostInitAction = item =>
@@ -32,7 +36,7 @@ namespace Oddments
                 pickup.swapFlavor = SwapType.PICKUP_UPGRADE;
             }
         };
-        public static ItemTemplate template3 = new ItemTemplate(typeof(PickupReplacerItem))
+        public static OddItemTemplate template3 = new OddItemTemplate(typeof(PickupReplacerItem))
         {
             Name = "ammo upgrade",
             PostInitAction = item =>
@@ -41,7 +45,7 @@ namespace Oddments
                 pickup.swapFlavor = SwapType.PICKUP_AMMOUPGRADE;
             }
         };
-        public static ItemTemplate template4 = new ItemTemplate(typeof(PickupReplacerItem))
+        public static OddItemTemplate template4 = new OddItemTemplate(typeof(PickupReplacerItem))
         {
             Name = "Lead Cross",
             Description = "More Armor",

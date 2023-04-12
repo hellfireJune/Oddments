@@ -8,7 +8,7 @@ namespace Oddments
 {
     public class AngryHeart : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(AngryHeart))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(AngryHeart))
         {
             Name = "Lead Heart",
             Description = "My Iron Lung",

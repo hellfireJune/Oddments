@@ -8,7 +8,7 @@ namespace Oddments
 {
     public class ElectricRoundsItem : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(ElectricRoundsItem));
+        public static OddItemTemplate template = new OddItemTemplate(typeof(ElectricRoundsItem));
 
         public override void Pickup(PlayerController player)
         {

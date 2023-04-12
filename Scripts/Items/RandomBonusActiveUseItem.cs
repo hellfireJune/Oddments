@@ -16,7 +16,7 @@ namespace Oddments
          * Magazine Rack, Charm Horn, Sense of Direction, Iron coin, Coolant, Elder Blank,
         Air Strike?, Napalm Strike?, Big Boy?*/
         private static readonly List<int> validFakeItems = new List<int>() { 108, 109, 439, 525 };
-        public static ItemTemplate template = new ItemTemplate(typeof(RandomBonusActiveUseItem))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(RandomBonusActiveUseItem))
         {
             PostInitAction = item =>
             {
@@ -77,7 +77,7 @@ namespace Oddments
 
     public class RandomPlayerItemItem : PlayerItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(RandomPlayerItemItem));
+        public static OddItemTemplate template = new OddItemTemplate(typeof(RandomPlayerItemItem));
 
         public override void DoEffect(PlayerController user)
         {

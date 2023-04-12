@@ -23,7 +23,7 @@ namespace Oddments
 
         public static PlayerOrbital orbitalPrefab;
 
-        public static ItemTemplate template = new ItemTemplate(typeof(Lemegeton))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(Lemegeton))
         {
             Name = "Lemegeton",
             Quality = ItemQuality.EXCLUDED,

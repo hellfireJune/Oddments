@@ -11,7 +11,7 @@ namespace Oddments
     [HarmonyPatch]
     public class LightweightArmor : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(LightweightArmor))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(LightweightArmor))
         {
             Name = "Lightweight Armour",
             Description = "Low weight loadout",

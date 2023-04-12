@@ -11,7 +11,7 @@ namespace Oddments
     [HarmonyPatch]
     public class MinCasingIncreaserItem : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(MinCasingIncreaserItem))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(MinCasingIncreaserItem))
         {
             Name = "Flimsy Coupon",
             Description = "20% off!",
@@ -64,7 +64,7 @@ namespace Oddments
         }
         public class MemberCard : PassiveItem
         {
-            public static ItemTemplate template = new ItemTemplate(typeof(MemberCard))
+            public static OddItemTemplate template = new OddItemTemplate(typeof(MemberCard))
             {
                 Name = "Member Card",
                 SpriteResource = $"{Module.SPRITE_PATH}/membercard.png",

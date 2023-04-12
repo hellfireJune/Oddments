@@ -10,7 +10,7 @@ namespace Oddments
     [HarmonyPatch]
     public class GoldenMagnet : GoldMoverItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(GoldenMagnet))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(GoldenMagnet))
         {
             Name = "Golden Magnet",
             Description = "More Money",

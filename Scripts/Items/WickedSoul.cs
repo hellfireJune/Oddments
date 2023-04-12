@@ -14,7 +14,7 @@ namespace Oddments
     [HarmonyPatch]
     public class WickedSoul : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(WickedSoul))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(WickedSoul))
         {
             Name = "Wicked Soul",
             Description = "Something Wicked",
@@ -69,7 +69,7 @@ namespace Oddments
 
         public class DecanterItem : PlayerItem
         {
-            public static ItemTemplate template = new ItemTemplate(typeof(DecanterItem))
+            public static OddItemTemplate template = new OddItemTemplate(typeof(DecanterItem))
             {
                 Quality = ItemQuality.D,
                 PostInitAction = item =>

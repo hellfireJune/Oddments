@@ -12,7 +12,7 @@ namespace Oddments
         public static List<DevolverTier> devolvertier = new List<DevolverTier>();
         public static List<string> EnemyGuidsToIgnore = new List<string>();
 
-        public static ItemTemplate template = new ItemTemplate(typeof(MassDevolveItem))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(MassDevolveItem))
         {
             PostInitAction = item =>
             {

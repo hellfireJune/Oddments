@@ -10,7 +10,7 @@ namespace Oddments
 {
     public class SpawnFriendlyGrenadeItem : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(SpawnFriendlyGrenadeItem))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(SpawnFriendlyGrenadeItem))
         {
         };
 

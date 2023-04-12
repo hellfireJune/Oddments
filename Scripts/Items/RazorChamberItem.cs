@@ -12,7 +12,7 @@ namespace Oddments
 {
     public class RazorChamberItem : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(RazorChamberItem))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(RazorChamberItem))
         {
             Name = "Razor Chamber",
             Description = "Sharp Reload",

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Alexandria.Misc;
 using SaveAPI;
+using Dungeonator;
 
 namespace Oddments
 {
@@ -12,7 +13,24 @@ namespace Oddments
         public static void Init()
         {
             CustomActions.OnRunStart += NewRun;
+            CustomActions.OnBossKilled += BossKilled;
         }
+
+        private static void BossKilled(HealthHaver arg1, bool arg2)
+        {
+            if (arg1.aiActor && arg1.aiActor.ParentRoom != null && !arg1.aiActor.ParentRoom.PlayerHasTakenDamageInThisRoom)
+            {
+                GlobalDungeonData.ValidTilesets indices = GameManager.Instance.Dungeon.tileIndices.tilesetId;
+                switch (indices)
+                {
+                    default: break;
+                    case GlobalDungeonData.ValidTilesets.CATHEDRALGEON:
+                        SaveAPIManager.SetFlag(CustomDungeonFlags.CADUELCEUS_FLAG, true);
+                        break;
+                }
+            }
+        }
+
         private static readonly int highestVanillaID = 823;
         private static readonly List<int> blackList = new List<int>()
         {

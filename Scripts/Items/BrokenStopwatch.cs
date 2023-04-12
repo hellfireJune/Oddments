@@ -10,7 +10,7 @@ namespace Oddments
 {
     public class BrokenStopwatch : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(BrokenStopwatch))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(BrokenStopwatch))
         {
             Name = "Broken Stopwatch",
             Description = "Slowly, slowly, slowly",

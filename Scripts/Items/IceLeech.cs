@@ -10,7 +10,7 @@ namespace Oddments
     [HarmonyPatch]
     public class IceLeech : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(IceLeech))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(IceLeech))
         {
             Name = "Frost Leech",
             SpriteResource = $"{Module.SPRITE_PATH}/frostleech.png",

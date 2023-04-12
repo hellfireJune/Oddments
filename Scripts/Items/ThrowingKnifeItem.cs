@@ -10,7 +10,7 @@ namespace Oddments
 {
     public class ThrowingKnifeItem : PlayerItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(ThrowingKnifeItem))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(ThrowingKnifeItem))
         {
             Name = "Throwing Knife",
             Quality = ItemQuality.C,

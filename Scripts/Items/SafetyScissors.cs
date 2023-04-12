@@ -13,7 +13,7 @@ namespace Oddments
 {
     public class SafetyScissors : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(SafetyScissors))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(SafetyScissors))
         {
             Name = "Safety Scissors",
             Description = "Shoot the Fuse!", //https://www.youtube.com/watch?v=4Emb7zasmRc

@@ -9,7 +9,7 @@ namespace Oddments
 {
     public class MimicWhistle : PlayerItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(MimicWhistle))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(MimicWhistle))
         {
             Name = "Mimic Whistle",
             Quality = ItemQuality.D,

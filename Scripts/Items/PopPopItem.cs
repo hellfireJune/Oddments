@@ -9,7 +9,7 @@ namespace Oddments
 {
     public class PopPopItem : PlayerItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(PopPopItem));
+        public static OddItemTemplate template = new OddItemTemplate(typeof(PopPopItem));
 
         public override bool CanBeUsed(PlayerController user)
         {

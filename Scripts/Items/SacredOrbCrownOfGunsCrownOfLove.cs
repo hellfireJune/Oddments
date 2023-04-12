@@ -10,7 +10,7 @@ namespace Oddments
 {
     public class SacredOrb : ChestModifyItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(SacredOrb))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(SacredOrb))
         {
             Name = "Crown of Quality",
             Description = "Guarantee",
@@ -33,7 +33,7 @@ namespace Oddments
     }
     public class CrownOfGuns : ChestModifyItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(CrownOfGuns))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(CrownOfGuns))
         {
             Name = "Crown of War",
             Quality = ItemQuality.D,
@@ -60,7 +60,7 @@ namespace Oddments
     }
     public class CrownOfLove : ChestModifyItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(CrownOfLove))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(CrownOfLove))
         {
             Name = "Crown of Love",
             Quality = ItemQuality.C,

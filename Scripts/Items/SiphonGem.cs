@@ -7,7 +7,7 @@ namespace Oddments
 {
     public class SiphonGem : PlayerItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(SiphonGem))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(SiphonGem))
         {
             Name = "Siphon Item",
             Description = "Item Absoprtion",

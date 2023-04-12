@@ -11,7 +11,7 @@ namespace Oddments
 {
     public class InfBlankAmmosItem : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(InfBlankAmmosItem))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(InfBlankAmmosItem))
         {
             Name = "Empty Chamber",
             Description = "For Reloading Empty Rounds",
@@ -21,7 +21,7 @@ namespace Oddments
             PostInitAction = item =>
             {
                 item.AddToSubShop(ItemBuilder.ShopType.OldRed);
-                item.AddPassiveStatModifier(PlayerStats.StatType.Curse, 1.5f);
+                item.AddPassiveStatModifier(PlayerStats.StatType.Curse, 1f);
             }
         };
 

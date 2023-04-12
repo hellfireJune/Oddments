@@ -6,7 +6,7 @@ namespace Oddments
 {
     public class PulsingBulletsItem : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(PulsingBulletsItem))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(PulsingBulletsItem))
         {
             Name = "Hideous Bullets",
             Description = "Pulsating flesh",

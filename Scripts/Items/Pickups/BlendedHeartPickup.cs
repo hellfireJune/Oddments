@@ -2,6 +2,7 @@
 using JuneLib.Items;
 using System.Collections.Generic;
 using UnityEngine;
+using SaveAPI;
 
 namespace Oddments
 {
@@ -10,13 +11,24 @@ namespace Oddments
         public static PickupTemplate template = new PickupTemplate(typeof(BlendedHeartPickup))
         {
             Name = "Blended Heart",
-            Quality = ItemQuality.EXCLUDED,
+            Quality = ItemQuality.COMMON,
+            Description = "Hybrid Healing",
+            LongDescription = "Will heal two hearts if picked up with empty heart containers, but otherwise will grant 1 armour.",
+            SpriteResource = $"{Module.SPRITE_PATH}/Pickups/blendedheart.png",
+            CustomCost = 30,
             PostInitAction = item =>
             {
                 HealthPickup pickup = (HealthPickup)item;
                 pickup.armorAmount = 1;
                 OddItemIDs.BlendedHeart = item.PickupObjectId;
-            }
+
+                item.PlaceItemInAmmonomiconAfterItemById(GlobalItemIds.Blank);
+                item.gameObject.GetOrAddComponent<SpecialPickupObject>().CustomSaveFlagToSetOnAcquisition = CustomDungeonFlags.CADUELCEUS_FLAG;
+            },
+            
+            AutoAddToPools = true,
+            ShopPoolWeight = 0.1f,
+            RewardPoolWeight = 0.2f,
         };
 
         public override void Pickup(PlayerController player)
@@ -25,6 +37,9 @@ namespace Oddments
             {
                 this.healAmount = 1f;
                 this.armorAmount = 0;
+            }
+            if (GameStatsManager.Instance.m_encounteredTrackables.ContainsKey(encounterTrackable.EncounterGuid)) {
+                EncounterTrackable.SuppressNextNotification = true;
             }
             base.Pickup(player);
         }

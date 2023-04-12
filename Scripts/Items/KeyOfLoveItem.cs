@@ -11,7 +11,7 @@ namespace Oddments
     [HarmonyPatch]
     public class KeyOfLoveItem : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(KeyOfLoveItem))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(KeyOfLoveItem))
         {
             Name = "Key of Love",
             Quality = ItemQuality.B,

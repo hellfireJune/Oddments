@@ -12,7 +12,7 @@ namespace Oddments
 {
     public class RingOfOddFriendship : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(RingOfOddFriendship))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(RingOfOddFriendship))
         {
             Name = "Ring of Odd Friendship",
             Description = "Odd friends",

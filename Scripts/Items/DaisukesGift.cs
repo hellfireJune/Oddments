@@ -12,7 +12,7 @@ namespace Oddments
         public static readonly string longDescStart = "Grants 3 random stat ups on pickup\n\nAn old keepsake of the trickster dice Daisuke. ";
         public static readonly string longDescEnd = "You can see three sigils marked upon it, but you can't make them out right now.";
 
-        public static ItemTemplate template = new ItemTemplate(typeof(DaisukesGift))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(DaisukesGift))
         {
             Name = "Daisuke's Gift",
             Description = "Random up!",

@@ -11,7 +11,7 @@ namespace Oddments
 {
     public class TempStatsPlayerItem : PlayerItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(TempStatsPlayerItem))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(TempStatsPlayerItem))
         {
             Name = "Jet",
             PostInitAction = item =>
@@ -26,7 +26,7 @@ namespace Oddments
                 jet.duration = 8f;
             }
         };
-        public static ItemTemplate potionTemplate = new ItemTemplate(typeof(TempStatsPlayerItem))
+        public static OddItemTemplate potionTemplate = new OddItemTemplate(typeof(TempStatsPlayerItem))
         {
             Name = "Potion of Haste-loading",
             PostInitAction = item =>
@@ -40,7 +40,7 @@ namespace Oddments
                 poti.duration = 14f;
             }
         };
-        public static ItemTemplate moneyTemplate = new ItemTemplate(typeof(TempStatsPlayerItem))
+        public static OddItemTemplate moneyTemplate = new OddItemTemplate(typeof(TempStatsPlayerItem))
         {
             Name = "moneyh",
             PostInitAction = item =>

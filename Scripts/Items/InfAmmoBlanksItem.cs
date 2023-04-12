@@ -6,12 +6,26 @@ using System.Text;
 using Alexandria.Misc;
 using UnityEngine;
 using System.Collections;
+using Alexandria.ItemAPI;
 
 namespace Oddments
 {
     public class InfAmmoBlanksItem : BlankModificationItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(InfAmmoBlanksItem));
+        public static OddItemTemplate template = new OddItemTemplate(typeof(InfAmmoBlanksItem))
+        {
+            Name = "Blank Ammo",
+            Description = "Blanks -> Ammo",
+            LongDescription = "Using a blank will grant temporary infinite ammo. The rest of this ammonomicon entry has been left intentionally b-",
+            SpriteResource = $"{Module.SPRITE_PATH}/blankammo.png",
+            Quality = ItemQuality.A,
+            PostInitAction = item =>
+            {
+                item.AddPassiveStatModifier(PlayerStats.StatType.AdditionalBlanksPerFloor, 1f);
+                item.AddToSubShop(ItemBuilder.ShopType.OldRed);
+                item.AddPassiveStatModifier(PlayerStats.StatType.Curse, 2f);
+            }
+        };
 
         public override void Pickup(PlayerController player)
         {

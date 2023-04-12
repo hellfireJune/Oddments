@@ -7,7 +7,7 @@ namespace Oddments
 {
     public class InfiniteLockboxItem : PlayerItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(InfiniteLockboxItem))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(InfiniteLockboxItem))
         {
             Name = "Infinite Lockbox",
             Description = "Down the chest-hole",

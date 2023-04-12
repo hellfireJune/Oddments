@@ -10,7 +10,7 @@ namespace Oddments
     [HarmonyPatch]
     public class GunUpgradeItem : PassiveItem
     {
-        public static ItemTemplate template = new ItemTemplate(typeof(GunUpgradeItem));
+        public static OddItemTemplate template = new OddItemTemplate(typeof(GunUpgradeItem));
 
         public override void Pickup(PlayerController player)
         {
