@@ -22,6 +22,7 @@ namespace Oddments
             PostInitAction = item =>
             {
                 item.AddPassiveStatModifier(PlayerStats.StatType.Curse, 3);
+                item.AddToSubShop(ItemBuilder.ShopType.Goopton);
             }
         };
 

@@ -45,8 +45,6 @@ namespace Oddments
         }
     }
 
-    
-
     public class OddItemTemplate : ItemTemplate
     {
         public OddItemTemplate(Type type) : base(type)
@@ -60,9 +58,31 @@ namespace Oddments
             {
                 metaItems.Add(passive);
             }
+
+            if (!DontAutoTitleize && pickup.encounterTrackable)
+            {
+                pickup.SetShortDescription(Description.ToTitleCaseInvariant());
+            }
+
+            if (JuneSaveManagerCore.AltTextC && !string.IsNullOrEmpty(AltTitle))
+            {
+                pickup.SetName(AltTitle);
+            }
+            if (JuneSaveManagerCore.AltTextB && !string.IsNullOrEmpty(AltDesc))
+            {
+                pickup.SetShortDescription(AltDesc);
+            }
+            if (JuneSaveManagerCore.AltTextA && !string.IsNullOrEmpty(AltLongDesc))
+            {
+                pickup.SetLongDescription(AltLongDesc);
+            }
         }
 
         public bool AllowForMetaPick = true;
+        public bool DontAutoTitleize = false;
+        public string AltTitle;
+        public string AltDesc;
+        public string AltLongDesc;
 
         public static List<PassiveItem> metaItems = new List<PassiveItem>();
     }
@@ -196,7 +216,7 @@ namespace Oddments
         public ProjectileVolleyData CachedVolleyData;
     }
 
-    public class StatusEffectItemTemplate : OddItemTemplate
+    public class StatusEffectItemTemplate : BulletModifierItemTemplate
     {
         public StatusEffectItemTemplate(Type type) : base(type)
         {
@@ -205,37 +225,63 @@ namespace Oddments
         public override void SpecialClassBasedThing(PickupObject pickup)
         {
             base.SpecialClassBasedThing(pickup);
-            if (pickup is OddStatusEffectModifierItem oddMod)
+            if (pickup is OddStatusEffectModifierItem)
             {
-                oddMod.ProcChance = ProcChance;
+                var oddMod = (OddStatusEffectModifierItem)pickup;
                 oddMod.EffectToApply = EffectToApply;
-                oddMod.TintColor = ProjectileTint;
-                
                 oddMod.SynergyToCheck = SynergyToCheck;
                 oddMod.SynergyAffect = SynergyEffect;
             }
         }
 
         public GameActorEffect EffectToApply;
-        public Color ProjectileTint;
-
         public string SynergyToCheck;
         public GameActorEffect SynergyEffect;
         public Color SynergyTint;
+    }
 
+    public class BulletModifierItemTemplate : OddItemTemplate
+    {
+        public BulletModifierItemTemplate(Type type) : base(type)
+        {
+        }
+        public override void SpecialClassBasedThing(PickupObject pickup)
+        {
+            if (pickup is OddProjectileModifierItem oddMod)
+            {
+                oddMod.ActivationChance = ProcChance;
+                oddMod.BulletTint = ProjectileTint;
+                oddMod.ChanceScalesWithDamageFired = ChanceScalesWithDamageFired;
+                oddMod.TintPriority = TintPriority;
+            }
+
+            if (IsBulletMod)
+            {
+                pickup.MakeBulletMod();
+            }
+            base.SpecialClassBasedThing(pickup);
+        }
+
+        public Color ProjectileTint;
         public float ProcChance;
+        public bool ChanceScalesWithDamageFired;
+        public int TintPriority;
+
+        public bool IsBulletMod = true;
     }
 
     public static class OddItemIDs
     {
         public static int BlendedHeart;
 
-        public static int StackedHeart;
+        public static int StackedArmor;
 
         public static int StackedBlanks;
 
         public static int KeyRingPickup;
 
         public static int BigAmmoCratePickup;
+
+        public static int InfAmmoPickup;
     }
 }

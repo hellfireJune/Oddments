@@ -299,6 +299,8 @@ namespace SaveAPI
         /// <returns><paramref name="maximum"/> value or 0 if <see cref="AdvancedGameStatsManager"/> doesn't have an instance</returns>
         public static float GetPlayerMaximum(CustomTrackedMaximums maximum)
         {
+            UnityEngine.Debug.Log(AdvancedGameStatsManager.HasInstance);
+            Debug.Log("Hear me");
             if (AdvancedGameStatsManager.HasInstance)
             {
                 return AdvancedGameStatsManager.Instance.GetPlayerMaximum(maximum);

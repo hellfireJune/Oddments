@@ -88,7 +88,7 @@ namespace Oddments
 
         private void AddRoomClearChance(RoomHandler arg1, RoomRewardAPI.ValidRoomRewardContents arg2, float arg3)
         {
-            arg2.additionalRewardChance -= /*0.*/2f;
+            arg2.additionalRewardChance -= 0.2f;
         }
         public override void Pickup(PlayerController player)
         {

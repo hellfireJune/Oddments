@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Oddments
 {
-    public class OddStatusEffectModifierItem : PassiveItem
+    public class OddStatusEffectModifierItem : OddProjectileModifierItem
     {
         public const string CavitySynergyName = "Gum disease";
         public static readonly List<string> CavityIDs = new List<string>()
@@ -31,39 +31,21 @@ namespace Oddments
             ProjectileTint = new Color(1, 1f, 0.75f)
         };
 
-        public override void Pickup(PlayerController player)
+        public override bool ApplyBulletEffect(Projectile arg1)
         {
-            base.Pickup(player);
-            player.PostProcessProjectile += Player_PostProcessProjectile;
-        }
-
-        public override void DisableEffect(PlayerController player)
-        {
-            base.DisableEffect(player);
-            player.PostProcessProjectile -= Player_PostProcessProjectile;
-        }
-
-        private void Player_PostProcessProjectile(Projectile arg1, float arg2)
-        {
-            if (UnityEngine.Random.value < ProcChance)
+            if (!string.IsNullOrEmpty(SynergyToCheck) && Owner && Owner.PlayerHasActiveSynergy(SynergyToCheck))
             {
-                if (!string.IsNullOrEmpty(SynergyToCheck) && Owner && Owner.PlayerHasActiveSynergy(SynergyToCheck))
-                {
-                    arg1.statusEffectsToApply.Add(SynergyAffect);
-                }
-                else
-                {
-                    arg1.statusEffectsToApply.Add(EffectToApply);
-                }
-                arg1.AdjustPlayerProjectileTint(TintColor, 3);
+                arg1.statusEffectsToApply.Add(SynergyAffect);
             }
+            else
+            {
+                arg1.statusEffectsToApply.Add(EffectToApply);
+            }
+            return true;
         }
 
-        public float ProcChance = 0;
         public string SynergyToCheck;
-
         public GameActorEffect EffectToApply;
         public GameActorEffect SynergyAffect;
-        public Color TintColor;
     }
 }

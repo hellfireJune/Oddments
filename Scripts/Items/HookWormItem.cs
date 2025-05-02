@@ -8,35 +8,22 @@ using UnityEngine;
 
 namespace Oddments
 {
-    public class HookWormItem : PassiveItem
+    public class HookWormItem : OddProjectileModifierItem
     {
         public static OddItemTemplate template = new OddItemTemplate(typeof(HookWormItem))
         {
             Name = "Cubic Shells",
             SpriteResource = $"{Module.SPRITE_PATH}/cubicshells.png",
             Description = "Power of 3",
-            LongDescription = "Makes reloading easier, but bullets will take on a rectangular travel pattern",
+            LongDescription = "Makes reloading easier, but bullets will take on a square wave travel pattern",
             Quality = ItemQuality.C,
             PostInitAction = item =>
             {
                 item.AddPassiveStatModifier(PlayerStats.StatType.ReloadSpeed, 0.5f, StatModifier.ModifyMethod.MULTIPLICATIVE);
-                item.MakeBulletMod();
             }
         };
 
-        public override void Pickup(PlayerController player)
-        {
-            base.Pickup(player);
-            player.PostProcessProjectile += Player_PostProcessProjectile;
-        }
-
-        public override void DisableEffect(PlayerController player)
-        {
-            base.DisableEffect(player);
-            player.PostProcessProjectile -= Player_PostProcessProjectile;
-        }
-
-        private void Player_PostProcessProjectile(Projectile obj, float arg2)
+        public override bool ApplyBulletEffect(Projectile obj)
         {
             if (obj)
             {
@@ -53,7 +40,9 @@ namespace Oddments
                     };
                 }
                 shouldInvert = !shouldInvert;
+                return true;
             }
+            return false;
         }
 
         private bool shouldInvert = false;

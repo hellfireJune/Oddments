@@ -21,7 +21,7 @@ namespace Oddments
             Name = "Sanguine Hook",
             Description = "Crazy Battle",
             SpriteResource = $"{Module.SPRITE_PATH}/sanguinehook.png",
-            Quality = ItemQuality.B,
+            Quality = ItemQuality.EXCLUDED,
             PostInitAction = item =>
             {
                 /*SanguineHook hook = item as SanguineHook;

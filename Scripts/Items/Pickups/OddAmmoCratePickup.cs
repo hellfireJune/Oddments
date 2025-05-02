@@ -7,9 +7,9 @@ using UnityEngine;
 
 namespace Oddments
 {
-    public class GiantAmmoCratePickup : PickupObject, IPlayerInteractable
+    public class OddAmmoCratePickup : PickupObject, IPlayerInteractable
     {
-        public static PickupTemplate pickup = new PickupTemplate(typeof(GiantAmmoCratePickup))
+        public static PickupTemplate pickup = new PickupTemplate(typeof(OddAmmoCratePickup))
         {
             Name = "Big Ammo Crate",
             PostInitAction = item =>
@@ -18,6 +18,28 @@ namespace Oddments
             },
             CustomCost = 25,
         };
+
+        public static PickupTemplate pickup2 = new PickupTemplate(typeof(OddAmmoCratePickup))
+        {
+            Name = "Endless Ammo Crate",
+            PostInitAction = item =>
+            {
+                OddItemIDs.InfAmmoPickup = item.PickupObjectId;
+
+                OddAmmoCratePickup oddAmmoCratePickup = item as OddAmmoCratePickup;
+                oddAmmoCratePickup.type = OddAmmoType.INFINITE;
+            },
+            CustomCost = 25,
+        };
+
+        public enum OddAmmoType
+        {
+            BIG,
+            INFINITE,
+        }
+        public OddAmmoType type = OddAmmoType.BIG;
+
+        public float InfAmmoDuration = 30f;
 
         public override void Pickup(PlayerController player)
         {
@@ -34,16 +56,26 @@ namespace Oddments
                 tk2dSpriteCollectionData encounterIconCollection = player.CurrentItem.sprite.Collection;
                 G*ameUIRoot.Instance.notificationController.DoCustomNotification("ACTIVE RECHARGED", $"{player.CurrentItem.DisplayName} Recharged", encounterIconCollection, player.CurrentItem.sprite.spriteId);
             }*/
-            Core.DontDropMore = true;
-            FloorRewardData currentRewardData = GameManager.Instance.RewardManager.CurrentRewardData;
-            LootEngine.DoAmmoClipCheck(currentRewardData, out LootEngine.AmmoDropType ammoDropType);
-            for (int i = -1; i <= 1; i += 2)
+            if (type == OddAmmoType.BIG)
             {
-                int id = ammoDropType == LootEngine.AmmoDropType.DEFAULT_AMMO ? GlobalItemIds.AmmoPickup : GlobalItemIds.SpreadAmmoPickup;
-                GameObject ammo = PickupObjectDatabase.GetById(id).gameObject;
-                LootEngine.SpawnItem(ammo, room.GetBestRewardLocation(new IntVector2(1, 1), specRigidbody.UnitCenter).ToCenterVector3(0f), Vector2.zero, 0f, doDefaultItemPoof: true, disableHeightBoost: true);
+                Core.DontDropMore = true;
+                FloorRewardData currentRewardData = GameManager.Instance.RewardManager.CurrentRewardData;
+                LootEngine.DoAmmoClipCheck(currentRewardData, out LootEngine.AmmoDropType ammoDropType);
+                for (int i = -1; i <= 1; i += 2)
+                {
+                    int id = ammoDropType == LootEngine.AmmoDropType.DEFAULT_AMMO ? GlobalItemIds.AmmoPickup : GlobalItemIds.SpreadAmmoPickup;
+                    GameObject ammo = PickupObjectDatabase.GetById(id).gameObject;
+                    LootEngine.SpawnItem(ammo, room.GetBestRewardLocation(new IntVector2(1, 1), specRigidbody.UnitCenter).ToCenterVector3(0f), Vector2.zero, 0f, doDefaultItemPoof: true, disableHeightBoost: true);
+                }
+                Core.DontDropMore = false;
+            } else if (type == OddAmmoType.INFINITE) {
+                player.InfiniteAmmo.SetOverride("odmnts_InfAmmoPickup", true, InfAmmoDuration);
+
+                if (!GameUIRoot.Instance.BossHealthBarVisible)
+                {
+                    GameUIRoot.Instance.notificationController.DoCustomNotification("INFINITE AMMO", $"Infinite ammo for {(int)InfAmmoDuration} seconds", sprite.Collection, sprite.spriteId);
+                }
             }
-            Core.DontDropMore = false;
             Destroy(gameObject);
         }
 

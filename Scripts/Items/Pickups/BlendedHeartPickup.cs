@@ -24,6 +24,11 @@ namespace Oddments
 
                 item.PlaceItemInAmmonomiconAfterItemById(GlobalItemIds.Blank);
                 item.gameObject.GetOrAddComponent<SpecialPickupObject>().CustomSaveFlagToSetOnAcquisition = CustomDungeonFlags.CADUELCEUS_FLAG;
+
+                var hp = PickupObjectDatabase.GetById(73) as HealthPickup;
+                var shield = PickupObjectDatabase.GetById(120) as HealthPickup;
+                pickup.healVFX = hp.healVFX;
+                pickup.armorVFX = shield.armorVFX;
             },
             
             AutoAddToPools = true,

@@ -58,9 +58,10 @@
     <Compile Include="Scripts\AchievementStuff\OddUnlockMethods.cs" />
     <Compile Include="Scripts\AchievementStuff\UnlockCommands.cs" />
     <Compile Include="Scripts\Ailments\AilmentsCore.cs" />
-    <Compile Include="Scripts\Ailments\CustomGoopEffectDoer.cs" />
+    <Compile Include="Scripts\Ailments\CloneGoopEffectDoer.cs" />
     <Compile Include="Scripts\Ailments\GameActorHemorragingEffect.cs" />
     <Compile Include="Scripts\Ailments\GameActorWarpEffect.cs" />
+    <Compile Include="Scripts\Ailments\GoopFreezeEffectDoer.cs" />
     <Compile Include="Scripts\Enemies\Debug\TestOverrideEnemyStuff.cs" />
     <Compile Include="Scripts\Enemies\EnemiesCore.cs" />
     <Compile Include="Scripts\Enemies\WaveOne\PlagueShellKinBehaviour.cs" />
@@ -68,35 +69,57 @@
     <Compile Include="Scripts\AchievementStuff\JuneSaveManagerCore.cs" />
     <Compile Include="Scripts\Items\AmmoOverloaderItem.cs" />
     <Compile Include="Scripts\Items\ArmorGeneratingOnRoomClearItem.cs" />
+    <Compile Include="Scripts\Items\ArrayBulletModifierItem.cs" />
     <Compile Include="Scripts\Items\BiggerAmmoDropsItem.cs" />
     <Compile Include="Scripts\Items\BlackCatItem.cs" />
-    <Compile Include="Scripts\Items\BottledFairyItem.cs" />
+    <Compile Include="Scripts\Items\FullHealOnNewFloorItem.cs" />
+    <Compile Include="Scripts\Items\BuffFromCurrencyItem.cs" />
+    <Compile Include="Scripts\Items\BuffOnReloadItem.cs" />
+    <Compile Include="Scripts\Items\BulletOnTheCobItem.cs" />
     <Compile Include="Scripts\Items\CaduceusBulletsItem.cs" />
     <Compile Include="Scripts\Items\CardinalBulletsItem.cs" />
     <Compile Include="Scripts\Items\ClockHandItem.cs" />
+    <Compile Include="Scripts\Items\Core\GunDisplayNameHook.cs" />
     <Compile Include="Scripts\Items\Core\LightningModifier.cs" />
+    <Compile Include="Scripts\Items\Core\OddProjectileModifierItem.cs" />
+    <Compile Include="Scripts\Items\Core\PopcornBulletModifier.cs" />
+    <Compile Include="Scripts\Items\DeathEffectOnHitItem.cs" />
     <Compile Include="Scripts\Items\DodgeTargetItem.cs" />
     <Compile Include="Scripts\Items\DoubleRoomClearItem.cs" />
     <Compile Include="Scripts\Items\ElectricRoundsItem.cs" />
+    <Compile Include="Scripts\Items\GiganticAmythestItem.cs" />
     <Compile Include="Scripts\Items\GrimoireItem.cs" />
+    <Compile Include="Scripts\Items\Guns\ClipModifierExampleGun.cs" />
     <Compile Include="Scripts\Items\Guns\PlasmaPistol.cs" />
     <Compile Include="Scripts\Items\Guns\UnnamedTestGun.cs" />
     <Compile Include="Scripts\Items\GunUpgradeItem.cs" />
+    <Compile Include="Scripts\Items\KnockoutRoundsItem.cs" />
     <Compile Include="Scripts\Items\LeadReliquaryItem.cs" />
+    <Compile Include="Scripts\Items\MetronomeItem.cs" />
+    <Compile Include="Scripts\Items\MoneyFromActivatedTeleportersItem.cs" />
+    <Compile Include="Scripts\Items\OmegaCoreItem.cs" />
     <Compile Include="Scripts\Items\PickupReplacerItem.cs" />
     <Compile Include="Scripts\Items\HellfireItem.cs" />
     <Compile Include="Scripts\Items\InfAmmoBlanksItem.cs" />
     <Compile Include="Scripts\Items\InfBlankAmmosItem.cs" />
-    <Compile Include="Scripts\Items\OddStatusEffectModifierItem.cs" />
-    <Compile Include="Scripts\Items\Pickups\GiantAmmoCratePickup.cs" />
+    <Compile Include="Scripts\Items\Core\OddStatusEffectModifierItem.cs" />
+    <Compile Include="Scripts\Items\Pickups\OddAmmoCratePickup.cs" />
     <Compile Include="Scripts\Items\Pickups\StackedPickups.cs" />
     <Compile Include="Scripts\Items\PopPopItem.cs" />
     <Compile Include="Scripts\Items\RandomBonusActiveUseItem.cs" />
+    <Compile Include="Scripts\Items\RandomizedPricesItem.cs" />
     <Compile Include="Scripts\Items\RazorChamberItem.cs" />
     <Compile Include="Scripts\Items\ReBumpClipShotItem.cs" />
     <Compile Include="Scripts\Items\ReloadEffectOnDamageItem.cs" />
+    <Compile Include="Scripts\Items\RoomClearBonusOnHitItem.cs" />
+    <Compile Include="Scripts\Items\SellDroppedItemsItem.cs" />
+    <Compile Include="Scripts\Items\NewFloorGunModItem.cs" />
+    <Compile Include="Scripts\Items\ShrapnelRoundsItem.cs" />
     <Compile Include="Scripts\Items\ShotsFiredToDamageUpItem.cs" />
+    <Compile Include="Scripts\Items\SlinkingBulletsItem.cs" />
     <Compile Include="Scripts\Items\SpawnFriendlyGrenadeItem.cs" />
+    <Compile Include="Scripts\Items\ItemThatPrintsMoneyItem.cs" />
+    <Compile Include="Scripts\Items\SupremacyItem.cs" />
     <Compile Include="Scripts\Items\TempStatsPlayerItem.cs" />
     <Compile Include="Scripts\Items\MassDevolveItem.cs" />
     <Compile Include="Scripts\Items\Pickups\BlendedHeartPickup.cs" />
@@ -114,7 +137,7 @@
     <Compile Include="Scripts\Items\InfiniteLockboxItem.cs" />
     <Compile Include="Scripts\Items\BenthicBloomItem.cs" />
     <Compile Include="Scripts\Items\KeyOfLoveItem.cs" />
-    <Compile Include="Scripts\Items\MajesticCenser.cs" />
+    <Compile Include="Scripts\Items\SpawnEnemyItem.cs" />
     <Compile Include="Scripts\Items\PulsingBulletsItem.cs" />
     <Compile Include="Scripts\Items\QuickFreezeItem.cs" />
     <Compile Include="Scripts\Items\RightfulCurtsy.cs" />
@@ -122,7 +145,7 @@
     <Compile Include="Scripts\Items\RoomClearOnlyHeals.cs" />
     <Compile Include="Scripts\Items\SanguineHookItem.cs" />
     <Compile Include="Scripts\Items\ShotgunCharmItem.cs" />
-    <Compile Include="Scripts\Items\SonarBullets.cs" />
+    <Compile Include="Scripts\Items\RadarBulletItem.cs" />
     <Compile Include="Scripts\Items\SpaceParasiteItem.cs" />
     <Compile Include="Scripts\Items\FuckyBarrelItem.cs" />
     <Compile Include="Scripts\Items\ThrowingKnifeItem.cs" />
@@ -130,6 +153,7 @@
     <Compile Include="Scripts\Items\VenusianRoundsItem.cs" />
     <Compile Include="Scripts\Items\VolleyOnBlankItem.cs" />
     <Compile Include="Scripts\Items\VolleySpamPlayerItem.cs" />
+    <Compile Include="Scripts\Items\WhetStoneWaxStoneItem.cs" />
     <Compile Include="Scripts\Items\WickedSoul.cs" />
     <Compile Include="Scripts\Items\MinCasingIncreaserItem.cs" />
     <Compile Include="Scripts\Items\DoubleHealingItem.cs" />
@@ -141,14 +165,14 @@
     <Compile Include="Scripts\Items\JamIdol.cs" />
     <Compile Include="Scripts\Items\Lemegeton.cs" />
     <Compile Include="Scripts\Items\LightweightArmor.cs" />
-    <Compile Include="Scripts\Items\MimicBait.cs" />
-    <Compile Include="Scripts\Items\MimicWhistle.cs" />
+    <Compile Include="Scripts\Items\MimicChanceItem.cs" />
+    <Compile Include="Scripts\Items\ChestToMimicItem.cs" />
     <Compile Include="Scripts\Items\OddRounds.cs" />
     <Compile Include="Scripts\Items\PickupGenerator.cs" />
     <Compile Include="Scripts\Items\PremiumShells.cs" />
     <Compile Include="Scripts\Items\SacredOrbCrownOfGunsCrownOfLove.cs" />
     <Compile Include="Scripts\Items\SafetyScissors.cs" />
-    <Compile Include="Scripts\Items\SiphonGem.cs" />
+    <Compile Include="Scripts\Items\SiphonItemPlayerItem.cs" />
     <Compile Include="Scripts\Items\SynergracesBlessingAndLotsaChests.cs" />
     <Compile Include="Scripts\Items\TwoDollarCoin.cs" />
     <Compile Include="Scripts\Items\WebImmunityItemWeaversCharmSpiderBoots.cs" />
@@ -400,6 +424,58 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\Sprites\Items\anorounds.png" />
     <EmbeddedResource Include="Resources\Sprites\Items\cathorounds.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\Items\nullslab.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\Items\decanter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\Items\compactrounds.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\Items\dealmaker.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\VFX\caduceusonhitflash_001.png" />
+    <EmbeddedResource Include="Resources\Sprites\VFX\caduceusonhitflash_002.png" />
+    <EmbeddedResource Include="Resources\Sprites\VFX\caduceusonhitflash_003.png" />
+    <EmbeddedResource Include="Resources\Sprites\VFX\caduceusonhitflash_004.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\Items\hippocracticrounds.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\mortalrounds.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\Items\corinthiancasing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\Items\assisttrophy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\Items\doublechamber.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\giganticamythest.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\Items\acridrounds.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\Items\safetscissors2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\Items\packedshells.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\Items\bucketbullet.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\hellfirerounds2.png" />
+    <EmbeddedResource Include="Resources\Sprites\Items\royalguard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\Items\supremacy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\Items\grimoire.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

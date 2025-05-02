@@ -52,14 +52,14 @@ namespace Oddments
                 PrefixHandler.AddPrefixForAssembly(PREFIX);
                 JuneSaveManagerCore.Init();
 
+                OddSparksDoer.InitPrefabs();
+                AilmentsCore.Init();
+                LightningModifier.Init();
+
                 ItemTemplateManager.Init();
                 GunMaker.InitGuns();
                 Synergies.Init();
                 //EnemiesCore.Init();
-
-                OddSparksDoer.InitPrefabs();
-                AilmentsCore.Init();
-                LightningModifier.Init();
 
                 //ShrineFactory.Init();
                 //ShrapnelAbilityBase.InitSetupStuffYaddaYadda();
@@ -73,7 +73,24 @@ namespace Oddments
                 //FortuneMagic.Init();
                 CommandsBox.Init();
                 //EnemyTools.ManualAddOB(typeof(TestOverrideEnemyStuff.TestOverrideBehavior));
-                Log($"{MOD_NAME} v{VERSION} started susccessfully.", TEXT_COLOR);
+
+                string modName = MOD_NAME;
+                if (JuneSaveManagerCore.Flipments)
+                {
+                    var reverse = modName.Reverse();
+                    modName = "";
+                    foreach (var chr in reverse) {
+                        modName += chr;
+                    }
+                    modName = modName.ToTitleCaseInvariant();
+                }
+                if (JuneSaveManagerCore.DeluxeEdition)
+                {
+                    modName += " (Deluxe Edition)";
+                }
+                string startedSuccessfully = $"{modName} v{VERSION} started successfully.";
+                if (JuneSaveManagerCore.InnapropriateLanguage) { startedSuccessfully = $"{modName} v{VERSION} just freakin started successfully!"; }
+                Log(startedSuccessfully, TEXT_COLOR);
                 Log($"- \"{BraveUtility.RandomElement(SPLASH_TEXT)}\"", TEXT_COLOR);
             }
             catch (Exception e) 
@@ -84,21 +101,35 @@ namespace Oddments
             }
         }
         /* Curr Changelog:
-         * Added Cardinal Bullets, Shotgun Charm, Gungeon Veins, Empty Chamber, Lead Cross, Cadueleus, Reloadium, Razor Chamber, Dodge Target, Eternal Rounds, Blank Ammo, Catho-rounds, Ano-rounds
+         * Added Cardinal Bullets, Shotgun Charm, Gungeon Veins, Empty Chamber, Lead Cross, Cadueleus, Reloadium, Razor Chamber, Dodge Target, Eternal Rounds, Blank Ammo, Catho-rounds, Ano-rounds, Slab of Null, Decanter, Corinthian Casing, 
+         * Gigantic Amythest, Double Chamber, Acrid Rounds, Royal Guard, Packed Shells, Grimoire and Supremacy
+         * Added the synergy Redox Reload
+         * Hideous Bullets is now B tier and no longer tints ur bullets red
+         * Renamed "Mimic Whistle" to "Strange Whistle"
          * Coupon now has 20 casings minimum
          * Siphon Item is hopefully less volatile with the whole using consumed items thing
-         * Fixed Hellfire Rounds
+         * Fixed Hellfire Rounds, resprited it
+         * Infinite lockbox buffed youre welcome turtle melon
+         * Every copy is now personalized
+         * +3 splash text
          * 
          * Non-included 2/3:
-         * Yari Ammolet, Sawblade Ammolet, Rocket Ouroboros, [VenusianRoundsItem], [DecanterItem], [MassDevolveItem], [ClockhandItem], [QuickFreezeItem], {CaduceusBulletsItem], [BottledFairyItem],
-         * Jet, Potion of Haste-loading, [RandomBonusActiveUseItem], [PopPopItem], [GunUpgradeItem], [moneyh], Stacked Pickups, [DoubleRoomClearItem], [BiggerAmmoDropsItem], [DoubleAFairAmountOfItemDropsItem],
-         * [RandomPlayerItemItem], [SpawnFriendlyGrenadeItem], [ArmorGeneratingOnRoomClearItem], [overloader], [splitter], Lead Reliquary, [GrimoireItem]
-         * 
+         * Yari Ammolet, Sawblade Ammolet, [DecanterItem], [MassDevolveItem], [ClockhandItem], [QuickFreezeItem], {CaduceusBulletsItem], [FullHealOnNewFloorItem],
+         * Jet, Potion of Haste-loading, [PopPopItem], [GunUpgradeItem], [moneyh], Stacked Pickups, [DoubleRoomClearItem], [BiggerAmmoDropsItem], [DoubleAFairAmountOfItemDropsItem],
+         * [RandomPlayerItemItem], [SpawnFriendlyGrenadeItem], [ArmorGeneratingOnRoomClearItem], [overloader], [splitter], Lead Reliquary, [GrimoireItem], [RandomizedPricesItem],
+         * [OmegaCoreItem], Starmetal Shield, Mortal Rounds, [MetronomeItem], [SlinkingBulletsItem], Sales 101, [blank shells], [BuffFromCurrencyItemx2], [MoneyFromActivatingTeleportersItem], 
+         * [ItemThatPrintsMoneyItem], [Shelleton Hand], [Shelltan's Touch], [tapeflower], [gene splicer], [inf ammo pickup], [inf ammo pickup replacer], Shell Rounds
+         * add the bee pack and the thing that shoots multiple guns and then maybe hold off on new items for now
          * 
          * Non-included:
-         * [RightfulCurtsy], Majestic Censer, Chrome Splash, [RoomClearOnlyHeals], [BulletPowerDrainItem], [BenthicBloomItem], [BlendedHeartPickup], Eternal Idol, Cellophane, Tractor Beam, Black Cat, [Lemegeton], [FuckyBarrelItem], Sanguine Hook
+         * [RightfulCurtsy], Majestic Censer, Chrome Splash, [RoomClearOnlyHeals], [BulletPowerDrainItem], [BenthicBloomItem], [BlendedHeartPickup], Eternal Idol, Cellophane, Tractor Beam, Black Cat, [Lemegeton], [FuckyBarrelItem]
          * guns: Spid-AR and King Worm
          * Added 1 new shrine
+         * 
+         * Entirely Unfinished:
+         * [ArrayBulletModifierItem], [VenusianRoundsItem], Sanguine Hook, Rocket Ouroboros, [KnockoutRoundsItem], Whet Stone, Wax Stone, Bullet on the Cob
+         * Guns: Unnamed Test Gun and Plasma Pistol
+         * Shrapnel Giant (It's so over)
          */
 
         public static void Log(string text, string color="#FFFFFF")
@@ -160,7 +191,11 @@ namespace Oddments
             "The fire is gone",
             "Red as all hellfire",
             "From now on I will be like this, all of the time",
-            "With good thumbnail art now!"
+            "With good thumbnail art now!",
+            "I will destroy this place if I have to",
+            "Status, what's your transmission?",
+            "Say my name...",
+            "Yo, waddup",
         };
 
 
@@ -223,7 +258,6 @@ namespace Oddments
          * Sweetheart necklace (bees on fire on damage)
          * Shark Tooth Necklace (enemies take 15% more bonus damage)
          * Obsidian rose (weaker fire immunity, increases the radius of any fire goop spawned)
-         * Heart of the Powderkeg (balrog's heart)
          * Powderkeg's Head (balrog's head)
          * Dad's wallet
          * Rogue Planet
@@ -234,8 +268,7 @@ namespace Oddments
          * Ring of Gripmaster Friendship 
          * Lens of Alchemy (See all status effects on enemies, minor death mark effect)
          * Crossed Heart (ring of pain)
-         * Acrid rounds (hellfire rounds but goop instead of splodsion)
-         * Pyre rounds (^^ but fire goops)
+         * Pyre rounds (acrid rounds but fire goops)
          * Blank Shells (^^ but blank)
          * Fuse crown (more fuses, but chests spawn goodies on splodsion)
          * Take damage after clearing first 5 rooms with item equipped, immense stat up

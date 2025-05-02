@@ -11,7 +11,10 @@ namespace Oddments
 {
     public class BottledFairyItem : PassiveItem
     {
-        public static OddItemTemplate template = new OddItemTemplate(typeof(BottledFairyItem));
+        public static OddItemTemplate template = new OddItemTemplate(typeof(BottledFairyItem))
+        {
+            Name = "Tissue Sample",
+        };
 
         public override void Pickup(PlayerController player)
         {

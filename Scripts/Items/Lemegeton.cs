@@ -25,8 +25,7 @@ namespace Oddments
 
         public static OddItemTemplate template = new OddItemTemplate(typeof(Lemegeton))
         {
-            Name = "Lemegeton",
-            Quality = ItemQuality.EXCLUDED,
+            Name = "Lemeguon",
             Cooldown = 325,
             PostInitAction = _ =>
             {
@@ -36,10 +35,19 @@ namespace Oddments
                 }
                 PickupObjectDatabase.GetById(443).SetTag("valid_use_if_dettached");
 
-                BuildPrefab(); //OrbitalUtility.MakeOrbital("Lemegeton Orbital", 30, 10, 3, PlayerOrbital.OrbitalMotionStyle.ORBIT_PLAYER_ALWAYS, 1, $"{Module.ASSEMBLY_NAME}/Resources/example_item_sprite", new Vector2(14, 14), Vector2.zero);
+                GameObject wisp = OrbitalUtility.MakeAnimatedOrbital("Lemegeton Orbital",
+                    30,
+                    10,
+                    3,
+                    PlayerOrbital.OrbitalMotionStyle.ORBIT_PLAYER_ALWAYS,
+                    1,
+                    new List<string>() { $"{Module.ASSEMBLY_NAME}/Resources/example_item_sprite" },
+                    10, 
+                    new Vector2(14, 14), Vector2.zero, 
+                    tk2dBaseSprite.Anchor.MiddleCenter, tk2dSpriteAnimationClip.WrapMode.Loop);
             }
         };
-        public static void BuildPrefab()
+        /*public static void BuildPrefab()
         {
             if (orbitalPrefab != null) return;
             GameObject prefab = SpriteBuilder.SpriteFromResource($"{Module.ASSEMBLY_NAME}/Resources/example_item_sprite");
@@ -59,7 +67,7 @@ namespace Oddments
             GameObject.DontDestroyOnLoad(prefab);
             FakePrefab.MarkAsFakePrefab(prefab);
             prefab.SetActive(false);
-        }
+        }*/
 
         public override void DoEffect(PlayerController user)
         {
@@ -69,43 +77,12 @@ namespace Oddments
             do
             {
                 item = LootEngine.GetItemOfTypeAndQuality<PassiveItem>(quality, GameManager.Instance.RewardManager.ItemsLootTable, true);
-            } while (item.HasTag(lemegetonNonSummonableTag));
+            } while (item.HasTag(lemegetonNonSummonableTag) || !item.CanBeDropped);
             PlayerOrbital orbital = Instantiate(orbitalPrefab.gameObject).GetComponent<PlayerOrbital>();
             orbital.Initialize(user);
             PassiveItem pItem = RealFakeItemHelper.CreateFakeItem(item, user, orbital.gameObject.transform);
-            //ETGModConsole.Log(pItem.PickupObjectId);
 
             pItem.renderer.enabled = true;
         }
-
-        /*public static float timerToPreventLag = 1f;
-        public override void Update()
-        {
-            base.Update();
-            timerToPreventLag -= Time.deltaTime;
-            if (timerToPreventLag < 0)
-            {
-                ETGModConsole.Log("- -- -"); timerToPreventLag = 10f;
-                foreach (KeyValuePair<string, EncounteredObjectData> kv in GameStatsManager.Instance.m_encounteredTrackables.ToList())
-                {
-                    EncounteredObjectData encounteredObjectData = kv.Value;
-                    if (encounteredObjectData.differentiator > 0)
-                    {
-
-                        ETGModConsole.Log(encounteredObjectData.differentiator);
-                        PickupObject pickupObject = PickupObjectDatabase.Instance.Objects.Find(pickup => pickup && pickup.encounterTrackable != null && pickup.encounterTrackable.EncounterGuid == kv.Key);
-                        if (pickupObject != null)
-                        {
-                            ETGModConsole.Log($"Id:  {pickupObject.PickupObjectId}");
-                            if (!string.IsNullOrEmpty(pickupObject.name))
-                            {
-                                ETGModConsole.Log(pickupObject.name);
-                            }
-                        }
-                    }
-                }
-            }
-        }*/
-
     }
 }

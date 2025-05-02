@@ -8,39 +8,26 @@ using System.Text;
 
 namespace Oddments
 {
-    public class RightfulCurtsy : PassiveItem
+    public class RightfulCurtsy : OddProjectileModifierItem
     {
-        public static OddItemTemplate template = new OddItemTemplate(typeof(RightfulCurtsy))
+        public static BulletModifierItemTemplate template = new BulletModifierItemTemplate(typeof(RightfulCurtsy))
         {
             Name = "rightful curtsy",
-            Quality = ItemQuality.EXCLUDED,
             PostInitAction = item =>
             {
                 item.AddPassiveStatModifier(PlayerStats.StatType.AmmoCapacityMultiplier, 0.1f);
                 item.SetTag("lemegeton_non_summonable");
                 item.RemovePickupFromLootTables();
-            }
+            },
+
+            ProcChance = 0.5f
         };
 
-        public override void Pickup(PlayerController player)
+        public override bool ApplyBulletEffect(Projectile arg1)
         {
-            base.Pickup(player);
-            player.PostProcessProjectile += Player_PostProcessProjectile;
-        }
-
-        private void Player_PostProcessProjectile(Projectile arg1, float arg2)
-        {
-            if (UnityEngine.Random.value < 0.5)
-            {
-                arg1.baseData.force *= 2;
-                arg1.RuntimeUpdateScale(1.1f);
-            }
-        }
-
-        public override void DisableEffect(PlayerController player)
-        {
-            player.PostProcessProjectile -= Player_PostProcessProjectile;
-            base.DisableEffect(player);
+            arg1.baseData.force *= 2;
+            arg1.RuntimeUpdateScale(1.1f);
+            return true;
         }
     }
 }

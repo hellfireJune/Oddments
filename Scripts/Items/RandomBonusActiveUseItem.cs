@@ -18,6 +18,11 @@ namespace Oddments
         private static readonly List<int> validFakeItems = new List<int>() { 108, 109, 439, 525 };
         public static OddItemTemplate template = new OddItemTemplate(typeof(RandomBonusActiveUseItem))
         {
+            Name = "Slab of Null",
+            Description = "Object Reference",
+            LongDescription = "Using an active item will use another random active item.\n\nA perfect slab of absolute nothing, completely devoid of anything. Made by a novice gunsmith in a freak engineering incident.",
+            SpriteResource = $"{Module.SPRITE_PATH}/nullslab.png",
+            Quality = ItemQuality.EXCLUDED,
             PostInitAction = item =>
             {
                 foreach (int i in validFakeItems)

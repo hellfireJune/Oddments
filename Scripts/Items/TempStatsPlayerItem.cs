@@ -20,7 +20,8 @@ namespace Oddments
                 jet.stats = new StatModifier[]
                 {
                     new StatModifier() { statToBoost = PlayerStats.StatType.ReloadSpeed, amount = 0.25f, modifyType = StatModifier.ModifyMethod.MULTIPLICATIVE },
-                    new StatModifier() { statToBoost = PlayerStats.StatType.RateOfFire, amount = 1.5f, modifyType = StatModifier.ModifyMethod.MULTIPLICATIVE },
+                    new StatModifier() { statToBoost = PlayerStats.StatType.RateOfFire, amount = 2f, modifyType = StatModifier.ModifyMethod.MULTIPLICATIVE },
+                    new StatModifier() { statToBoost = PlayerStats.StatType.Damage, amount = 1.2f, modifyType = StatModifier.ModifyMethod.MULTIPLICATIVE },
                 };
                 jet.IsJet = true;
                 jet.duration = 8f;
@@ -35,7 +36,7 @@ namespace Oddments
                 poti.stats = new StatModifier[]
                 {
                     new StatModifier() { statToBoost = PlayerStats.StatType.ReloadSpeed, amount = -999f},
-                    new StatModifier() { statToBoost = PlayerStats.StatType.RateOfFire, amount = 0.1f },
+                    new StatModifier() { statToBoost = PlayerStats.StatType.RateOfFire, amount = 1f },
                 };
                 poti.duration = 14f;
             }
@@ -74,7 +75,7 @@ namespace Oddments
 
                 if (IsJet)
                 {
-                    user.healthHaver.ApplyDamage(1f, Vector2.zero, "Jet");
+                    user.healthHaver.ApplyDamage(1f, Vector2.zero, "Withdrawl");
                 }
             }));
         }

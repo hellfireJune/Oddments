@@ -11,7 +11,7 @@ namespace Oddments
     {
         public static OddItemTemplate template = new OddItemTemplate(typeof(MimicWhistle))
         {
-            Name = "Mimic Whistle",
+            Name = "Strange Whistle",
             Quality = ItemQuality.D,
             SpriteResource = $"{Module.SPRITE_PATH}/mimicwhistle.png",
             Description = "Tweet!",

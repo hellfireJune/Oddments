@@ -449,6 +449,10 @@ namespace SaveAPI
             {
                 this.m_sessionCharacter = player.characterIdentity;
                 this.m_sessionStats = new AdvancedGameStats();
+                if (Oddments.JuneSaveManagerCore.SeedToSet != -1)
+                {
+                    m_sessionStats.SetMax(CustomTrackedMaximums.PERSONALIZATION_SEED, Oddments.JuneSaveManagerCore.SeedToSet);
+                }
                 this.m_savedSessionStats = new AdvancedGameStats();
                 if (!this.m_characterStats.ContainsKey(player.characterIdentity))
                 {

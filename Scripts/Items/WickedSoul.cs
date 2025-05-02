@@ -8,6 +8,7 @@ using Dungeonator;
 using Alexandria.Misc;
 using JuneLib.Items;
 using SaveAPI;
+using UnityEngine;
 
 namespace Oddments
 { 
@@ -71,6 +72,10 @@ namespace Oddments
         {
             public static OddItemTemplate template = new OddItemTemplate(typeof(DecanterItem))
             {
+                Name = "Decanter",
+                Description = "Curse-B-Gone",
+                LongDescription = "A miserable little potion of malice and hatred. Drinking from this will negate any effects of curse for the entire floor, and will kill any jammed enemies that spawn.",
+                SpriteResource = $"{Module.SPRITE_PATH}/decanter.png",
                 Quality = ItemQuality.D,
                 PostInitAction = item =>
                 {
@@ -79,8 +84,17 @@ namespace Oddments
                     ditem.numberOfUses = 3;
 
                     CustomActions.PostDungeonTrueStart += NewFloor;
+                    ETGMod.AIActor.OnPostStart += KillJammed;
                 }
             };
+
+            private static void KillJammed(AIActor obj)
+            {
+                if (obj && obj.healthHaver && obj.IsBlackPhantom && !obj.healthHaver.IsBoss)
+                {
+                    obj.healthHaver.ApplyDamage(27616, Vector2.zero, "Decanted", CoreDamageTypes.None, DamageCategory.Unstoppable);
+                }
+            }
 
             private static void NewFloor(Dungeon obj)
             {
@@ -94,7 +108,7 @@ namespace Oddments
                 base.DoEffect(user);
                 UsedThisFloor = true;
 
-                LootEngine.SpawnCurrency(user.specRigidbody.UnitCenter, 8);
+                //LootEngine.SpawnCurrency(user.specRigidbody.UnitCenter, 8);
             }
         }
     }

@@ -8,23 +8,66 @@ using JuneLib;
 
 namespace Oddments
 {
+    [Serializable]
+    public class GameActorOnDeathEffect : GameActorEffect
+    {
+        protected Type onDeathBehaviour;
+        public OnDeathBehavior.DeathType deathType;
+        protected Component comp;
+        public Action<Component> PostApplyAction;
+        public GameActorOnDeathEffect(Type behaviour) : base()
+        {
+            onDeathBehaviour = behaviour;
+        }
+
+        public override void OnEffectApplied(GameActor actor, RuntimeGameActorEffectData effectData, float partialAmount = 1)
+        {
+            Debug.Log("tried to apply effect");
+            base.OnEffectApplied(actor, effectData, partialAmount);
+            Debug.Log("added effect");
+            comp = actor.gameObject.AddComponent(onDeathBehaviour);
+            Debug.Log("saved component");
+            PostApplyAction?.Invoke(comp);
+            Debug.Log("applied action");
+            if (comp is OnDeathBehavior onDeath)
+            {
+                onDeath.deathType = deathType;
+            }
+        }
+
+        public override void OnEffectRemoved(GameActor actor, RuntimeGameActorEffectData effectData)
+        {
+            base.OnEffectRemoved(actor, effectData);
+            if (comp != null)
+                UnityEngine.Object.Destroy(comp);
+        }
+    }
     public static class AilmentsCore
     {
         public static GoopDefinition HemorragingBloodGoop;
-        public static GoopDefinition GoopClone;
+        public static GoopDefinition CloneGoop;
+        public static GoopDefinition CryotheumGoop;
+
         public static GameActorWarpEffect WarpEffect;
         public static GameActorHemorragingEffect HemorragingEffect;
         public static GameActorHemorragingEffect PoisBleedEffect;
+
+        public static GameActorOnDeathEffect HellfireEffect;
+        public static GameActorOnDeathEffect AcridRoundsEffect;
 
         public static GameObject hemoraggingOverhead;
         public static GameObject greenShitOverhead;
         public static void Init()
         {
-            GoopClone = ScriptableObject.CreateInstance<GoopDefinition>();
-            GoopClone.CanBeIgnited = true;
-            GoopClone.damagesPlayers = false;
-            GoopClone.damagesEnemies = false;
-            GoopClone.baseColor32 = Color.red;
+            CloneGoop = ScriptableObject.CreateInstance<GoopDefinition>();
+            CloneGoop.CanBeIgnited = true;
+            CloneGoop.damagesPlayers = false;
+            CloneGoop.damagesEnemies = false;
+            CloneGoop.baseColor32 = Color.red;
+
+            CryotheumGoop = ScriptableObject.CreateInstance<GoopDefinition>();
+            CryotheumGoop.CanBeIgnited = false;
+            //CryotheumGoop.eff
 
             WarpEffect = new GameActorWarpEffect
             {
@@ -69,6 +112,37 @@ namespace Oddments
                 effectIdentifier = "poisonbleed",
                 isGreenBlood = true,
                 OverheadVFX = greenShitOverhead
+            };
+
+            HellfireEffect = new GameActorOnDeathEffect(typeof(HellfireRoundsItem.HellfireExplodeOnDeath))
+            {
+                TintColor = Color.red,
+                AppliesTint = true,
+                duration = 6f,
+                effectIdentifier = "explosiveHellfire",
+                deathType = OnDeathBehavior.DeathType.PreDeath,
+
+                PostApplyAction = onDeath =>
+                {
+                    HellfireRoundsItem.HellfireExplodeOnDeath deathExplode = (HellfireRoundsItem.HellfireExplodeOnDeath)onDeath;
+                    deathExplode.explosionData = GameManager.Instance.Dungeon.sharedSettingsPrefab.DefaultExplosionData;
+                }
+            };
+            AcridRoundsEffect = new GameActorOnDeathEffect(typeof(GoopDoer))
+            {
+                duration = 6f,
+                effectIdentifier = "causticAcridity",
+
+                PostApplyAction = goopDoer =>
+                {
+                    var goopdoer = goopDoer as GoopDoer;
+
+                    goopdoer.goopDefinition = EasyGoopDefinitions.PoisonDef;
+                    goopdoer.updateOnPreDeath = true;
+                    goopdoer.defaultGoopRadius = 2f;
+                    goopdoer.updateOnAnimFrames = false;
+                    goopdoer.updateTiming = GoopDoer.UpdateTiming.TriggerOnly;
+                }
             };
             /*
                                                                        * 

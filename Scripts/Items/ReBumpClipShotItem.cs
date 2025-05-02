@@ -14,9 +14,9 @@ namespace Oddments
         {
             Name = "Eternal Slugs",
             Description = "Shell'tans Shells",
-            LongDescription = "Any projectiles that hit enemies will restore bullets to the clip it was fired from.\n\nto-do: write lore :3",
+            LongDescription = "Any projectiles that hit enemies will restore bullets to the clip it was fired from.",
             SpriteResource = $"{Module.SPRITE_PATH}/eternalrounds.png",
-            Quality = ItemQuality.S,
+            Quality = ItemQuality.S, // so we gotta add an unlock
             PostInitAction = item =>
             {
                 item.AddPassiveStatModifier(PlayerStats.StatType.Curse, 2f);

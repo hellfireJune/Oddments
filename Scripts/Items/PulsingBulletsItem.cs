@@ -4,38 +4,22 @@ using UnityEngine;
 
 namespace Oddments
 {
-    public class PulsingBulletsItem : PassiveItem
+    public class PulsingBulletsItem : OddProjectileModifierItem
     {
-        public static OddItemTemplate template = new OddItemTemplate(typeof(PulsingBulletsItem))
+        public static BulletModifierItemTemplate template = new BulletModifierItemTemplate(typeof(PulsingBulletsItem))
         {
             Name = "Hideous Bullets",
+            AltTitle = "Viscerounds",
             Description = "Pulsating flesh",
             SpriteResource = $"{Module.SPRITE_PATH}/hideousbullets.png",
             LongDescription = "Bullets will pulsate in damage and size, leading to on average larger bullets with higher damage.",
-            Quality = ItemQuality.C,
-            PostInitAction = item =>
-            {
-                item.MakeBulletMod();
-            }
+            Quality = ItemQuality.B,
         };
 
-        public override void Pickup(PlayerController player)
-        {
-            base.Pickup(player);
-            player.PostProcessProjectile += Player_PostProcessProjectile;
-        }
-
-        public override void DisableEffect(PlayerController player)
-        {
-            base.DisableEffect(player);
-            player.PostProcessProjectile -= Player_PostProcessProjectile;
-        }
-
-        private void Player_PostProcessProjectile(Projectile arg1, float arg2)
+        public override bool ApplyBulletEffect(Projectile arg1)
         {
             arg1.gameObject.AddComponent<PulsingProjectileEffect>();
-            Color fleshColor = new Color(0.4f, 0, 0);
-            arg1.AdjustPlayerProjectileTint(fleshColor, 1);
+            return true;
         }
 
     }

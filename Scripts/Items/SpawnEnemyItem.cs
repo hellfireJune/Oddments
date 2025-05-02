@@ -11,16 +11,30 @@ using Alexandria.Misc;
 
 namespace Oddments
 {
-    public class MajesticCenser : PlayerItem
+    public class SpawnEnemyItem : PlayerItem
     {
-        public static OddItemTemplate template = new OddItemTemplate(typeof(MajesticCenser))
+        public static OddItemTemplate template = new OddItemTemplate(typeof(SpawnEnemyItem))
         {
             Name = "Majestic Censer",
             Quality = ItemQuality.EXCLUDED,
             Cooldown = 100,
             PostInitAction = item =>
             {
-                item.RemovePickupFromLootTables();
+            }
+
+        };
+        public static OddItemTemplate template2 = new OddItemTemplate(typeof(SpawnEnemyItem))
+        {
+            Name = "Royal Guard",
+            Quality = ItemQuality.A,
+            SpriteResource = $"{Module.SPRITE_PATH}/royalguard.png",
+            Description = "My soldiers do not yield!",
+            LongDescription = "Spawns a gun nut on use",
+            Cooldown = 200,
+            PostInitAction = item =>
+            {
+                SpawnEnemyItem censer = (SpawnEnemyItem)item;
+                censer.IsRoyalGuard = true;
             }
 
         };
@@ -38,11 +52,17 @@ namespace Oddments
             StartCoroutine(ItemBuilder.HandleDuration(this, Duration, user, null));
             actor.StartCoroutine(EnemyCoroutine(actor.healthHaver));
 
-            EnemyGUID = null;
+            if (IsRoyalGuard)
+            {
+                BraveUtility.RandomElement(nutGuids);
+            } else
+            {
+                EnemyGUID = null;
+            }
             Destroy(icon);
             base.DoEffect(user);
         }
-        public static readonly float Duration = 13f;
+        public static readonly float Duration = 20f;
         public static readonly float ParticlieTick = 0.25f;
 
         public IEnumerator EnemyCoroutine(HealthHaver haver)
@@ -78,7 +98,7 @@ namespace Oddments
 
         public void DamageEnemies(float dmg, bool fatal, HealthHaver enemies)
         {
-            if (this && this.LastOwner != null && !this.IsOnCooldown && fatal
+            if (!IsRoyalGuard && this && this.LastOwner != null && !this.IsOnCooldown && fatal
                 && string.IsNullOrEmpty(EnemyGUID) && !enemies.IsBoss && enemies && enemies.aiActor
                 && enemies.aiActor.GetResistanceForEffectType(EffectResistanceType.Charm) < 1
                 && enemies.sprite && enemies.sprite.collection && enemies.spriteAnimator)
@@ -171,6 +191,13 @@ namespace Oddments
         }
         
         protected GameObject icon;
+        public bool IsRoyalGuard = false;
         public string EnemyGUID;
+        List<String> nutGuids = new List<string>
+        {
+            "ec8ea75b557d4e7b8ceeaacdf6f8238c",
+            "463d16121f884984abe759de38418e48",
+            "383175a55879441d90933b5c4e60cf6f",
+        };
     }
 }

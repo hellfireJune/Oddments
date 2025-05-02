@@ -7,9 +7,11 @@ using UnityEngine;
 
 namespace Oddments
 {
-    internal class ShotsFiredToDamageUpItem : PassiveItem
+    internal class ShotsFiredToDamageUpItem : OddProjectileModifierItem
     {
-        public static OddItemTemplate template2 = new OddItemTemplate(typeof(ShotsFiredToDamageUpItem))
+        public static string RedoxSynergyName = "Redox Reload"; public static List<string> ids = new List<string>() { $"{Module.PREFIX}:catho-rounds", $"{Module.PREFIX}:ano-rounds" };
+
+        public static BulletModifierItemTemplate template2 = new BulletModifierItemTemplate(typeof(ShotsFiredToDamageUpItem))
         {
             Name = "Catho-Rounds",
             Description = "Charge Loser",
@@ -17,7 +19,7 @@ namespace Oddments
             Quality = ItemQuality.A,
             SpriteResource = $"{Module.SPRITE_PATH}/cathorounds.png",
         };
-        public static OddItemTemplate template = new OddItemTemplate(typeof(ShotsFiredToDamageUpItem))
+        public static BulletModifierItemTemplate template = new BulletModifierItemTemplate(typeof(ShotsFiredToDamageUpItem))
         {
             Name = "Ano-Rounds",
             Description = "Charge Gainer",
@@ -31,19 +33,7 @@ namespace Oddments
             }
         };
 
-        public override void Pickup(PlayerController player)
-        {
-            player.PostProcessProjectile += PostProcessProjectile;
-            base.Pickup(player);
-        }
-
-        public override void DisableEffect(PlayerController player)
-        {
-            player.PostProcessProjectile -= PostProcessProjectile;
-            base.DisableEffect(player);
-        }
-
-        private void PostProcessProjectile(Projectile arg1, float arg2)
+        public override bool ApplyBulletEffect(Projectile arg1)
         {
             Gun gun = this.Owner.CurrentGun;
             int gunIndex = (gun?.LastShotIndex ?? 0);
@@ -56,6 +46,8 @@ namespace Oddments
             mult = Mathf.Clamp(mult, 1, MaxMult);
             arg1.baseData.damage *= mult;
             arg1.RuntimeUpdateScale(mult);
+
+            return true;
         }
 
         public bool ReverseDamageBuff = false;

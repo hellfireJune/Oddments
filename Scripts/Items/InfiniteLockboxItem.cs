@@ -11,7 +11,7 @@ namespace Oddments
         {
             Name = "Infinite Lockbox",
             Description = "Down the chest-hole",
-            LongDescription = "Uses all of your keys to spawn an up-to infinite amount of rewards\n\nOpening one reveals an equally as large box inside with just as many locks",
+            LongDescription = "Single use. Uses all of your keys to spawn an up-to infinite amount of rewards\n\nOpening one reveals an equally as large box inside with just as many locks",
             Quality = ItemQuality.C,
             SpriteResource = $"{Module.SPRITE_PATH}/infinitelockbox.png",
             PostInitAction = item =>
@@ -35,7 +35,7 @@ namespace Oddments
             int keybullets = user.carriedConsumables.KeyBullets;
 
             FloorRewardData data = GameManager.Instance.RewardManager.CurrentRewardData;
-            for (int i = 0; i < Math.Floor(keybullets * 1.5); i++)
+            for (int i = 0; i < Math.Floor(2+keybullets * 1.5); i++)
             {
                 GameObject pickup;
                 do

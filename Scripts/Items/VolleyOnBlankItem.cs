@@ -8,7 +8,7 @@ using UnityEngine;
 namespace Oddments
 {
     public class VolleyOnBlankItem : BlankModificationItem
-    { 
+    {
         public static ItemTemplatePlusVolley template = new ItemTemplatePlusVolley(typeof(VolleyOnBlankItem))
         {
             Name = "Sawblade Ammolet",
@@ -23,9 +23,10 @@ namespace Oddments
 
             Projectile = ((Gun)PickupObjectDatabase.GetById(129)).DefaultModule.projectiles[0],
             ProjectilesToFire = 3,
+            IsRadial = true,
             PreAddModuleAction = module =>
             {
-                module.angleVariance = 360f;
+                module.angleVariance = 360f / template2.ProjectilesToFire;
             },
             PostInitAction = item =>
             {

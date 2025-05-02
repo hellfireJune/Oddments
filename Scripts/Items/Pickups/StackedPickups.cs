@@ -10,13 +10,13 @@ namespace Oddments
     {
         public static PickupTemplate template = new PickupTemplate(typeof(HealthPickup))
         {
-            Name = "Stacked Heart",
+            Name = "Stacked Armor",
             Quality = ItemQuality.EXCLUDED,
             PostInitAction = item =>
             {
                 HealthPickup pickup = (HealthPickup)item;
-                pickup.healAmount = 2;
-                OddItemIDs.StackedHeart = item.PickupObjectId;
+                pickup.armorAmount = 2;
+                OddItemIDs.StackedArmor = item.PickupObjectId;
             }
         };
         public static PickupTemplate template2 = new PickupTemplate(typeof(StackedSilencerItem))

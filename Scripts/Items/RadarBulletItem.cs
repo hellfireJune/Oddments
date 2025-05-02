@@ -8,8 +8,10 @@ using UnityEngine;
 
 namespace Oddments
 {
-    public class SonarBullets : PassiveItem
+    public class SonarBullets : OddStatusEffectModifierItem
     {
+
+        [Serializable]
         public class GameActorHomeEffect : GameActorEffect { }
         public static StatusEffectItemTemplate template = new StatusEffectItemTemplate(typeof(SonarBullets))
         {
@@ -19,16 +21,17 @@ namespace Oddments
             SpriteResource = $"{Module.SPRITE_PATH}/sonarbullets.png",
             Quality = ItemQuality.A,
 
-            EffectToApply = new GameActorHomeEffect
-            {
-                AffectsPlayers = false,
-                AffectsEnemies = true,
-                AppliesTint = true,
-                TintColor = new Color(0.25f, 0.25f, 0.25f),
-                duration = 8f,
-                effectIdentifier = "radar"
-            },
-            ProcChance = 0.1f,
+            EffectToApply =new GameActorHomeEffect
+                {
+                    AffectsPlayers = false,
+                    AffectsEnemies = true,
+                    AppliesTint = true,
+                    TintColor = new Color(0.25f, 0.25f, 0.25f),
+                    duration = 8f,
+                    effectIdentifier = "radar"
+                }
+    ,
+ProcChance = 0.1f,
             ProjectileTint = new Color(0.25f, 0.25f, 0.25f)
         };
 

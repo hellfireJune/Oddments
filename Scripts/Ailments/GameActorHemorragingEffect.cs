@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace Oddments
 {
+    [Serializable]
     public class GameActorHemorragingEffect : GameActorEffect
     {
         public GoopDefinition gooper;
@@ -26,9 +27,10 @@ namespace Oddments
                 PixelCollider pixelCollider = actor.specRigidbody.HitboxPixelCollider;
                 Vector3 vector = pixelCollider.UnitBottomLeft.ToVector3ZisY(0f);
                 Vector3 vector2 = pixelCollider.UnitTopRight.ToVector3ZisY(0f);
-                if (isGreenBlood)
+                if (isGreenBlood || JuneSaveManagerCore.DoPinkBlood)
                 {
-                    OddSparksDoer.DoRandomParticleBurst(UnityEngine.Random.Range(4, 8), vector, vector2, Vector3.down, 90f, 0.5f, systemType: OddSparksDoer.SparksType.VEGETABLE_BLOOD);
+                    OddSparksDoer.SparksType type = !isGreenBlood ? OddSparksDoer.SparksType.DANGANRONPA_BLOOD : OddSparksDoer.SparksType.VEGETABLE_BLOOD;
+                    OddSparksDoer.DoRandomParticleBurst(UnityEngine.Random.Range(4, 8), vector, vector2, Vector3.down, 90f, 0.5f, systemType: type);
                 } else
                 {
                     GlobalSparksDoer.DoRandomParticleBurst(UnityEngine.Random.Range(4, 8), vector, vector2, Vector3.down, 90f, 0.5f, systemType: GlobalSparksDoer.SparksType.BLOODY_BLOOD);

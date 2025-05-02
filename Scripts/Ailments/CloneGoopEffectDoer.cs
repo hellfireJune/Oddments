@@ -8,9 +8,9 @@ using HarmonyLib;
 namespace Oddments
 {
     [HarmonyPatch]
-    public class CustomGoopEffectDoer : MonoBehaviour
+    public class CloneGoopEffectDoer : MonoBehaviour
     {
-        public CustomGoopEffectDoer()
+        public CloneGoopEffectDoer()
         {
             IsCloner = false;
         }
@@ -32,7 +32,7 @@ namespace Oddments
                 return;
             }
 
-                CustomGoopEffectDoer customGoopProcessor = __instance.GetComponent<CustomGoopEffectDoer>();
+                CloneGoopEffectDoer customGoopProcessor = __instance.GetComponent<CloneGoopEffectDoer>();
             if (customGoopProcessor != null)
             {
                 CustomEffectHandler effecthandler = actor.gameObject.GetOrAddComponent<CustomEffectHandler>();

@@ -13,6 +13,7 @@ namespace Oddments
         public static OddItemTemplate template = new OddItemTemplate(typeof(ThrowingKnifeItem))
         {
             Name = "Throwing Knife",
+            AltTitle = "Throwing Knives",
             Quality = ItemQuality.C,
             Description = "Facestabber",
             SpriteResource = $"{Module.SPRITE_PATH}/facestabber.png",

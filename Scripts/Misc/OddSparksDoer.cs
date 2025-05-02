@@ -115,6 +115,9 @@ namespace Oddments
                 case SparksType.VEGETABLE_BLOOD:
                     m_greenBloodParticles = (Object.Instantiate(greenBlood, Vector3.zero, Quaternion.identity)).GetComponent<ParticleSystem>();
                     return m_greenBloodParticles;
+                case SparksType.DANGANRONPA_BLOOD:
+                    m_greenBloodParticles = (Object.Instantiate(pinkBlood, Vector3.zero, Quaternion.identity)).GetComponent<ParticleSystem>();
+                    return m_greenBloodParticles;
             }
         }
 
@@ -137,7 +140,8 @@ namespace Oddments
         {
             SPARKS_ADDITIVE_DEFAULT,
             VEGETABLE_BLOOD,
-            
+            DANGANRONPA_BLOOD,
+
         }
 
         public static void InitPrefabs()
@@ -145,8 +149,13 @@ namespace Oddments
             greenBlood = FakePrefab.Clone((GameObject)UnityEngine.Object.Instantiate(ResourceCache.Acquire("Global VFX/BloodSystem"), Vector3.zero, Quaternion.identity));
             greenBlood.GetComponent<ParticleSystem>().startColor = new Color(0, 0.149f, 0);
             greenBlood.GetComponentsInChildren<ParticleSystem>()[1].startColor = new Color(0, 0.12f, 0);
+
+            pinkBlood = FakePrefab.Clone((GameObject)UnityEngine.Object.Instantiate(ResourceCache.Acquire("Global VFX/BloodSystem"), Vector3.zero, Quaternion.identity));
+            pinkBlood.GetComponent<ParticleSystem>().startColor = new Color(0.149f, 0, 0.149f);
+            pinkBlood.GetComponentsInChildren<ParticleSystem>()[1].startColor = new Color(0.12f, 0f, 0.12f);
         }
 
         public static GameObject greenBlood;
+        public static GameObject pinkBlood;
     }
 }

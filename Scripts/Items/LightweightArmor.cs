@@ -14,8 +14,10 @@ namespace Oddments
         public static OddItemTemplate template = new OddItemTemplate(typeof(LightweightArmor))
         {
             Name = "Lightweight Armour",
+            AltTitle = "Speed Armor",
             Description = "Low weight loadout",
             LongDescription = "Good for nimble movement, but makes it much harder for a gungeoneer to keep their footing",
+            AltLongDesc = "Increases movement speed, but you take knockback twice as hard",
             SpriteResource = $"{Module.SPRITE_PATH}/lightweightarmor.png",
             Quality = ItemQuality.C,
             PostInitAction = item =>

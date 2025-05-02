@@ -15,6 +15,7 @@ namespace Oddments
         public static OddItemTemplate template = new OddItemTemplate(typeof(PickupGenerator))
         {
             Name = "The Book of Sin",
+            AltTitle = "The Book Of Gun",
             SpriteResource = $"{Module.SPRITE_PATH}/bookofsin.png",
             Description = "Wrath of the Jam",
             LongDescription = "Spawns a random pickup on use. Cooldown is based on rooms cleared.",

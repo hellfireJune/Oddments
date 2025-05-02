@@ -1,4 +1,5 @@
-﻿using JuneLib;
+﻿using Alexandria.ItemAPI;
+using JuneLib;
 using JuneLib.Items;
 using System;
 using System.Collections.Generic;
@@ -9,8 +10,21 @@ namespace Oddments
 {
     internal class GrimoireItem : PassiveItem
     {
-        public static OddItemTemplate template = new OddItemTemplate(typeof(GrimoireItem));
-        //give minor damage up and 1 curse up
+        public static OddItemTemplate template = new OddItemTemplate(typeof(GrimoireItem))
+        {
+            Name = "Grimoire",
+            AltTitle = "Ancient Grimoire",
+            SpriteResource = $"{Module.SPRITE_PATH}/grimoire.png",
+            Description = "Ancient Evil",
+            LongDescription = "Increases your rate of fire, but you're more likely to find cursed items.\n\nThe creator banished this away to never see the light of the Gungeon again, but here it remains.",
+            Quality = ItemQuality.C,
+            PostInitAction = item =>
+            {
+                item.AddPassiveStatModifier(PlayerStats.StatType.RateOfFire, 0.25f, StatModifier.ModifyMethod.ADDITIVE);
+                item.AddPassiveStatModifier(PlayerStats.StatType.Curse, 1f, StatModifier.ModifyMethod.ADDITIVE);
+            }
+        };
+        //give minor firerate up and 1 curse up
 
         public override void Pickup(PlayerController player)
         {
@@ -24,7 +38,7 @@ namespace Oddments
             ItemsCore.GetItemChanceMult -= ChanceMult;
         }
 
-        public static float WeightMult = 3f;
+        public static float WeightMult = 5f;
 
         private void ChanceMult(PickupObject arg1, PlayerController arg2, bool arg3, JuneLibLootEngineModificationAPI.ModifyLuckArgs arg4)
         {

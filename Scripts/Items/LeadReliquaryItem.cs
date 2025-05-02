@@ -14,7 +14,7 @@ namespace Oddments
 		public static OddItemTemplate template = new OddItemTemplate(typeof(LeadReliquaryItem))
 		{
 			Name = "Lead Reliquary",
-			Quality = ItemQuality.A,
+			//Quality = ItemQuality.A,
 			PostInitAction = item =>
 			{
 				((LeadReliquaryItem)item).AddPassiveStatModifier(PlayerStats.StatType.ReloadSpeed, 0.5f);

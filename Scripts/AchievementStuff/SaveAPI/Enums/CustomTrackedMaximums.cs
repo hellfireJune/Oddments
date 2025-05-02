@@ -10,5 +10,6 @@ namespace SaveAPI
         //Add your custom tracked maximums here
         //You can remove any maximums here
         MOST_MONEY,
+        PERSONALIZATION_SEED
     }
 }

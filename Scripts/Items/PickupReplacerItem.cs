@@ -34,6 +34,7 @@ namespace Oddments
             {
                 PickupReplacerItem pickup = (PickupReplacerItem)item;
                 pickup.swapFlavor = SwapType.PICKUP_UPGRADE;
+                pickup.ChanceToUpgrade = 0.5f;
             }
         };
         public static OddItemTemplate template3 = new OddItemTemplate(typeof(PickupReplacerItem))
@@ -43,6 +44,9 @@ namespace Oddments
             {
                 PickupReplacerItem pickup = (PickupReplacerItem)item;
                 pickup.swapFlavor = SwapType.PICKUP_AMMOUPGRADE;
+
+                pickup.ChanceToUpgrade = 0.5f;
+                pickup.AmmoUpgradeId = OddItemIDs.BigAmmoCratePickup;
             }
         };
         public static OddItemTemplate template4 = new OddItemTemplate(typeof(PickupReplacerItem))
@@ -50,12 +54,44 @@ namespace Oddments
             Name = "Lead Cross",
             Description = "More Armor",
             SpriteResource = $"{Module.SPRITE_PATH}/leadcross.png",
-            LongDescription = "Hearts have a chance to be replaced by armor.",
-            Quality = ItemQuality.C,
+            LongDescription = "Hearts have a chance to be replaced by armor." +
+            "\n\nA universal symbol to identify military M17-edical personnel",
+            Quality = ItemQuality.B,
             PostInitAction = item =>
             {
                 PickupReplacerItem pickup = (PickupReplacerItem)item;
                 pickup.swapFlavor = SwapType.PICKUP_MOREARMOR;
+            }
+        };
+        public static OddItemTemplate template5 = new OddItemTemplate(typeof(PickupReplacerItem))
+        {
+            Name = "Corinthian Casing",
+            Description = "Wealth of Wealth",
+            LongDescription = "Bronze casings have a chance to be upgraded to their 5 casing variant",
+            SpriteResource = $"{Module.SPRITE_PATH}/corinthiancasing.png",
+            Quality = ItemQuality.A,
+            DontAutoTitleize = true,
+            PostInitAction = item =>
+            {
+                PickupReplacerItem pickup = (PickupReplacerItem)item;
+                pickup.swapFlavor = SwapType.PICKUP_UPGRADE;
+
+                pickup.ChanceToUpgrade = 0.08f;
+                int bronzeCoin = GameManager.Instance.Dungeon.sharedSettingsPrefab.currencyDropSettings.bronzeCoinId;
+                int silvercoin = GameManager.Instance.Dungeon.sharedSettingsPrefab.currencyDropSettings.silverCoinId;
+                pickup.Upgrades = new Dictionary<int, int>() { { bronzeCoin, silvercoin } };
+            }
+        };
+        public static OddItemTemplate template6 = new OddItemTemplate(typeof(PickupReplacerItem))
+        {
+            Name = "inf ammo replacer",
+            PostInitAction = item =>
+            {
+                PickupReplacerItem pickup = (PickupReplacerItem)item;
+                pickup.swapFlavor = SwapType.PICKUP_AMMOUPGRADE;
+
+                pickup.ChanceToUpgrade = 0.33f;
+                pickup.AmmoUpgradeId = OddItemIDs.BigAmmoCratePickup;
             }
         };
 
@@ -69,11 +105,22 @@ namespace Oddments
             JuneLib.ItemsCore.RemoveChangeSpawnItem(ReturnNewPickup);
             base.DisableEffect(player);
         }
-        private readonly Dictionary<int, int> m_upgrades = new Dictionary<int, int>() { { GlobalItemIds.FullHeart, OddItemIDs.StackedHeart }, { GlobalItemIds.Key, OddItemIDs.KeyRingPickup }, { GlobalItemIds.Blank, OddItemIDs.StackedBlanks } };
+
+        private static readonly Dictionary<int, int> m_upgrades = new Dictionary<int, int>() { { GlobalItemIds.FullHeart, OddItemIDs.StackedArmor }, { GlobalItemIds.Key, OddItemIDs.KeyRingPickup }, { GlobalItemIds.Blank, OddItemIDs.StackedBlanks } };
+
+        public Dictionary<int, int> Upgrades = m_upgrades;
+        public float ChanceToUpgrade = 1f;
+
+        public int AmmoUpgradeId = -1;
 
         private GameObject ReturnNewPickup(PickupObject arg)
         {
             int id = -1;
+            if (UnityEngine.Random.value < ChanceToUpgrade)
+            {
+                return null;
+            }
+
             switch (swapFlavor)
             {
                 case SwapType.PICKUP_MOREARMOR:
@@ -89,15 +136,17 @@ namespace Oddments
                     }
                     break;
                 case SwapType.PICKUP_UPGRADE:
-                    if (m_upgrades.ContainsKey(arg.PickupObjectId) && UnityEngine.Random.value < 0.5f)
+                    Dictionary<int, int> upgrades = Upgrades;
+                    if (upgrades != null) { upgrades = m_upgrades; }
+                    if (upgrades.ContainsKey(arg.PickupObjectId))
                     {
-                        id = m_upgrades[arg.PickupObjectId];
+                        id = upgrades[arg.PickupObjectId];
                     }
                     break;
                 case SwapType.PICKUP_AMMOUPGRADE:
-                    if (arg is AmmoPickup && !Core.DontDropMore)
+                    if (arg is AmmoPickup && (AmmoUpgradeId != OddItemIDs.BigAmmoCratePickup || !Core.DontDropMore))
                     {
-                        id = OddItemIDs.BigAmmoCratePickup;
+                        id = AmmoUpgradeId;
                     }
                     break;
             }
