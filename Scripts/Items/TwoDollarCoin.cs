@@ -15,7 +15,7 @@ namespace Oddments
             Description = "Gold piece",
             LongDescription = "Even with it's age, a chunk of gold like this is still worth a fair amount.",
             SpriteResource = $"{Module.SPRITE_PATH}/twodollarcoin.png",
-            Quality = ItemQuality.D
+            Quality = ItemQuality.D,          
         };
 
         public override void Pickup(PlayerController player)

@@ -48,9 +48,37 @@ namespace Oddments
                     //EncounterTrackable.SuppressNextNotification = true;
                     bulletItem = RealFakeItemHelper.CreateFakeItem(prefabItem, Owner, transform);
                 }
-
                 timer -= BraveTime.DeltaTime;
             }
+        }
+        public override DebrisObject Drop(PlayerController player)
+        {
+            if (bulletItem)
+            {
+                RealFakeItemHelper.RemoveFakeItem(player, bulletItem);
+            }
+            return base.Drop(player);
+        }
+        public override void Pickup(PlayerController player)
+        {
+            timer = maxTimer * 0.5f;
+            base.Pickup(player);
+        }
+        public override void DisableEffect(PlayerController player)
+        {
+            if (bulletItem)
+            {
+                RealFakeItemHelper.RemoveFakeItem(Owner, bulletItem);
+            }
+            base.DisableEffect(player);
+        }
+        public override void OnDestroy()
+        {
+            if (bulletItem && Owner)
+            {
+                RealFakeItemHelper.RemoveFakeItem(Owner, bulletItem);
+            }
+            base.OnDestroy();
         }
     }
 }
