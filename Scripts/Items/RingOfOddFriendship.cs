@@ -27,9 +27,17 @@ namespace Oddments
             }
         };
 
+        public override DebrisObject Drop(PlayerController player)
+        {
+            if (bulletItem)
+            {
+                RealFakeItemHelper.RemoveFakeItem(player, bulletItem);
+            }
+            return base.Drop(player);
+        }
         public override void Pickup(PlayerController player)
         {
-            if (!m_pickedUpThisRun)
+            if (!bulletItem)
             {
                 MakeItem(player);
             }
@@ -40,6 +48,10 @@ namespace Oddments
         public override void DisableEffect(PlayerController player)
         {
             base.DisableEffect(player);
+            if (bulletItem)
+            {
+                RealFakeItemHelper.RemoveFakeItem(player, bulletItem);
+            }
             CustomActions.PostDungeonTrueStart -= StartFloor;
         }
 

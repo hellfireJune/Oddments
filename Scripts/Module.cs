@@ -35,6 +35,7 @@ namespace Oddments
         public void Start()
         {
             Debug.Log("Made you look");
+           //ETGModConsole.Log("Hawk Tuah");
             ETGModMainBehaviour.WaitForGameManagerStart(GMStart);
         }
 
@@ -196,6 +197,7 @@ namespace Oddments
             "Status, what's your transmission?",
             "Say my name...",
             "Yo, waddup",
+            "Chicken Jockey!"
         };
 
 

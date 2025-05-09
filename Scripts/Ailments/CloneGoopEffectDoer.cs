@@ -18,7 +18,7 @@ namespace Oddments
         public bool IsCloner;
 
 
-        [HarmonyPatch(typeof(DeadlyDeadlyGoopManager), nameof(DeadlyDeadlyGoopManager.DoGoopEffect))]
+        [HarmonyPatch(typeof(DeadlyDeadlyGoopManager), "DoGoopEffect")]
         [HarmonyPostfix]
         public static void CoolNewCustomGoopEffects(DeadlyDeadlyGoopManager __instance, GameActor actor, IntVector2 goopPosition)
         {
@@ -65,7 +65,7 @@ namespace Oddments
                     && 1 > aiActor.GetResistanceForEffectType(EffectResistanceType.Charm))
                 {
                     CloneTick += 0.25f;//0.2f * (24f / aiActor.healthHaver.GetMaxHealth());
-                    ETGModConsole.Log(CloneTick);
+                    //ETGModConsole.Log(CloneTick);
                     if (CloneTick >= 1)
                     {
                         CloneTick = 0;

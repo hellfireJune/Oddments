@@ -186,7 +186,6 @@
     <Compile Include="Scripts\Misc\VoidFieldsTest.cs" />
     <Compile Include="Scripts\Misc\VoidtouchedItems.cs" />
     <Compile Include="Scripts\Module.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scripts\Shrines\BunnyShrineFactory\HitboxMonitor.cs" />
     <Compile Include="Scripts\Shrines\BunnyShrineFactory\NPCBuilder.cs" />
     <Compile Include="Scripts\Shrines\BunnyShrineFactory\NPCInteractable.cs" />
@@ -214,10 +213,10 @@
   <ItemGroup>
     <Reference Include="0Harmony, Version=2.9.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\0Harmony.dll</HintPath>
+      <HintPath>..\..\..\r2modmanLocal\ETG\profiles\Agony\BepInEx\core\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Alexandria">
-      <HintPath>..\..\..\AppData\Roaming\Thunderstore Mod Manager\DataFolder\ETG\profiles\Default\BepInEx\plugins\Alexandria-Alexandria\Alexandria.dll</HintPath>
+      <HintPath>..\..\..\r2modmanLocal\ETG\profiles\Agony\BepInEx\plugins\Alexandria-Alexandria\Alexandria.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\EtG.GameLibs.2.1.9.1\lib\net35\Assembly-CSharp.dll</HintPath>
@@ -227,14 +226,14 @@
     </Reference>
     <Reference Include="BepInEx, Version=5.4.19.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\BepInEx.dll</HintPath>
+      <HintPath>..\..\..\r2modmanLocal\ETG\profiles\Agony\BepInEx\core\BepInEx.dll</HintPath>
     </Reference>
     <Reference Include="JuneLib">
       <HintPath>..\JuneLib\bin\Debug\JuneLib.dll</HintPath>
     </Reference>
     <Reference Include="ModTheGungeonAPI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\AppData\Roaming\Thunderstore Mod Manager\DataFolder\ETG\profiles\Default\BepInEx\plugins\MtG_API-Mod_the_Gungeon_API\MtGAPI\ModTheGungeonAPI.dll</HintPath>
+      <HintPath>..\..\..\r2modmanLocal\ETG\profiles\Agony\BepInEx\plugins\MtG_API-Mod_the_Gungeon_API\MtGAPI\ModTheGungeonAPI.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil, Version=0.10.4.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -242,7 +241,7 @@
     </Reference>
     <Reference Include="MonoMod.RuntimeDetour, Version=22.1.29.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\MonoMod.RuntimeDetour.dll</HintPath>
+      <HintPath>..\..\..\r2modmanLocal\ETG\profiles\Agony\BepInEx\core\MonoMod.RuntimeDetour.dll</HintPath>
     </Reference>
     <Reference Include="MonoMod.Utils, Version=22.1.29.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -253,11 +252,11 @@
     </Reference>
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\UnityEngine.dll</HintPath>
+      <HintPath>..\..\..\Steam\steamapps\common\Enter the Gungeon\EtG_Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>..\..\..\Steam\steamapps\common\Enter the Gungeon\EtG_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ImageConversionModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -273,7 +272,7 @@
     </Reference>
     <Reference Include="UnityEngine.ParticleSystemModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\UnityEngine.ParticleSystemModule.dll</HintPath>
+      <HintPath>..\Planetside\bin\Debug\UnityEngine.ParticleSystemModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TextRenderingModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -338,6 +337,7 @@
     <EmbeddedResource Include="Resources\Sprites\Items\ringofoddfriendship.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Properties\" />
     <Folder Include="Resources\Misc\" />
   </ItemGroup>
   <ItemGroup>
