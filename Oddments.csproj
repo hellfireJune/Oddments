@@ -229,7 +229,7 @@
       <HintPath>packages\BepInEx.BaseLib.5.4.21\lib\net35\BepInEx.dll</HintPath>
     </Reference>
     <Reference Include="JuneLib">
-      <HintPath>..\JuneLib\bin\Debug\JuneLib.dll</HintPath>
+      <HintPath>LocalReferences\JuneLib.dll</HintPath>
     </Reference>
     <Reference Include="ModTheGungeonAPI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\EtG.ModTheGungeonAPI.1.9.2\lib\net35\ModTheGungeonAPI.dll</HintPath>
