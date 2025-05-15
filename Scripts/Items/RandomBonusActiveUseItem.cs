@@ -40,7 +40,9 @@ namespace Oddments
 
         public override void DisableEffect(PlayerController player)
         {
-            player.OnUsedPlayerItem -= UsedItem;
+            if(player)
+                player.OnUsedPlayerItem -= UsedItem;
+
             base.DisableEffect(player);
         }
 

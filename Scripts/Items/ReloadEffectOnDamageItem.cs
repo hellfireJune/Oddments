@@ -30,7 +30,8 @@ namespace Oddments
         public override void DisableEffect(PlayerController player)
         {
             base.DisableEffect(player);
-            player.OnReceivedDamage -= Player_OnReceivedDamage;
+            if(player)
+                player.OnReceivedDamage -= Player_OnReceivedDamage;
         }
 
         private void Player_OnReceivedDamage(PlayerController obj)

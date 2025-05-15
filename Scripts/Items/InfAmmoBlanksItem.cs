@@ -33,6 +33,14 @@ namespace Oddments
             player.GetComponent<ExtendedPlayerComponent>().OnBlankModificationItemProcessed += MoreAmmoOnBlank;
         }
 
+        public override void DisableEffect(PlayerController player)
+        {
+            if(player)
+                player.GetComponent<ExtendedPlayerComponent>().OnBlankModificationItemProcessed -= MoreAmmoOnBlank;
+
+            base.DisableEffect(player);
+        }
+
         private void MoreAmmoOnBlank(PlayerController arg1, SilencerInstance arg2, Vector2 arg3, BlankModificationItem arg4)
         {
             if (arg4 == this)
