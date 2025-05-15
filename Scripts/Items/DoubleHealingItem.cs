@@ -26,7 +26,9 @@ namespace Oddments
         public override void DisableEffect(PlayerController player)
         {
             base.DisableEffect(player);
-            player.healthHaver.ModifyHealing -= ModifyHealing;
+
+            if(player)
+                player.healthHaver.ModifyHealing -= ModifyHealing;
         }
 
         public void ModifyHealing(HealthHaver healthhaver, HealthHaver.ModifyHealingEventArgs args)
