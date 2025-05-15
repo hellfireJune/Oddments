@@ -22,37 +22,40 @@ namespace Oddments
         [HarmonyPostfix]
         public static void CoolNewCustomGoopEffects(DeadlyDeadlyGoopManager __instance, GameActor actor, IntVector2 goopPosition)
         {
-            if (actor is PlayerController ||
-                !(actor is AIActor aiactor) || aiactor.CompanionOwner)
+            if (!actor || actor is PlayerController || !(actor is AIActor aiactor) || aiactor.CompanionOwner)
             {
                 return;
             }
-            if (!actor || actor.aiAnimator.IsPlaying("spawn") || actor.aiAnimator.IsPlaying("awaken"))
+            if (actor.aiAnimator && (actor.aiAnimator.IsPlaying("spawn") || actor.aiAnimator.IsPlaying("awaken")))
             {
                 return;
             }
 
-                CloneGoopEffectDoer customGoopProcessor = __instance.GetComponent<CloneGoopEffectDoer>();
-            if (customGoopProcessor != null)
+            CloneGoopEffectDoer customGoopProcessor = __instance.GetComponent<CloneGoopEffectDoer>();
+            if (customGoopProcessor == null)
             {
-                CustomEffectHandler effecthandler = actor.gameObject.GetOrAddComponent<CustomEffectHandler>();
-                if (customGoopProcessor.IsCloner)
+                return;
+            }
+
+            CustomEffectHandler effecthandler = actor.gameObject.GetOrAddComponent<CustomEffectHandler>();
+            if (!customGoopProcessor.IsCloner)
+            {
+                return;
+            }
+
+            bool result = effecthandler.IncrementCloneTick();
+            if (result)
+            {
+
+                AIActor prefab = EnemyDatabase.GetOrLoadByGuid(aiactor.EnemyGuid);
+                if (prefab != null)
                 {
-                    bool result = effecthandler.IncrementCloneTick();
-                    if (result)
-                    {
-
-                        AIActor prefab = EnemyDatabase.GetOrLoadByGuid(aiactor.EnemyGuid);
-                        if (prefab != null)
-                        {
-                            AIActor clone = AIActor.Spawn(prefab, actor.CenterPosition.ToIntVector2(), actor.GetAbsoluteParentRoom(), true);
-                            LootEngine.DoDefaultItemPoof(clone.Position);
-                        }
-                    }
-
-                    __instance.RemoveGoopedPosition(goopPosition);
+                    AIActor clone = AIActor.Spawn(prefab, actor.CenterPosition.ToIntVector2(), actor.GetAbsoluteParentRoom(), true);
+                    LootEngine.DoDefaultItemPoof(clone.Position);
                 }
             }
+
+            __instance.RemoveGoopedPosition(goopPosition);
         }
 
         public class CustomEffectHandler : BraveBehaviour
