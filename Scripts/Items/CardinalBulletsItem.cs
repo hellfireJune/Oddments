@@ -27,7 +27,8 @@ namespace Oddments
         }
         public override void DisableEffect(PlayerController player)
         {
-            player.GetComponent<JEventsComponent>().ConstantModifyGunVolley -= Stats_AdditionalVolleyModifiers;
+            if(player)
+                player.GetComponent<JEventsComponent>().ConstantModifyGunVolley -= Stats_AdditionalVolleyModifiers;
             base.DisableEffect(player);
         }
         private float m_ProcChance = 0.25f;

@@ -1,4 +1,5 @@
 ﻿using Alexandria.ItemAPI;
+using Alexandria.StatAPI;
 using JuneLib;
 using JuneLib.Items;
 using System;
@@ -59,7 +60,7 @@ namespace Oddments
             {
                 foreach (var mod in mods)
                 {
-                    if (mod != null && mod.statToBoost == PlayerStats.StatType.Curse && mod.amount > 0)
+                    if (StatAPIManager.IsNegativeCurse(mod))
                     {
                         arg4.WeightMult *= WeightMult;
                         return;

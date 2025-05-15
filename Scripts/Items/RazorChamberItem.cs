@@ -34,7 +34,9 @@ namespace Oddments
         public override void DisableEffect(PlayerController player)
         {
             base.DisableEffect(player);
-            player.OnReloadedGun -= ReloadGun;
+
+            if(player)
+                player.OnReloadedGun -= ReloadGun;
         }
 
         public float baseReloadDamage = 15f;

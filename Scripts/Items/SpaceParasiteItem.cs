@@ -27,7 +27,9 @@ namespace Oddments
         public override void DisableEffect(PlayerController player)
         {
             base.DisableEffect(player);
-            player.OnRoomClearEvent -= OnClearBossRoom;
+
+            if(player)
+                player.OnRoomClearEvent -= OnClearBossRoom;
         }
 
         private void OnClearBossRoom(PlayerController player)

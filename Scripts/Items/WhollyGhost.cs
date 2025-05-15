@@ -39,7 +39,8 @@ namespace Oddments
 
         public override void DisableEffect(PlayerController disablingPlayer)
         {
-            disablingPlayer.OnAnyEnemyReceivedDamage -= haunt.OnEnemyDamaged;
+            if(disablingPlayer)
+                disablingPlayer.OnAnyEnemyReceivedDamage -= haunt.OnEnemyDamaged;
             ETGMod.AIActor.OnPreStart -= OnPreStart;
             base.DisableEffect(disablingPlayer);
         }

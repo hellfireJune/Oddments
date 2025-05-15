@@ -27,8 +27,11 @@ namespace Oddments
 
         public override void DisableEffect(PlayerController player)
         {
-            player.RemoveFlagsFromPlayer(GetType());
-            player.healthHaver.ModifyHealing += ModifyHealing;
+            if (player)
+            {
+                player.RemoveFlagsFromPlayer(GetType());
+                player.healthHaver.ModifyHealing += ModifyHealing;
+            }
             base.DisableEffect(player);
         }
 

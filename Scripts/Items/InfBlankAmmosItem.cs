@@ -31,6 +31,14 @@ namespace Oddments
             base.Pickup(player);
         }
 
+        public override void DisableEffect(PlayerController player)
+        {
+            if(player)
+                player.OnReloadedGun -= SpawnBlank;
+
+            base.DisableEffect(player);
+        }
+
         private float m_softCooldown = 10f;
         private bool m_onCooldown = false;
         private void SpawnBlank(PlayerController arg1, Gun arg2)

@@ -29,7 +29,9 @@ namespace Oddments
 
         public override void DisableEffect(PlayerController player)
         {
-            player.RemoveFlagsFromPlayer(GetType());
+            if(player)
+                player.RemoveFlagsFromPlayer(GetType());
+
             base.DisableEffect(player);
         }
 
@@ -100,8 +102,11 @@ namespace Oddments
 
             public override void DisableEffect(PlayerController player)
             {
-                player.RemoveFlagsFromPlayer(GetType());
-                player.OnItemPurchased -= Player_OnItemPurchased;
+                if (player)
+                {
+                    player.RemoveFlagsFromPlayer(GetType());
+                    player.OnItemPurchased -= Player_OnItemPurchased;
+                }
                 base.DisableEffect(player);
             }
         }

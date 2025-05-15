@@ -8,6 +8,7 @@ using System.Text;
 using JuneLib.Items;
 using JuneLib.Status;
 using JuneLib;
+using Dungeonator;
 
 namespace Oddments
 {
@@ -93,6 +94,14 @@ namespace Oddments
         public override void Update()
         {
             base.Update();
+
+            // The game does not like when goop is generated while a floor is loading
+            if (!GameManager.HasInstance || GameManager.Instance.Dungeon == null)
+                return;
+
+            if (Dungeon.IsGenerating)
+                return;
+
             if (Owner && Owner.specRigidbody)
             {
                 DeadlyDeadlyGoopManager manager = DeadlyDeadlyGoopManager.GetGoopManagerForGoopType(EasyGoopDefinitions.PlayerFriendlyWebGoop);

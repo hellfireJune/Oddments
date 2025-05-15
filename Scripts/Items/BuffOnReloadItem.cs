@@ -46,6 +46,17 @@ namespace Oddments
             player.GunChanged += Player_GunChanged;
         }
 
+        public override void DisableEffect(PlayerController player)
+        {
+            if (player)
+            {
+                player.OnReloadedGun -= ReloadedGun;
+                player.GunChanged -= Player_GunChanged;
+            }
+
+            base.DisableEffect(player);
+        }
+
         private void Player_GunChanged(Gun arg1, Gun arg2, bool arg3)
         {
             isActive = false;

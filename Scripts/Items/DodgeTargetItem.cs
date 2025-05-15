@@ -25,6 +25,14 @@ namespace Oddments
             player.OnAnyEnemyReceivedDamage += KilledFoe;
         }
 
+        public override void DisableEffect(PlayerController player)
+        {
+            if(player)
+                player.OnAnyEnemyReceivedDamage -= KilledFoe;
+
+            base.DisableEffect(player);
+        }
+
         float procChance = 0.1f;
         private void KilledFoe(float dmg, bool fatal, HealthHaver arg2)
         {

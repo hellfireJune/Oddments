@@ -104,7 +104,7 @@ namespace Oddments
 
         public override void OnDestroy()
         {
-            if (LastOwner && LastOwner.HasActiveItem(this.PickupObjectId))
+            if (LastOwner && PickedUp)
             {
                 RoomRewardAPI.OnRoomRewardDetermineContents -= AddRoomClearChance;
             }

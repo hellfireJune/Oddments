@@ -23,6 +23,7 @@ namespace Oddments
     public class Module : BaseUnityPlugin
     {
         public const string MOD_NAME = "Oddments";
+        // Change this next update so that Modded Bug Fix doesn't try to patch the already fixed code!
         public const string VERSION = "0.0.9";
         public static readonly string TEXT_COLOR = "#ffa944";
         public static readonly string PREFIX = "odmnts";

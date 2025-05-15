@@ -48,7 +48,9 @@ namespace Oddments
 
         public override void DisableEffect(PlayerController player)
         {
-            player.stats.AdditionalVolleyModifiers += Stats_AdditionalVolleyModifiers;
+            if(player)
+                player.stats.AdditionalVolleyModifiers += Stats_AdditionalVolleyModifiers;
+
             base.DisableEffect(player);
         }
     }
