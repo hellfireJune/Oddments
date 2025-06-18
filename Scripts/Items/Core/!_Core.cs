@@ -216,9 +216,10 @@ namespace Oddments
         public ProjectileVolleyData CachedVolleyData;
     }
 
-    public class StatusEffectItemTemplate : BulletModifierItemTemplate
+    /*
+    public class HemorragingStatusEffectItemTemplate : BulletModifierItemTemplate
     {
-        public StatusEffectItemTemplate(Type type) : base(type)
+        public HemorragingStatusEffectItemTemplate(Type type) : base(type)
         {
         }
 
@@ -233,12 +234,15 @@ namespace Oddments
                 oddMod.SynergyAffect = SynergyEffect;
             }
         }
-
-        public GameActorEffect EffectToApply;
+        public GameActorHemorragingEffect EffectToApply;
+        public GameActorHemorragingEffect SynergyEffect;
         public string SynergyToCheck;
-        public GameActorEffect SynergyEffect;
         public Color SynergyTint;
     }
+    */
+
+
+
 
     public class BulletModifierItemTemplate : OddItemTemplate
     {

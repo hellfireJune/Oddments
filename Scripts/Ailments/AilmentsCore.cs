@@ -9,7 +9,7 @@ using JuneLib;
 namespace Oddments
 {
     [Serializable]
-    public class GameActorOnDeathEffect : GameActorEffect
+    public class GameActorOnDeathEffect : GameActorHealthEffect
     {
         protected Type onDeathBehaviour;
         public OnDeathBehavior.DeathType deathType;
@@ -33,6 +33,11 @@ namespace Oddments
             {
                 onDeath.deathType = deathType;
             }
+        }
+
+        public override void EffectTick(GameActor actor, RuntimeGameActorEffectData effectData)
+        {
+            
         }
 
         public override void OnEffectRemoved(GameActor actor, RuntimeGameActorEffectData effectData)
@@ -114,7 +119,7 @@ namespace Oddments
                 OverheadVFX = greenShitOverhead
             };
 
-            HellfireEffect = new GameActorOnDeathEffect(typeof(HellfireRoundsItem.HellfireExplodeOnDeath))
+            HellfireEffect = new GameActorOnDeathEffect(typeof(OnDeathEffectModifierItem.HellfireExplodeOnDeath))
             {
                 TintColor = Color.red,
                 AppliesTint = true,
@@ -124,7 +129,7 @@ namespace Oddments
 
                 PostApplyAction = onDeath =>
                 {
-                    HellfireRoundsItem.HellfireExplodeOnDeath deathExplode = (HellfireRoundsItem.HellfireExplodeOnDeath)onDeath;
+                    OnDeathEffectModifierItem.HellfireExplodeOnDeath deathExplode = (OnDeathEffectModifierItem.HellfireExplodeOnDeath)onDeath;
                     deathExplode.explosionData = GameManager.Instance.Dungeon.sharedSettingsPrefab.DefaultExplosionData;
                 }
             };

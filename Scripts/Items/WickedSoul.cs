@@ -90,7 +90,7 @@ namespace Oddments
 
             private static void KillJammed(AIActor obj)
             {
-                if (obj && obj.healthHaver && obj.IsBlackPhantom && !obj.healthHaver.IsBoss)
+                if (obj && obj.healthHaver && obj.IsBlackPhantom && !obj.healthHaver.IsBoss && UsedThisFloor == true)
                 {
                     obj.healthHaver.ApplyDamage(27616, Vector2.zero, "Decanted", CoreDamageTypes.None, DamageCategory.Unstoppable);
                 }
