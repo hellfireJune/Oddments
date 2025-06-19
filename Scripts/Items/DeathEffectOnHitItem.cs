@@ -14,6 +14,7 @@ namespace Oddments
         {
             Name = "Mortal Rounds",
             Description = "Dead shells",
+            LongDescription = "Your bullets sometimes will activate enemy kill effects, aswell as doing increased damage.",
             SpriteResource = $"{Module.SPRITE_PATH}/mortalrounds.png",
             Quality = ItemQuality.A,
             PostInitAction = item =>
@@ -21,7 +22,7 @@ namespace Oddments
                 item.AddPassiveStatModifier(PlayerStats.StatType.Curse, 1f);
             },
 
-            ProcChance = (1 / 80)*0.1f,
+            ProcChance = (1f / 80f)*0.1f,
             ChanceScalesWithDamageFired = true,
         };
 

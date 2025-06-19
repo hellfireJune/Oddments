@@ -36,7 +36,6 @@ namespace Oddments
         public void Start()
         {
             Debug.Log("Made you look");
-           //ETGModConsole.Log("Hawk Tuah");
             ETGModMainBehaviour.WaitForGameManagerStart(GMStart);
         }
 
@@ -44,10 +43,17 @@ namespace Oddments
         {
             try
             {
+
+
                 new Harmony(GUID).PatchAll();
                 FilePathFolder = this.FolderPath();
                 oddBundle = AssetBundleLoader.LoadAssetBundleFromLiterallyAnywhere("oddments", true);
+                //Log($"tuah", TEXT_COLOR);
+
+                AilmentsCore.Init();
+
                 ETGMod.Assets.SetupSpritesFromAssembly(Assembly.GetExecutingAssembly(), $"{ASSEMBLY_NAME}/Resources/Sprites/MTGSprites");
+
 
                 ItemBuilder.Init();
                 SaveAPIManager.Setup("oddments");
@@ -55,7 +61,6 @@ namespace Oddments
                 JuneSaveManagerCore.Init();
 
                 OddSparksDoer.InitPrefabs();
-                AilmentsCore.Init();
                 LightningModifier.Init();
 
                 ItemTemplateManager.Init();
@@ -103,24 +108,16 @@ namespace Oddments
             }
         }
         /* Curr Changelog:
-         * Added Cardinal Bullets, Shotgun Charm, Gungeon Veins, Empty Chamber, Lead Cross, Cadueleus, Reloadium, Razor Chamber, Dodge Target, Eternal Rounds, Blank Ammo, Catho-rounds, Ano-rounds, Slab of Null, Decanter, Corinthian Casing, 
-         * Gigantic Amythest, Double Chamber, Acrid Rounds, Royal Guard, Packed Shells, Grimoire and Supremacy
-         * Added the synergy Redox Reload
-         * Hideous Bullets is now B tier and no longer tints ur bullets red
-         * Renamed "Mimic Whistle" to "Strange Whistle"
-         * Coupon now has 20 casings minimum
-         * Siphon Item is hopefully less volatile with the whole using consumed items thing
-         * Fixed Hellfire Rounds, resprited it
-         * Infinite lockbox buffed youre welcome turtle melon
-         * Every copy is now personalized
-         * +3 splash text
+         * Fixed decanter always being active
+         * fixed caduceus rounds fucking shit up
+         * Bunny fixed stuff and idr what all of it was
          * 
          * Non-included 2/3:
-         * Yari Ammolet, Sawblade Ammolet, [DecanterItem], [MassDevolveItem], [ClockhandItem], [QuickFreezeItem], {CaduceusBulletsItem], [FullHealOnNewFloorItem],
+         * Yari Ammolet, Sawblade Ammolet, [DecanterItem], [MassDevolveItem], [ClockhandItem], [QuickFreezeItem], [FullHealOnNewFloorItem],
          * Jet, Potion of Haste-loading, [PopPopItem], [GunUpgradeItem], [moneyh], Stacked Pickups, [DoubleRoomClearItem], [BiggerAmmoDropsItem], [DoubleAFairAmountOfItemDropsItem],
          * [RandomPlayerItemItem], [SpawnFriendlyGrenadeItem], [ArmorGeneratingOnRoomClearItem], [overloader], [splitter], Lead Reliquary, [GrimoireItem], [RandomizedPricesItem],
-         * [OmegaCoreItem], Starmetal Shield, Mortal Rounds, [MetronomeItem], [SlinkingBulletsItem], Sales 101, [blank shells], [BuffFromCurrencyItemx2], [MoneyFromActivatingTeleportersItem], 
-         * [ItemThatPrintsMoneyItem], [Shelleton Hand], [Shelltan's Touch], [tapeflower], [gene splicer], [inf ammo pickup], [inf ammo pickup replacer], Shell Rounds
+         * [OmegaCoreItem], Starmetal Shield, [SlinkingBulletsItem], Sales 101, [blank shells], [BuffFromCurrencyItemx2], [MoneyFromActivatingTeleportersItem], 
+         * [ItemThatPrintsMoneyItem], [Shelleton Hand], [Shelltan's Touch], [tapeflower], [gene splicer], [inf ammo pickup], [inf ammo pickup replacer]
          * add the bee pack and the thing that shoots multiple guns and then maybe hold off on new items for now
          * 
          * Non-included:
@@ -198,7 +195,9 @@ namespace Oddments
             "Status, what's your transmission?",
             "Say my name...",
             "Yo, waddup",
-            "Chicken Jockey!"
+            "Chicken Jockey!",
+            "MORE MOUSE BITES!",
+            "Mmmm... glurched up eggs."
         };
 
 

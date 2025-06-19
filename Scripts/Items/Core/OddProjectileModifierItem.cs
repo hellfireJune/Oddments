@@ -39,9 +39,10 @@ namespace Oddments
 
         public override void DisableEffect(PlayerController player)
         {
-            if(player)
+            if (player)
+            {
                 player.PostProcessProjectile -= Player_PostProcessProjectile;
-
+            }
             base.DisableEffect(player);
         }
         public virtual bool ApplyBulletEffect(Projectile projectile)

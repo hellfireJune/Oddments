@@ -1,4 +1,5 @@
-﻿using Dungeonator;
+﻿using Alexandria.ItemAPI;
+using Dungeonator;
 using JuneLib.Items;
 using System;
 using System.Collections.Generic;
@@ -8,32 +9,63 @@ using UnityEngine;
 
 namespace Oddments
 {
-    public class SonarBullets : OddStatusEffectModifierItem
+
+    public class SonarBullets : OddProjectileModifierItem
     {
+        [SerializeField]
+        public GameActorHomeEffect EffectToApply = new GameActorHomeEffect
+        {
+            AffectsPlayers = false,
+            AffectsEnemies = true,
+            AppliesTint = true,
+            TintColor = new Color(0.25f, 0.25f, 0.25f),
+            duration = 8f,
+            effectIdentifier = "radar",
+            DamagePerSecondToEnemies = 0,
+            ignitesGoops = false,
+        };
+
+
 
         [Serializable]
-        public class GameActorHomeEffect : GameActorEffect { }
-        public static StatusEffectItemTemplate template = new StatusEffectItemTemplate(typeof(SonarBullets))
+        public class GameActorHomeEffect : GameActorHealthEffect 
+        {
+            public override void EffectTick(GameActor actor, RuntimeGameActorEffectData effectData)
+            {
+                
+            }
+        }
+        public static BulletModifierItemTemplate template = new BulletModifierItemTemplate(typeof(SonarBullets))
         {
             Name = "Radar Bullets",
             Description = "Subma-bullets",
             LongDescription = "Bullets have a chance to mark enemies to be homed into by other bullets",
             SpriteResource = $"{Module.SPRITE_PATH}/sonarbullets.png",
             Quality = ItemQuality.A,
-
-            EffectToApply =new GameActorHomeEffect
+            PostInitAction = item =>
+            {
+                item.MakeBulletMod();
+                item.AddToSubShop(ItemBuilder.ShopType.Goopton);
+                /*
+                (item as SonarBullets).EffectToApply = new GameActorHomeEffect
                 {
                     AffectsPlayers = false,
                     AffectsEnemies = true,
                     AppliesTint = true,
                     TintColor = new Color(0.25f, 0.25f, 0.25f),
                     duration = 8f,
-                    effectIdentifier = "radar"
-                }
-    ,
-ProcChance = 0.1f,
+                    effectIdentifier = "radar",
+                    DamagePerSecondToEnemies = 0,
+                    ignitesGoops = false,
+                };
+                */
+            },
+            
+            ProcChance = 0.1f,
             ProjectileTint = new Color(0.25f, 0.25f, 0.25f)
         };
+
+
 
         public override void Pickup(PlayerController player)
         {
@@ -45,6 +77,12 @@ ProcChance = 0.1f,
         {
             player.PostProcessProjectile -= Player_PostProcessProjectile;
             base.DisableEffect(player);
+        }
+
+        public override bool ApplyBulletEffect(Projectile arg1)
+        {
+            arg1.statusEffectsToApply.Add(EffectToApply);
+            return true;
         }
 
         private void Player_PostProcessProjectile(Projectile arg1, float arg2)

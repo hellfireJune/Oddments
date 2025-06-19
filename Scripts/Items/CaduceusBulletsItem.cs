@@ -75,7 +75,13 @@ namespace Oddments
                 Instantiate(HealDamageVFX, __instance.transform.position, Quaternion.identity);
             }
 
-            return false;
+            if (__instance && __instance.aiActor && __instance.aiActor.EnemyGuid == "9d50684ce2c044e880878e86dbada919")
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
         }
 
         public class CaduceusHelper : BraveBehaviour

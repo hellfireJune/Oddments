@@ -18,8 +18,8 @@ namespace Oddments
         public bool IsCloner;
 
 
-        [HarmonyPatch(typeof(DeadlyDeadlyGoopManager), "DoGoopEffect")]
-        [HarmonyPostfix]
+        /*[HarmonyPatch(typeof(DeadlyDeadlyGoopManager), "DoGoopEffect")]
+        [HarmonyPostfix]*/
         public static void CoolNewCustomGoopEffects(DeadlyDeadlyGoopManager __instance, GameActor actor, IntVector2 goopPosition)
         {
             if (!actor || actor is PlayerController || !(actor is AIActor aiactor) || aiactor.CompanionOwner)

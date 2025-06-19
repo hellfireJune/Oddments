@@ -35,7 +35,7 @@ namespace Oddments
             AltTextD = GetRandomBool(10);
 
             UnityEngine.Debug.Log(seed);
-            UnityEngine.Debug.Log($"For June's eyes only: {DoPinkBlood}, {InnapropriateLanguage}, {Flipments}, {DeluxeEdition}, {AltTextA}, {AltTextB}, {AltTextC}, {AltTextD}");
+            UnityEngine.Debug.Log($"For Beahs's eyes only: {DoPinkBlood}, {InnapropriateLanguage}, {Flipments}, {DeluxeEdition}, {AltTextA}, {AltTextB}, {AltTextC}, {AltTextD}");
             Flipments = true; DeluxeEdition = true;
         }
 
