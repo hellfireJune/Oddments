@@ -14,6 +14,7 @@ namespace Oddments
         {
             Name = "Mortal Rounds",
             Description = "Dead shells",
+            LongDescription = "Your bullets sometimes will activate enemy kill effects, aswell as doing increased damage.",
             SpriteResource = $"{Module.SPRITE_PATH}/mortalrounds.png",
             Quality = ItemQuality.A,
             PostInitAction = item =>

@@ -477,5 +477,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\Sprites\Items\grimoire.png" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sprites\Items\ammorepurposer.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

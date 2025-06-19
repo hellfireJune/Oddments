@@ -14,7 +14,11 @@ namespace Oddments
     {
         public static OddItemTemplate template = new OddItemTemplate(typeof(AmmoOverloaderItem))
         {
-            Name = "overloader",
+            Name = "Ammo Repurposer",
+            Quality = ItemQuality.B,
+            Description = "Shell Space",
+            LongDescription = "Picking up an ammo box also adds bonus ammo to your gun that goes over the ammo limit.\n\nThis unusual box is actually a wormhole to another dimension, where an even more unusual cosmic horror resides",
+            SpriteResource = $"{Module.SPRITE_PATH}/ammorepurposer.png",
             PostInitAction = item =>
             {
                 AmmoOverloaderItem aitem = item as AmmoOverloaderItem;
@@ -49,9 +53,9 @@ namespace Oddments
                 {
                     AmmoExtenderComponent extender = gun.gameObject.GetOrAddComponent<AmmoExtenderComponent>();
                     Skip = true;
-                    extender.AmmoAdded += Mathf.FloorToInt(gun.AdjustedMaxAmmo * 0.5f);
+                    extender.AmmoAdded += Mathf.FloorToInt(gun.AdjustedMaxAmmo);
                     Skip = false;
-                    gun.GainAmmo((int)(gun.AdjustedMaxAmmo * 0.5));
+                    gun.GainAmmo((int)(gun.AdjustedMaxAmmo));
                 }
             }
             float splitMult = SplitForOtherMult;
