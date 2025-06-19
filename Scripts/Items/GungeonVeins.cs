@@ -85,7 +85,9 @@ namespace Oddments
         public override void DisableEffect(PlayerController player)
         {
             base.DisableEffect(player);
-            player.OnRoomClearEvent -= Player_OnRoomClearEvent;
+
+            if(player)
+                player.OnRoomClearEvent -= Player_OnRoomClearEvent;
         }
     }
 }

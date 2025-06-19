@@ -30,7 +30,9 @@ namespace Oddments
 
         public override void DisableEffect(PlayerController player)
         {
-            player.GetComponent<JEventsComponent>().PostProcessProjectileMod -= Player_PostProcessProjectile;
+            if(player)
+                player.GetComponent<JEventsComponent>().PostProcessProjectileMod -= Player_PostProcessProjectile;
+
             base.DisableEffect(player);
         }
 

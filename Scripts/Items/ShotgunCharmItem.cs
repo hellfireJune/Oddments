@@ -28,7 +28,8 @@ namespace Oddments
 
         public override void DisableEffect (PlayerController player)
         {
-            player.GetComponent<JEventsComponent>().ConstantModifyGunVolley -= Stats_AdditionalVolleyModifiers;
+            if(player)
+                player.GetComponent<JEventsComponent>().ConstantModifyGunVolley -= Stats_AdditionalVolleyModifiers;
             ItemsCore.GetItemChanceMult -= ChangeWeight;
             base.DisableEffect(player);
         }
