@@ -16,13 +16,14 @@ namespace Oddments
             Description = "Dead shells",
             LongDescription = "Your bullets sometimes will activate enemy kill effects, aswell as doing increased damage.",
             SpriteResource = $"{Module.SPRITE_PATH}/mortalrounds.png",
+            LongDescription = "Bullets have a chance to trigger enemy death and on-hit effects.",
             Quality = ItemQuality.A,
             PostInitAction = item =>
             {
                 item.AddPassiveStatModifier(PlayerStats.StatType.Curse, 1f);
             },
 
-            ProcChance = (1 / 80)*0.1f,
+            ProcChance = (1f / 80f)*0.1f,
             ChanceScalesWithDamageFired = true,
         };
 

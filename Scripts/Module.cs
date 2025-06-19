@@ -35,7 +35,6 @@ namespace Oddments
         public void Start()
         {
             Debug.Log("Made you look");
-           //ETGModConsole.Log("Hawk Tuah");
             ETGModMainBehaviour.WaitForGameManagerStart(GMStart);
         }
 
@@ -43,10 +42,17 @@ namespace Oddments
         {
             try
             {
+
+
                 new Harmony(GUID).PatchAll();
                 FilePathFolder = this.FolderPath();
                 oddBundle = AssetBundleLoader.LoadAssetBundleFromLiterallyAnywhere("oddments", true);
+                //Log($"tuah", TEXT_COLOR);
+
+                AilmentsCore.Init();
+
                 ETGMod.Assets.SetupSpritesFromAssembly(Assembly.GetExecutingAssembly(), $"{ASSEMBLY_NAME}/Resources/Sprites/MTGSprites");
+
 
                 ItemBuilder.Init();
                 SaveAPIManager.Setup("oddments");
@@ -54,7 +60,6 @@ namespace Oddments
                 JuneSaveManagerCore.Init();
 
                 OddSparksDoer.InitPrefabs();
-                AilmentsCore.Init();
                 LightningModifier.Init();
 
                 ItemTemplateManager.Init();
@@ -189,7 +194,9 @@ namespace Oddments
             "Status, what's your transmission?",
             "Say my name...",
             "Yo, waddup",
-            "Chicken Jockey!"
+            "Chicken Jockey!",
+            "MORE MOUSE BITES!",
+            "Mmmm... glurched up eggs."
         };
 
 

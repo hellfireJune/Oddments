@@ -11,9 +11,26 @@ using Alexandria.Misc;
 
 namespace Oddments
 {
-    public class HellfireRoundsItem : OddStatusEffectModifierItem
+
+
+    public class OnDeathEffectModifierItem : OddProjectileModifierItem
     {
-        public static StatusEffectItemTemplate template = new StatusEffectItemTemplate(typeof(HellfireRoundsItem))
+        public int Slot;
+        public List<GameActorOnDeathEffect> Effects = new List<GameActorOnDeathEffect>()
+        {
+             AilmentsCore.HellfireEffect,
+             AilmentsCore.AcridRoundsEffect,
+             new GameActorOnDeathEffect(typeof(BlankOnDeathWhateverComponent))
+             {
+                    duration = 6f,
+                    AffectsPlayers = false,
+                    effectIdentifier = "blanksBlanksBlanks",
+                    deathType = OnDeathBehavior.DeathType.PreDeath
+             },
+
+        };
+
+        public static BulletModifierItemTemplate template = new BulletModifierItemTemplate(typeof(OnDeathEffectModifierItem))
         {
             Name = "Hellfire's Rounds",
             AltTitle = "Shellfire",
@@ -27,12 +44,13 @@ namespace Oddments
                 item.AddPassiveStatModifier(PlayerStats.StatType.Curse, 1f);
                 item.AddToSubShop(ItemBuilder.ShopType.Cursula, 1);
                 item.MakeBulletMod();
+                (item as OnDeathEffectModifierItem).Slot = 0;
+                //(item as OnDeathEffectModifierItem).EffectToApply = AilmentsCore.HellfireEffect;
             },
-            EffectToApply = AilmentsCore.HellfireEffect,
             ProcChance = 0.085f
         };
 
-        public static StatusEffectItemTemplate template2 = new StatusEffectItemTemplate(typeof(HellfireRoundsItem))
+        public static BulletModifierItemTemplate template2 = new BulletModifierItemTemplate(typeof(OnDeathEffectModifierItem))
         {
             Name = "Acrid Rounds",
             Description = "Bleck",
@@ -41,25 +59,28 @@ namespace Oddments
             {
                 item.MakeBulletMod();
                 item.AddToSubShop(ItemBuilder.ShopType.Goopton);
+                (item as OnDeathEffectModifierItem).Slot = 1;
             },
             Quality = ItemQuality.B,
             SpriteResource = $"{Module.SPRITE_PATH}/acridrounds.png",
-            EffectToApply = AilmentsCore.AcridRoundsEffect,
-
             ProcChance = 0.085f
         };
 
-        public static StatusEffectItemTemplate template3 = new StatusEffectItemTemplate(typeof(HellfireRoundsItem))
+        public static BulletModifierItemTemplate template3 = new BulletModifierItemTemplate(typeof(OnDeathEffectModifierItem))
         {
             Name = "blank rounds",
-            EffectToApply = new GameActorOnDeathEffect(typeof(BlankOnDeathWhateverComponent))
+            PostInitAction = item =>
             {
-                duration = 6f,
-                AffectsPlayers = false,
-                effectIdentifier = "blanksBlanksBlanks",
-                deathType = OnDeathBehavior.DeathType.PreDeath
-            }
+                (item as OnDeathEffectModifierItem).Slot = 2;
+                //(item as OnDeathEffectModifierItem).EffectToApply = 
+            },
         };
+
+        public override bool ApplyBulletEffect(Projectile arg1)
+        {
+            arg1.statusEffectsToApply.Add(Effects[Slot]);
+            return true;
+        }
 
         public class HellfireExplodeOnDeath : OnDeathBehavior
         {

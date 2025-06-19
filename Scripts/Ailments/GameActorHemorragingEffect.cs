@@ -8,7 +8,7 @@ using UnityEngine;
 namespace Oddments
 {
     [Serializable]
-    public class GameActorHemorragingEffect : GameActorEffect
+    public class GameActorHemorragingEffect : GameActorHealthEffect 
     {
         public GoopDefinition gooper;
         public override void OnEffectApplied(GameActor actor, RuntimeGameActorEffectData effectData, float partialAmount = 1)
@@ -18,7 +18,7 @@ namespace Oddments
         }
         public override void EffectTick(GameActor actor, RuntimeGameActorEffectData effectData)
         {
-            base.EffectTick(actor, effectData);
+            //base.EffectTick(actor, effectData);
 
             this.shittyGradualCheckThing += BraveTime.DeltaTime;
             if (HeresTheTicker <= shittyGradualCheckThing)
